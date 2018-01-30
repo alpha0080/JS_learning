@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+</head>
+
+<body>
+    <h1>test2</h1>
+    <script type="text/javascript" src="pixi/pixi.min.js"></script>
+    <script>
+        var mydata = [];
+        function readTextFile(file, callback) {
+            var rawFile = new XMLHttpRequest();
+            rawFile.overrideMimeType("application/json");
+            rawFile.open("GET", file, true);
+            rawFile.onreadystatechange = function() {
+                if (rawFile.readyState === 4 && rawFile.status == "200") {
+                    callback(rawFile.responseText);
+                }
+            }
+            rawFile.send(null);
+        }
+
+        //usage:
+        
+        readTextFile("json/gg.json", function(text) {
+            var data = JSON.parse(text);
+            console.log(data);
+            mydata.push(data['myC']);
+            //return text;//document.write(data['gh'][0]);
+        });
+        //console.log(mydata);
+        
+        console.log(mydata);
+        document.write(mydata[0].myC);
+       // console.log(readTextFile)
+        //document.write(ggyy.myA)
+        //console.log(p1)
+        /*
+        var app = new PIXI.Application(400, 400, {
+            backgroundColor: 0x1099bb
+        });
+        document.body.appendChild(app.view);
+
+        var container = new PIXI.Container();
+
+        app.stage.addChild(container);
+
+        var texture = PIXI.Texture.fromImage('images/01.png');
+        var bunny = new PIXI.Sprite(texture);
+        bunny.anchor.set(0.5);
+        bunny.scale.set(0.2);
+        //var px = data['gh'][0]
+        //document.write(px)
+        //bunny.x = px;
+        //bunny.y = 200;
+       // container.addChild(bunny);
+        
+        // Create a 5x5 grid of bunnies
+        for (var i = 0; i < 25; i++) {
+            var bunny = new PIXI.Sprite(texture);
+            bunny.anchor.set(0.5);
+            bunny.scale.set(0.2);
+            bunny.x = (i % 5) * 40;
+            bunny.y = Math.floor(i / 5) * 40;
+            //document.write(bunny.x +','+bunny.y+'__')
+            container.addChild(bunny);
+        }
+        container.x = app.screen.width / 2;
+        container.y = app.screen.height / 2;
+
+        container.pivot.x = container.width / 2;
+        container.pivot.y = container.height / 2;
+        //container.rotation = 0.5
+
+        function addDegree(delta) {
+            container.rotation += 0.01 * delta;
+            //return container.rotation
+        }
+        app.ticker.add(addDegree)
+
+        function getDegree() {
+            //degree += 0.1 *delta;
+            return clock.getDelta();
+            //deltaA += delta;
+            //return deltaA;
+        }
+
+        document.write(getDegree());
+        */
+
+    </script>
+</body>
+
+</html>
