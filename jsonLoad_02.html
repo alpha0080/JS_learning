@@ -1,0 +1,38 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Hello World</title>
+
+<body>
+    <script src="pixi/pixi.min.js"></script>
+        
+    <script>
+       // var jsonData = [];
+        document.write('start2');
+        var requestURL = "json/package.json";
+
+        var request = new XMLHttpRequest();
+        var ans = request.open('GET', requestURL);
+        //console.log(ans)
+
+        request.responseType = 'text';
+        request.send();
+        //request.onload
+        request.onload = function() {
+            //jsonData = []
+            var superHeroesText = request.response;
+            //var superHeroes = JSON.stringify(JSON.parse(superHeroesText));
+            var superHeroes =JSON.parse(superHeroesText)
+            //return superHeroes
+            //JSON.stringify(JSON.parse(superHeroesText));
+            //return superHeroes
+          //  var jsonData.replace('',superHeroes)
+            //console.log(superHeroes)
+           // console.log(typeof superHeroes)
+            //jsonData.push(superHeroes) 
+            //jsonData.push(superHeroes["name"])
+
+        }
+        //console.log()
+        //document.write(jsonData)
+    </script>
+</body>

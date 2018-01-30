@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="pixi/pixi.min.js"></script>
+    <script>
+        var app = new PIXI.Application();
+        document.body.appendChild(app.view);
+        //var stage = new PIXI.Container();
+        PIXI.loader
+            .add('posTest', 'json/pos.json')
+            .load(onAssetsLoaded);
+
+
+        //app.stage.interactive = true;
+       
+        function onAssetsLoaded(loader, resources) {
+            const x = resources.posTest.data.frame_001[1].x
+            const y = resources.posTest.data.frame_001[1].y
+            //bones.name = resources.pixie
+            //console.log(resources)
+            //var aaa = []
+            console.log(x,y)
+           // resources.pixie.data.bones['0']
+            //aaa.push(resources.pixie.data.bones['0'])
+            //console.log(aaa)
+            var graphics = new PIXI.Graphics();
+            graphics.beginFill(0xff0000);
+            graphics.drawRect(x,y,10,10);
+            app.stage.addChild(graphics);
+        }
+      
+        //var graphics = new PIXI.Graphics();
+        //graphics.beginFill(0xff0000); // 設定我們要畫的顏色
+        //graphics.drawRect(100,100,10,10);
+        //console.log(pp)
+        //app.stage.addChild(graphics);
+    </script>
+
+</body>
+
+</html>
