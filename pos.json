@@ -1,0 +1,36 @@
+{
+    "frame_001": [{
+            "name": "p1",
+            "image": "pic_01.png",
+            "index": 1,
+            "transparent": 1,
+            "x": 100,
+            "y": 200,
+            "scaleX": 0.5,
+            "scaleY": 0.5,
+            "rotate": 0.1
+              },
+        {
+            "name": "p2",
+            "image": "pic_01.png",
+            "index": 1,
+            "transparent": 1,
+            "x": 50,
+            "y": 100,
+            "scaleX": 0.2,
+            "scaleY": 0.2,
+            "rotate": 0.2
+              },
+        {
+            "name": "p3",
+            "image": "pic_01.png",
+            "index": 1,
+            "transparent": 1,
+            "x": 250,
+            "y": 200,
+            "scaleX": 0.3,
+            "scaleY": 0.3,
+            "rotate": 0.8
+              }
+    ]
+}

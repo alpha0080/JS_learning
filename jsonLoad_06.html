@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+</head>
+
+<body>
+    <h1>test2</h1>
+    <script type="text/javascript" src="pixi/pixi.min.js"></script>
+    <script>
+        var app = new PIXI.Application({
+            width: 600, // default: 800
+            height: 600, // default: 600
+            antialias: true, // default: false
+            transparent: false, // default: false
+            resolution: 1, // default: 1
+            backgroundColor: 0x061639 //change BG color
+
+        });
+
+        document.body.appendChild(app.view);
+
+        //load json data loader, resources
+        PIXI.loader
+            .add('posTest', 'json/pos.json')
+            .load(onAssetsLoaded);
+
+        function onAssetsLoaded(loader, resources) {
+            for (i = 0; i < 4; i++) {
+                pic = PIXI.Sprite.fromImage('images/02.png')
+
+                var x = resources.posTest.data.frame_001[i].x;
+                var y = resources.posTest.data.frame_001[i].y;
+                var width = resources.posTest.data.frame_001[i].width;
+                var height = resources.posTest.data.frame_001[i].height;
+                var scale = resources.posTest.data.frame_001[i].scale;
+                var trans = resources.posTest.data.frame_001[i].transparent;
+                var rotate = resources.posTest.data.frame_001[i].rotate;
+                //bones.name = resources.pixie
+                //console.log(resources)
+                //var aaa = []
+                console.log(x, y, width, height, scale, trans, rotate);
+                // resources.pixie.data.bones['0']
+                //aaa.push(resources.pixie.data.bones['0'])
+                //console.log(aaa)
+                var graphics = new PIXI.Graphics();
+                pic.anchor.set(0.5);
+                //graphics.beginFill(0xff0000);
+                //graphics.drawRect(x,y,10,10);
+                pic.x = x;
+                pic.y = y;
+                pic.width = width;
+                pic.height = height;
+                pic.scale = scale;
+                pic.rotation = rotate;
+                pic.blendMode = PIXI.BLEND_MODES.NORMAL;
+                app.stage.addChild(pic);
+            }
+        }
+
+
+      
+    </script>
+</body>
+
+</html>

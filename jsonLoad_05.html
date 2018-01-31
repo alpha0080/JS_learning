@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+</head>
+
+<body>
+    <h1>test2</h1>
+    <script type="text/javascript" src="pixi/pixi.min.js"></script>
+    <script>
+        var app = new PIXI.Application({
+            width: 400, // default: 800
+            height: 400, // default: 600
+            antialias: true, // default: false
+            transparent: false, // default: false
+            resolution: 1, // default: 1
+            backgroundColor: 0x061639 //change BG color
+
+        });
+        
+        document.body.appendChild(app.view);
+        
+        //load json data loader, resources
+        PIXI.loader
+            .add('posTest', 'json/pos.json')
+            .load(onAssetsLoaded);
+
+        function onAssetsLoaded(loader, resources) {
+            const x = resources.posTest.data.frame_001[1].x
+            const y = resources.posTest.data.frame_001[1].y
+            //bones.name = resources.pixie
+            //console.log(resources)
+            //var aaa = []
+            console.log(x,y)
+           // resources.pixie.data.bones['0']
+            //aaa.push(resources.pixie.data.bones['0'])
+            //console.log(aaa)
+            var graphics = new PIXI.Graphics();
+            graphics.beginFill(0xff0000);
+            graphics.drawRect(x,y,10,10);
+            app.stage.addChild(graphics);
+        }
+      
+        
+        /*
+        var pic = PIXI.Sprite.fromImage('images/01.png');
+        //pic.x = app.screen.width / 2;
+        //pic.y = app.screen.height / 2;
+
+        pic.anchor.set(0.5);
+
+        document.body.appendChild(app.view);
+        app.stage.addChild(pic);
+        pic.scale.set(0.1);
+        pic.x = 200;
+        pic.y = 200;
+        // pic.rotation.set(0.1);
+
+        function multiPic(delta) {
+            pic.rotation += 0.1 * delta; //http://pixijs.download/release/docs/PIXI.ticker.html
+        }
+
+        app.ticker.add(multiPic);
+        */
+    </script>
+</body>
+
+</html>
