@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
     "frame_001": [{
             "name": "p1",
@@ -94,3 +95,14 @@
                "blendMode":"NORMAL",
                "multiply":1}
 }
+=======
+{"frame_001":[{"name":"p1",
+          "x":100,
+          "y":200},
+          {"name":"p2",
+          "x":150,
+          "y":250}]}
+
+          
+
+>>>>>>> origin/master

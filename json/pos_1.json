@@ -1,0 +1,108 @@
+<<<<<<< HEAD
+{
+    "frame_001": [{
+            "name": "p1",
+            "image": "pic_01.png",
+            "index": 1,
+            "transparent": 1,
+            "x": 100,
+            "y": 200,
+            "width": 50,
+            "height": 50,
+            "scale": 1,
+            "rotate": 0.3,
+            "frameOffset": 0,
+            "frameSpeed": 1,
+            "life": 100
+              },
+        {
+            "name": "p2",
+            "image": "pic_01.png",
+            "index": 1,
+            "transparent": 1,
+            "x": 50,
+            "y": 100,
+            "width": 50,
+            "height": 50,
+            "scale": 1,
+            "rotate": 0.2,
+            "frameOffset": 0,
+            "frameSpeed": 1,
+            "life": 100
+              },
+        {
+            "name": "p3",
+            "image": "pic_01.png",
+            "index": 1,
+            "transparent": 1,
+            "x": 250,
+            "y": 200,
+            "width": 50,
+            "height": 50,
+            "scale": 1,
+            "rotate": 0.8,
+            "frameOffset": 0,
+            "frameSpeed": 1,
+            "life": 100
+              }],
+    "frame_002": [{
+            "name": "p1",
+            "image": "pic_01.png",
+            "index": 1,
+            "transparent": 1,
+            "x": 100,
+            "y": 200,
+            "width": 50,
+            "height": 50,
+            "scale": 1,
+            "rotate": 0.3,
+            "frameOffset": 0,
+            "frameSpeed": 1,
+            "life": 100
+              },
+        {
+            "name": "p2",
+            "image": "pic_01.png",
+            "index": 1,
+            "transparent": 1,
+            "x": 50,
+            "y": 100,
+            "width": 50,
+            "height": 50,
+            "scale": 1,
+            "rotate": 0.2,
+            "frameOffset": 0,
+            "frameSpeed": 1,
+            "life": 100
+              },
+        {
+            "name": "p3",
+            "image": "pic_01.png",
+            "index": 1,
+            "transparent": 1,
+            "x": 250,
+            "y": 200,
+            "width": 50,
+            "height": 50,
+            "scale": 1,
+            "rotate": 0.8,
+            "frameOffset": 0,
+            "frameSpeed": 1,
+            "life": 100
+              }],
+    "metaData":{"particleName":"test01",
+               "totalLift":300,
+               "blendMode":"NORMAL",
+               "multiply":1}
+}
+=======
+{"frame_001":[{"name":"p1",
+          "x":100,
+          "y":200},
+          {"name":"p2",
+          "x":150,
+          "y":250}]}
+
+          
+
+>>>>>>> origin/master

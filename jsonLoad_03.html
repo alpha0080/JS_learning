@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="pixi/pixi.min.js"></script>
+
+    <script>
+        // --file.js--
+        var url = 'json/package.json'
+        function getJSON(url,callback) {
+            let xhr = new XMLHttpRequest();
+            xhr.onload = function() {
+                callback(this.responseText)
+            };
+            xhr.open('GET', url, true);
+            xhr.send();
+        }
+        
+        var aa = getJSON(url,callback)
+        /*
+        export function getUsefulContents(url, callback) {
+            getJSON(url, data => callback(JSON.parse(data)));
+        }
+
+        // --main.js--
+        */
+    </script>
+
+</body>
+
+</html>
