@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+</head>
+
+<body>
+    <h1>test2</h1>
+    <script type="text/javascript" src="pixi/pixi.min.js"></script>
+    <script>
+        var app = new PIXI.Application({
+            width: 600, // default: 800
+            height: 600, // default: 600
+            antialias: true, // default: false
+            transparent: false, // default: false
+            resolution: 1, // default: 1
+            backgroundColor: 0x061639 //change BG color
+
+        });
+
+        document.body.appendChild(app.view);
+
+        PIXI.loader
+            .add('pp', 'json/pos4.json')
+            .load(onAssetsLoaded);
+
+        function onAssetsLoaded(loader, res) {
+            
+            var ppData = res.pp.data//.translate;
+                //console.log(ppData);
+            
+            for (var i = 1; i < 3; i++) {
+                var pp = PIXI.Sprite.fromImage('images/02.png');
+                pp.anchor.set(0.5);
+                pp.scale.set(0.1);
+                var ppDataIndex  = eval("(" +'ppData.pt'+String(i) + ")");
+                console.log(ppDataIndex);
+
+                //var str = ['ppData.pt1']
+                //JSON.parse(str);
+                //console.log(JSON.parse(str)[0])
+                pp.x =ppDataIndex.translate[i].x ;
+                pp.y =ppDataIndex.translate[i].y;
+                //console.log()
+                ////ppList.push(pp)
+                app.stage.addChild(pp)
+            };  
+            //console.log(ppList)
+        }
+        // app.stage.addChild(container);
+    </script>
+</body>
+
+</html>
