@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+</head>
+
+<body>
+    <h1>test2</h1>
+    <script type="text/javascript" src="pixi/pixi.min.js"></script>
+    <script type="text/javascript" src="datGui/build/dat.gui.js"></script>
+    <script type="text/javascript">
+
+
+    </script>
+    <script>
+        var app = new PIXI.Application({
+            width: 1920, // default: 800
+            height: 1024, // default: 600
+            antialias: true, // default: false
+            transparent: false, // default: false
+            resolution: 1, // default: 1
+            backgroundColor: 0x061639 //change BG color
+
+        });
+
+        document.body.appendChild(app.view);
+
+
+        PIXI.loader
+            .add('pp', 'pixi/json/fire_v001.json')
+            .add('getFire', 'images/fireSprites.json')  //tileImageJson
+            .add('images/fireSprites.png') //sourceImage
+            .load(onAssetsLoaded);
+
+        function onAssetsLoaded(loader, res) {
+            var container = new PIXI.Container();
+            background = PIXI.Sprite.fromImage('images/bg.jpg');
+            app.stage.addChild(background);
+            background.width = 1920;
+            background.height = 1080;
+            var getTileData = res.getFire.data.frames
+            var texture = PIXI.TextureCache['images/fireSprites.png'];
+            var convertPixiAtlas = Object.keys(getTileData);
+            var totalSprites = convertPixiAtlas.length
+
+            textureFrameList = []
+            for (var i = 0; i < totalSprites; i++) {
+                var spriteID = convertPixiAtlas[i];
+                var locationX = getTileData[String(spriteID)].frame.x;
+                var locationy = getTileData[String(spriteID)].frame.y;
+                var locationWidth = getTileData[String(spriteID)].frame.w;
+                var locationHeight = getTileData[String(spriteID)].frame.h;
+                var rectangle = new PIXI.Rectangle(locationX, locationy, locationWidth, locationHeight);
+                textureFrameList.push(rectangle)
+ 
+            };
+
+            //gui...................
+
+            //......
+
+
+            container.pivot.x = 512;
+            container.pivot.y = 512;
+            container.x = 512;
+            container.y = 512;
+            // container.scale.set(1);
+            //container.blendMode = PIXI.BLEND_MODES.MULTIPLY;
+            var ppData = res.pp.data //.translate;
+
+            var jsonData = JSON.parse(JSON.stringify(ppData));
+            var ppSpriteList = []
+            firstPP = Object.keys(jsonData)[0]
+            timeLength = jsonData[firstPP].translate.length
+           // console.log(timeLength)
+            //console.log(Object.keys(jsonData).length)
+            var ppCount = Object.keys(jsonData).length;
+            //console.log(ppCount);
+
+
+            for (var i = 0; i < ppCount; i++) {
+                //console.log(i);
+                var dude = PIXI.Sprite.fromImage('images/03.png'); //testImage_01
+                //var dude = PIXI.Sprite(texture)
+                console.log(texture)
+                var blurFilter1 = new PIXI.filters.BlurFilter();
+                //dude.filters = [blurFilter1];
+
+                dude.anchor.set(0.5);
+                //dude.scale.set(1);
+                dude.x = -100000;
+                dude.y = -100000;
+                dude.blendMode = PIXI.BLEND_MODES.NORMAL;
+                ppSpriteList.push(dude);
+                container.addChild(dude);
+
+
+                // console.log(ppSpriteList)
+            };
+
+
+
+            app.stage.addChild(container);
+            var dudeBoundsPadding = 100;
+            var dudeBounds = new PIXI.Rectangle(-dudeBoundsPadding, -dudeBoundsPadding,
+                app.screen.width + dudeBoundsPadding * 2,
+                app.screen.height + dudeBoundsPadding * 2);
+
+            //UI
+            var controls = new function() {
+                this.ppScale = 1;
+                this.ppScaleRandom = 0;
+                this.speed = 1;
+                this.rotate = 0;
+                this.blur = 0
+
+                //......
+
+
+            };
+            var gui = new dat.GUI();
+            gui.add(controls, 'ppScale', 0.01, 5).onChange(function(value) {
+                changePPModify()
+            });
+            gui.add(controls, 'ppScaleRandom', 0, 1).onChange(function(value) {
+                changePPModify()
+            });
+            gui.add(controls, 'speed', 1, 6).step(1).onChange(function(value) {
+                changePPModify()
+            });
+            gui.add(controls, 'rotate', 0, 16).step(0.1).onChange(function(value) {
+                changePPModify()
+
+            });
+            gui.add(controls, 'blur', 0, 20).onChange(function(value) {
+                changePPModify()
+
+            });
+
+
+
+            //ui
+
+            function changePPModify() {
+                for (var i = 0; i < ppSpriteList.length; i++) {
+                    var dude = ppSpriteList[i];
+                    //dude.scale.set(controls.ppScale+ Math.random()*controls.ppScaleRandom*0.3)
+                    //dude.rotation = controls.rotate
+                    //dude.rotation = controls.ppRotation
+                    var blurFilter1 = new PIXI.filters.BlurFilter();
+                    dude.filters = [blurFilter1];
+                    blurFilter1.blur = controls.blur;
+                };
+
+
+
+            }
+            var percent = 1
+
+            function runAni(tick) {
+                for (var i = 0; i < ppSpriteList.length; i++) {
+                    var ppKey = 'pId_' + String(i)
+                    var x = ppData[ppKey].translate[tick].x;
+                    var width = ppData[ppKey].scale[tick].w;
+                    var heigth = ppData[ppKey].scale[tick].h;
+                    var y = ppData[ppKey].translate[tick].y;
+                    var rotationTemp = (ppData[ppKey].rotate[tick].z);
+                    //var rotation = 0;
+                    //if (rotationTemp >0){rotation =Math.abs(rotationTemp%360)}else{Math.abs(rotation = rotationTemp+360)}
+
+                    // console.log(rotation)
+                    var dude = ppSpriteList[i];
+                   // console.log(dude.texture.frame)
+                    //dude.direction += dude.turningSpeed * 0.01;
+                    dude.x = x;
+                    dude.y = y;
+                    // console.log(rotation)
+                    dude.width = width * controls.ppScale;
+                    dude.heigth = heigth * controls.ppScale;
+                    dude.scale.set(controls.ppScale);
+                    dude.rotation = -(rotationTemp / 57.14)
+                   // texture.frame = textureFrameList[tick]
+                  //  var spriteImage = new PIXI.Sprite(texture);
+
+
+                };
+                speed = controls.speed
+
+            }
+            tick = 0;
+            // app.ticker.speed = 2;
+            var speed = 1;
+
+            app.ticker.add(function() {
+                //ticker.FPS  =30;
+                //addPP();
+
+                tick += speed;
+
+                tick = tick % timeLength;
+                runAni(tick)
+
+            });
+
+
+
+        };
+
+    </script>
+</body>
+
+</html>

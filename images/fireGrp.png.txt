@@ -1,0 +1,1 @@
+font01_a.png.png 36 14, font02_b.png.png 127 14, font03_c.png.png 234 14, font04_d.png.png 349 14, font05_e.png.png 32 173, font06_f.png.png 137 173, font07_g.png.png 248 173, font08_h.png.png 358 173, font09_i.png.png 25 336, font10_j.png.png 137 336, font11_k.png.png 243 336, font12_l.png.png 357 336.
