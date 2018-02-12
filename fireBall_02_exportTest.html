@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript" src="pixi/pixi.min.js"></script>
+    <script type="text/javascript" src="datGui/build/dat.gui.js"></script>
+    <script src="scripts/canvas2image.js"></script>
+</head>
+
+<body>
+
+    <script>
+        //輸入檔案;
+        var ppCacheJson = 'json/fireball.json' //particle 動態cache, json format
+        var tilingSpriteJson = 'images/bearMan/bearMan.json' //動態陣列圖資訊, json format 
+        var tilingSpriteImage = 'images/bearMan/bearMan.png' //動態陣列圖, tiling sprite image
+        var bgImage = ''; //背景圖
+        var animaticSpriteList = [];
+        var ppAnimList =[];//
+        var textureFrameListRandom =[];//
+        var animaticSpritList = []  //動態素材撥放次序列表
+       
+        //輸入檔案 END;
+
+        //定義畫布
+        var app = new PIXI.Application({
+            width: 1024, // default: 800
+            height: 1024, // default: 600
+            antialias: true, // default: false
+            transparent: true, // default: false
+            resolution: 1, // default: 1
+            backgroundColor: 0x061639, //change BG color
+            preserveDrawingBuffer : true
+        });
+
+        document.body.appendChild(app.view);
+        //定義畫布 END
+
+        //加載texture cache
+        PIXI.loader
+            .add('pp', ppCacheJson)
+            .add('tilingSprite', tilingSpriteJson) //tileImageJson
+            .add(tilingSpriteImage) //sourceImage
+            .load(onAssetsLoaded);
+        //加載texture cache END
+
+        var controls = new function() {
+                this.ppScale = 1;
+                this.scaleRandom = 0;
+                this.speed = 1;
+                this.SpriteSpeed = 1;
+                this.rotate = 0;
+                this.transplance = 1;
+                this.blur = 0;
+                this.blendMode = 0;
+            };
+        
+        var gui = new dat.GUI();
+        gui.add(controls, 'ppScale', 0.01, 2).onChange(function(value) {
+            changePpAnimList()
+        });
+        gui.add(controls, 'scaleRandom', 0, 2).step(0.1).onChange(function(value) {
+            changePpAnimList()
+        });
+        gui.add(controls, 'speed', 0, 6).step(1);
+        gui.add(controls, 'SpriteSpeed', 0, 10).step(1).onChange(function(value) {
+            changePpAnimList()
+        });
+        gui.add(controls, 'rotate', 0, 16).step(0.1).onChange(function(value) {
+            changePpAnimList()
+        });
+        gui.add(controls, 'transplance', 0, 1).step(0.1).onChange(function(value) {
+            changePpAnimList()
+        });
+        gui.add(controls, 'blur', 0, 20).step(1).onChange(function(value) {
+            changePpAnimList()
+        });
+        
+        gui.add(controls, 'blendMode', 0, 17).step(1).onChange(function(value) {
+            changePpAnimList()
+        });
+
+        function changePpAnimList(){
+            for(var i =0;i<ppAnimList.length;i++){
+                console.log(ppAnimList.length);  
+                ppScaleRes = controls.ppScale+Math.random()*controls.scaleRandom
+                ppAnimList[i].scale.set(ppScaleRes);
+                ppAnimList[i].animationSpeed = controls.SpriteSpeed;
+                ppAnimList[i].blendMode = controls.blendMode;
+                ppAnimList[i].currentFrame = Math.floor(Math.random()*15);
+                console.log(ppAnimList[i])
+                };     
+        };
+        
+        
+        //定義資料數據
+        function onAssetsLoaded(loader, res) {
+            //定義 tiling sprites 
+            var getTileData = res.tilingSprite.data.frames;
+            var texture = PIXI.TextureCache[tilingSpriteImage];
+
+            var convertPixiAtlas = Object.keys(getTileData); //列出sprite所有的ID
+            var totalSprites = convertPixiAtlas.length //總sprites數量
+            //定義 tiling sprites END
+            
+            //定義 ppCache 資訊  
+            var ppData = res.pp.data //.translate;
+            var jsonData = JSON.parse(JSON.stringify(ppData));
+            var firstPP = Object.keys(jsonData)[0];
+            var timeLength = jsonData[firstPP].translate.length ;
+            var ppCount = Object.keys(jsonData).length;  //define how many particle
+            var speed = controls.speed;
+            //console.log(Object.keys(jsonData),ppCount)
+
+            //定義 ppCache 資訊 END  
+
+            animaticSpritList = getAnimaticSpritList(texture,totalSprites,convertPixiAtlas);
+            
+            //var anim = new PIXI.extras.AnimatedSprite(animaticSpritList);  //定義動態素材
+            //console.log(anim);
+            ppAnimList = definePP_FromCache(animaticSpritList,ppCount);
+            runTicker(ppData,ppCount,ppAnimList,timeLength);
+            //app.stage.addChild(anim);
+            //anim.play();
+            app.ticker.speed =6;
+           // console.log(app.ticker);
+            
+        }; //定義資料數據 END ，Main
+        
+        //定義每個事件的資訊,from maya cache
+        function definePP_FromCache(animaticSpritList,ppCount){
+            //var ppAnimList =[]
+            //console.log(ppCount);
+            for (i = 0; i < ppCount; i++) {
+                
+                /*
+                亂數更動 撥放次序
+                console.log('original',animaticSpritList)
+
+                var frameCount = animaticSpritList.length;
+                var offsetNum = Math.floor(Math.random()*5);
+                var newanimaticSpritList = []
+                
+                for(var j=0+offsetNum;j<(frameCount+offsetNum);j++){
+                    
+                    newanimaticSpritList.push(animaticSpritList[j%frameCount])
+                    };
+                animaticSpritList = newanimaticSpritList
+                console.log('new',animaticSpritList
+                */
+       
+                
+                var anim = new PIXI.extras.AnimatedSprite(animaticSpritList);  //定義動態素材
+                
+                //anim.x = Math.floor(Math.random()*1024);
+                //anim.y = Math.floor(Math.random()*1024);
+                //anim.anchor.set(0);
+                anim.pivot.x = anim.width/2;
+                anim.pivot.y = anim.height/2;
+                //anim.anchor.set(0.5);
+                //anim.scale.set(Math.random()*controls.scaleRandom*5);
+                //anim.rotation = Math.random()*14;
+                app.stage.addChild(anim);
+                ppAnimList.push(anim)
+                anim.play();
+             };
+            return ppAnimList
+            //console.log(ppAnimList[0].x)
+            //app.stage.addChild(ppAnimList);
+            //anim.play();
+
+            
+        };//定義每個事件的資訊 END
+
+        //定義animaticSpriteList
+        function getAnimaticSpritList(texture,totalSprites,convertPixiAtlas){
+            animaticSpriteList = [] //animatic Sprite List
+            for (i = 0; i < totalSprites; i++) {
+                var imageID = convertPixiAtlas[i]
+                var texture = PIXI.Texture.fromFrame(imageID);
+                animaticSpriteList.push(texture)
+                //console.log(texture)
+            }
+            return animaticSpriteList
+        };//定義animaticSpriteList END
+        
+      
+
+                
+        //run ticker
+        function runTicker(ppData,ppCount,ppAnimList,timeLength){
+        var tick = 0
+        //var ppCount = 100
+            app.ticker.add(function() {
+                tick += controls.speed ;
+                tick = tick % timeLength;
+                //console.log(timeLength)
+                
+                for (var i = 0; i < ppCount; i++) {
+                    //console.log(ppCount,ppAnimList[i])
+                    
+                    var ppKey = 'pId_' + String(i);
+                    //console.log(ppKey)
+                   // console.log(ppData)
+                    var x = ppData[ppKey].translate[tick].x;
+                    var y = ppData[ppKey].translate[tick].y;
+
+                    var width = ppData[ppKey].scale[tick].w;
+                    var heigth = ppData[ppKey].scale[tick].h;
+                    var rotation = (ppData[ppKey].rotate[tick].z);
+                    
+                    var dude = ppAnimList[i]
+                    //console.log(dude)
+                    dude.x = x;
+                    dude.y = y;
+                    //dude.anchor.set(1)
+                    //dude.scale.set(controls.ppScale);
+                    //dude.width = width*controls.ppScale;
+                    //dude.heigth = //heigth*controls.ppScale;
+                    //console.log(dude)
+                    
+                    dude.rotation = -((rotation / 57.14)+controls.rotate)
+                    var image = app.renderer.extract.canvas().toDataURL("image/png");
+
+                    console.log(image)
+                };
+               
+            });  
+        };//run ticker END
+
+
+
+    </script>
+
+</body>
+</html>

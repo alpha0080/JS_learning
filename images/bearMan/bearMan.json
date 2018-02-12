@@ -1,0 +1,70 @@
+{
+"frames": {
+	"bear_man_gif_speed_000.png": {
+		"frame": {"x":278, "y":0, "w":277, "h":319},
+		"spriteSourceSize": {"x":0,"y":0,"w":277,"h":319},
+		"sourceSize": {"w":277,"h":319}
+	},
+	"bear_man_gif_speed_001.png": {
+		"frame": {"x":278, "y":640, "w":277, "h":319},
+		"spriteSourceSize": {"x":0,"y":0,"w":277,"h":319},
+		"sourceSize": {"w":277,"h":319}
+	},
+	"bear_man_gif_speed_002.png": {
+		"frame": {"x":278, "y":320, "w":277, "h":319},
+		"spriteSourceSize": {"x":0,"y":0,"w":277,"h":319},
+		"sourceSize": {"w":277,"h":319}
+	},
+	"bear_man_gif_speed_003.png": {
+		"frame": {"x":556, "y":0, "w":277, "h":319},
+		"spriteSourceSize": {"x":0,"y":0,"w":277,"h":319},
+		"sourceSize": {"w":277,"h":319}
+	},
+	"bear_man_gif_speed_004.png": {
+		"frame": {"x":0, "y":640, "w":277, "h":319},
+		"spriteSourceSize": {"x":0,"y":0,"w":277,"h":319},
+		"sourceSize": {"w":277,"h":319}
+	},
+	"bear_man_gif_speed_005.png": {
+		"frame": {"x":0, "y":320, "w":277, "h":319},
+		"spriteSourceSize": {"x":0,"y":0,"w":277,"h":319},
+		"sourceSize": {"w":277,"h":319}
+	},
+	"bear_man_gif_speed_006.png": {
+		"frame": {"x":0, "y":0, "w":277, "h":319},
+		"spriteSourceSize": {"x":0,"y":0,"w":277,"h":319},
+		"sourceSize": {"w":277,"h":319}
+	},
+	"bear_man_gif_speed_007.png": {
+		"frame": {"x":0, "y":320, "w":277, "h":319},
+		"spriteSourceSize": {"x":0,"y":0,"w":277,"h":319},
+		"sourceSize": {"w":277,"h":319}
+	},
+	"bear_man_gif_speed_008.png": {
+		"frame": {"x":0, "y":640, "w":277, "h":319},
+		"spriteSourceSize": {"x":0,"y":0,"w":277,"h":319},
+		"sourceSize": {"w":277,"h":319}
+	},
+	"bear_man_gif_speed_009.png": {
+		"frame": {"x":556, "y":0, "w":277, "h":319},
+		"spriteSourceSize": {"x":0,"y":0,"w":277,"h":319},
+		"sourceSize": {"w":277,"h":319}
+	},
+	"bear_man_gif_speed_010.png": {
+		"frame": {"x":278, "y":320, "w":277, "h":319},
+		"spriteSourceSize": {"x":0,"y":0,"w":277,"h":319},
+		"sourceSize": {"w":277,"h":319}
+	},
+	"bear_man_gif_speed_011.png": {
+		"frame": {"x":278, "y":640, "w":277, "h":319},
+		"spriteSourceSize": {"x":0,"y":0,"w":277,"h":319},
+		"sourceSize": {"w":277,"h":319}
+	}
+
+},
+"meta": {
+	"image": "bearMan.png",
+	"size": {"w": 834, "h": 960},
+	"scale": "1"
+}
+}

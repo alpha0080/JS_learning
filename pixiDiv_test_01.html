@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+        #Header {
+            width: 1200px;
+            height: 80px;
+            text-align: center;
+            line-height: 80px;
+            font-size: 15px;
+            color: #fffaf3;
+            font-weight: bold;
+            background-color: #f9c81e;
+        }
+
+        #Sidebar {
+            width: 200px;
+            float: left;
+            height: 1000px;
+            text-align: center;
+            line-height: 280px;
+            font-size: 15px;
+            color: #ffffff;
+            font-weight: bold;
+            background-color: #cecece;
+        }
+
+        #body {
+            width: 1000px;
+            height: 1000px;
+            text-align: center;
+            line-height: 280px;
+            font-size: 15px;
+            color: #f9c81e;
+            font-weight: bold;
+            background-color: #fffaf3;
+            float: left;
+        }
+
+        #Footer {
+            width: 1200px;
+            height: 80px;
+            text-align: center;
+            line-height: 80px;
+            font-size: 15px;
+            color: #fffaf3;
+            font-weight: bold;
+            background-color: #f9c81e;
+        }
+    </style>
+    <style>
+        .button {
+            margin-left: 1px;
+            margin-top: 1px;
+
+            display: inline-block;
+            padding: 15px 50px;
+            font-size: 24px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            outline: none;
+            color: #fff;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 2px #999;
+        }
+
+        .button:hover {
+            background-color: #3e8e41
+        }
+
+        .button:active {
+            background-color: #3e8e41;
+            box-shadow: 0 2px #666;
+            transform: translateY(2px);
+        }
+    </style>
+
+    <style>
+        input[type="submit"] {
+            padding: 1px 5px;
+            width: 50px;
+            background: #ccc;
+            border: 1 none;
+            cursor: pointer;
+            -webkit-border-radius: 5px;
+            border-radius: 1px;
+        }
+
+        input[type="text"] {
+            padding: 1px 5px;
+            width: 100px;
+            border: 1px black solid;
+            cursor: pointer;
+            -webkit-border-radius: 5px;
+            border-radius: 5px;
+        }
+
+        .demo {
+            padding-top: 0px;
+            text-align: center
+        }
+    </style>
+</head>
+
+<body>
+    <div id="Header">Header 欄位</div>
+
+    <div id="Sidebar">
+        <button class="button button" id="demo" onclick="myFunction()">aaaaa</button><br>
+        <input type="text" placeholder="輸入文字" id ="asd"/>
+        <input type="submit" value="www" >
+        <input type="text" name="enter" class="enter" value="ggg" id="lolz"/>
+        <script>
+            function myFunction() {
+                console.log('aaaaaa')
+            }
+            
+            var aaa= document.getElementById("asd")
+            var bbb= document.getElementById("lolz")
+            console.log(bbb.value)
+            bbb.value = "fgfgfgfgffg"
+        </script>
+
+
+    </div>
+
+    <div id="Body">Body 欄位</div>
+
+    <div style='clear:both;'></div>
+
+    <div id="Footer">Footer 欄位</div>
+</body>
+
+</html>
