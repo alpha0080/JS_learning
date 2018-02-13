@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
-    <script type="text/javascript" src="pixi/pixi.min.js"></script>
-    <script type="text/javascript" src="datGui/build/dat.gui.js"></script>
+    <script type="text/javascript" src="scripts/pixi.min.js"></script>
+    <script type="text/javascript" src="scripts/dat.gui/build/dat.gui.js"></script>
     <script src="scripts/canvas2image.js"></script>
 </head>
 
@@ -83,13 +83,13 @@
 
         function changePpAnimList(){
             for(var i =0;i<ppAnimList.length;i++){
-                console.log(ppAnimList.length);  
+                //console.log(ppAnimList.length);  
                 ppScaleRes = controls.ppScale+Math.random()*controls.scaleRandom
                 ppAnimList[i].scale.set(ppScaleRes);
                 ppAnimList[i].animationSpeed = controls.SpriteSpeed;
                 ppAnimList[i].blendMode = controls.blendMode;
                 ppAnimList[i].currentFrame = Math.floor(Math.random()*15);
-                console.log(ppAnimList[i])
+                //console.log(ppAnimList[i])
                 };     
         };
         
@@ -221,11 +221,18 @@
                     //console.log(dude)
                     
                     dude.rotation = -((rotation / 57.14)+controls.rotate)
-                    var image = app.renderer.extract.canvas().toDataURL("image/png");
+                    //var image = app.renderer.extract.canvas().toDataURL("image/png");
 
-                    console.log(image)
+                    //console.log(image)
                 };
                
+                var image = app.renderer.extract.canvas().toDataURL("image/png");
+                console.log(app.renderer.extract.base64())
+                //image.base64("images/aaass.png")
+                //console.log(image)
+                //window.location.href=image;
+                //Canvas2Image.convertToPNG(image, "1024", "1024")
+
             });  
         };//run ticker END
 

@@ -2,9 +2,10 @@
 <html>
    <head>
     <title>Bootstrap 模板</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- 引入 Bootstrap -->
-    <link href="scripts/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="scripts/bootstrap/css/bootstrap.min.css">
     <link href="scripts/jqueryUI/jquery-ui.css">
 
     <script src="scripts/jqueryUI/external/jquery/jquery.js"></script>
@@ -22,35 +23,73 @@
 <body>
     <div class="container-fluid">
         <div class="row-fluid">
+
+
             <div class="span9" style="background-color: aqua" ;>
-                <h1>test</h1>
+                <h3>test</h3>
             </div>
-            <div class="span3" style="background-color: rgb(200,200,200);margin-left:2px;padding:20px;">
-                <h1>testtesttest</h1>
-                <input type='file' accept='text/json' onchange='openFile(event)'><br>
-                <button onclick="myFunction()">Click me</button>
+            <div class="span3" style="background-color: rgb(230,230,200);margin-left:2px;padding:0px;">
+                <div class="input-group" style="padding:12px; ">
+                    <h6>輸出圖檔</h6>
+                    <span class="input-group-addon" style="height: 20px; ">起始格</span>
+                    <input id="startFrame" type="number" class="form-control" name="startFrameMsg" value="1" style="text-align: center; width:30px ; height:16px;">
+                    <span class="input-group-addon" style="padding:3px; ">結束格</span>
+                    <input id="endFrame" type="number" class="form-control" name="endFrameMsg" value="1" style="text-align: center; width:30px ; height:16px;"> <br>
+                    <button type="button" class="btn btn-info" onclick="WriteToFile()">輸出圖檔</button>
+
+                </div>
+                <div>
+                    <h1>testtesttest</h1>
+                    <input type="file" accept="text/json" onchange="openFile(event)"><br>
+                    <button onclick="myFunction()">Click me</button>
+                </div>
+
+            </div>
 
 
-            </div>
         </div>
+    </div>
 </body>
 <script>
+    function WriteToFile(text) {
+
+        //var fso = new ActiveXObject('Scripting.FileSystemObject');
+        /*
+        var dateObj = new Date();
+        var temp = '';
+        temp = temp + dateObj.getYear();
+        temp = temp + (dateObj.getMonth() + 1);
+        temp = temp + dateObj.getDate();
+        temp = temp + dateObj.getHours();
+        temp = temp + dateObj.getMinutes();
+        temp = temp + dateObj.getSeconds();
+
+        var folder = 'D:\\error-' + temp + '.txt';
+
+        var s = fso.CreateTextFile(folder, true);
+        s.WriteLine(text);
+        s.Close();
+        */
+        window.location.href=image;
+
+    }
     var JsonData = ""
-    function myFunction(){
-       // console.log(JsonData)  ;
+
+    function myFunction() {
+        // console.log(JsonData)  ;
         //var pp = "PP"
         delete PIXI.loader.resources["pp"];
         //var data = JSON.parse(JsonData)
         PIXI.loader
-            .add('pp',JsonData);
+            .add('pp', JsonData);
 
         //console.log(PIXI.loader.resources)
-       // console.log(JsonData.length)
+        // console.log(JsonData.length)
         console.log(PIXI.loader.resources.pp);
-        
+
         //console.log(PIXI.loader.resources);
     };
-    
+
     var openFile = function(event) {
         JsonData = ""
         var input = event.target;
@@ -64,7 +103,6 @@
         reader.readAsText(input.files[0]);
         return JsonData
     };
-    
 </script>
 
 
