@@ -1,0 +1,50 @@
+{
+"frames": {
+	"copper_coin_0001.png": {
+		"frame": {"x":202, "y":0, "w":100, "h":100},
+		"spriteSourceSize": {"x":0,"y":0,"w":100,"h":100},
+		"sourceSize": {"w":100,"h":100}
+	},
+	"copper_coin_0002.png": {
+		"frame": {"x":101, "y":202, "w":100, "h":100},
+		"spriteSourceSize": {"x":0,"y":0,"w":100,"h":100},
+		"sourceSize": {"w":100,"h":100}
+	},
+	"copper_coin_0003.png": {
+		"frame": {"x":101, "y":101, "w":100, "h":100},
+		"spriteSourceSize": {"x":0,"y":0,"w":100,"h":100},
+		"sourceSize": {"w":100,"h":100}
+	},
+	"copper_coin_0004.png": {
+		"frame": {"x":202, "y":101, "w":100, "h":100},
+		"spriteSourceSize": {"x":0,"y":0,"w":100,"h":100},
+		"sourceSize": {"w":100,"h":100}
+	},
+	"copper_coin_0005.png": {
+		"frame": {"x":0, "y":202, "w":100, "h":100},
+		"spriteSourceSize": {"x":0,"y":0,"w":100,"h":100},
+		"sourceSize": {"w":100,"h":100}
+	},
+	"copper_coin_0006.png": {
+		"frame": {"x":0, "y":101, "w":100, "h":100},
+		"spriteSourceSize": {"x":0,"y":0,"w":100,"h":100},
+		"sourceSize": {"w":100,"h":100}
+	},
+	"copper_coin_0007.png": {
+		"frame": {"x":0, "y":0, "w":100, "h":100},
+		"spriteSourceSize": {"x":0,"y":0,"w":100,"h":100},
+		"sourceSize": {"w":100,"h":100}
+	},
+	"copper_coin_0008.png": {
+		"frame": {"x":101, "y":0, "w":100, "h":100},
+		"spriteSourceSize": {"x":0,"y":0,"w":100,"h":100},
+		"sourceSize": {"w":100,"h":100}
+	}
+
+},
+"meta": {
+	"image": "coin.png",
+	"size": {"w": 303, "h": 303},
+	"scale": "1"
+}
+}

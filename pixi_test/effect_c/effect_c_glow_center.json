@@ -1,0 +1,25 @@
+{
+    "pId_0": {
+        "translate": [
+            {
+                "y": 512, 
+                "x": 512, 
+                "transparency": true, 
+                "time": 1
+            }
+        ], 
+        "rotate": [
+            {
+                "z": 0, 
+                "time": 1
+            }
+        ], 
+        "scale": [
+            {
+                "h": 938, 
+                "w": 938, 
+                "time": 1
+            }
+        ]
+    }
+}
