@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<script src="scripts/pixi.min.js"></script>
+
+
+</head>
+<body>
+<h5>test Ext. js</h5>
+<script></script>
+<!-- <script src="scripts/PIXI_loaderData.js"></script> -->
+
+<script>
+	
+	var loader = PIXI.loader;
+	
+	loader
+		.add("aa","images/02.png")
+		.load(setup);
+	function setup(){
+		
+		console.log("loading");
+	}
+	var aa = loader.resources.aa
+	//var texture = PIXI.Texture.fromImage("images/02.png");
+	//console.log(texture.frame)
+	
+	var texture = PIXI.Texture.fromImage("images/02.png");
+	var spr = new PIXI.Sprite(texture);
+	console.log( spr.width)
+ 	//var jsonData = JSON.parse(JSON.stringify(loader.resources.aa));
+	//var bg= loaderAA.resources["atta"]
+	//console.log(BGA_image.resources);
+	//console.log(jsonData);
+	//bg.destroy();
+	//console.log(loaderAA.resources)
+
+</script>
+
+	
+</body>
+</html>

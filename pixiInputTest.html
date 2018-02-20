@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="scripts/pixi.js"></script>
+    <script src="scripts/pixi.input.js"></script>
+</head>
+
+<body>
+
+    <style>
+        #test {
+
+
+            border: 1px solid red;
+
+            position: fixed;
+
+            top: 50%;
+
+            left: 50%;
+
+            margin-top: -125px;
+
+            ;
+
+        }
+    </style>
+
+
+    <canvas id="test"></canvas>
+
+
+    <script>
+        var canvas = document.getElementById('test');
+
+        var _renderer = PIXI.autoDetectRenderer(400, 250, canvas, false, true);
+
+        var stage = new PIXI.Stage(0x000000);
+    </script>
+
+</body>
+</html>

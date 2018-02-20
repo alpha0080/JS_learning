@@ -106,10 +106,37 @@
     </div>
 </body>
 <script>
-    $("#inputAA").fileinput(); 
-
+    /*
+    $("#inputAA").fileinput({
+    required:false,
+        rtl:false,
+        showPreview:false,
+        showRemove:false,
+        showUpload:false,
+        showCancel:false,
+}).on("filebatchselected",function(event,data){
+        $("#input-id").fileinput("upload");
+        console.info(data,"data");
+    });
     
-
+    */
+$("#inputAA").fileinput({
+        required:false,
+        rtl:false,
+        showPreview:false,
+        showRemove:false,
+        showUpload:false,
+        showCancel:false,
+        showCaption:false
+});
+    
+    
+$('#inputAA').on('fileloaded', function(event, file, previewId, index, reader) {
+   // console.log(event, data, previewId, index,"filepreupload");
+    console.log(event, file, previewId, index, reader,'fileloaded')
+});
+    //jqXHR form
+    
     function WriteToFile(text) {
 
         //var fso = new ActiveXObject('Scripting.FileSystemObject');
