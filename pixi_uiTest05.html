@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Bootstrap 模板</title>
+    <!-- 引入 Bootstrap -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="scripts/bootstrap/css/bootstrap.min.css">
+    <link href="scripts/bootstrap/css/fileinput.min.css" rel="stylesheet">
+    <link href="scripts/bootstrap/css/fileinput-rtl.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="scripts/jqueryUI/jquery-ui.css">
+
+    <script src="scripts/jqueryUI/external/jquery/jquery.js"></script>
+    <script src="scripts/jqueryUI/jquery-ui.js"></script>
+    <script src="scripts/pixi.min.js"></script>
+    <script src="scripts/bootstrap/js/bootstrap.min.js"></script>
+
+    <script src="scripts/bootstrap/js/fileinput.min.js"></script>
+    <script src="scripts/pixi_effectDataTemplate.js"></script>
+    <!-- HTML5 Shiv 和 Respond.js 用于让 IE8 支持 HTML5元素和媒体查询 -->
+    <!-- 注意： 如果通过 file://  引入 Respond.js 文件，则该文件无法起效果 -->
+    <!--[if lt IE 9]>
+         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+     <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+      <![endif]-->
+</head>
+
+<body>
+
+    <script>
+        console.log('start')
+        PIXI_globalData = loadGlobalData()
+        
+        var Container = PIXI.Container,
+            autoDetectRenderer = PIXI.autoDetectRenderer,
+            loader = PIXI.loader,
+            resources = PIXI.loader.resources,
+            Sprite = PIXI.Sprite,
+            textureCache = PIXI.utils.TextureCache,
+            renderer = autoDetectRenderer(400, 400, {
+                antialias: false,
+                transparent: true,
+                resolution: 1,
+                preserveDrawingBuffer: true,
+                clearBeforeRender: true
+            });
+        renderer.backgroundColor = "0x123456";
+        renderer.view.style.border = "5px dashed red";
+        renderer.view.style.position = 'absolute';
+        renderer.view.style.left = "20px";
+        renderer.view.style.top = "20px";
+        document.body.appendChild(renderer.view);
+
+        var stage = new Container();
+        renderer.render(stage)
+
+        var renderEvent = []
+
+        function PIXI_loader(id, url) {
+
+            loader
+                .add(id, url)
+                .load();
+
+            //function setup(){
+            //	console.log(loader;)
+            //}
+            //return loader
+        };
+
+        function setup() {
+
+            //Create the `cat` sprite, add it to the stage, and render it  
+            //var cat = new Sprite(resources["images/02.png"].texture);
+            //var BGW = parseInt(document.getElementById("widthBGA").value);
+            //var BGH = parseInt(document.getElementById("heightBGA").value);
+            //console.log(BGW,BGH);
+            //renderer.resize(BGW, BGH); 
+            //stage.addChild(cat);
+            //cat.scale.set(0.2);
+            //renderer.render(stage);
+        };
+
+
+        function redrawRender(containID) {
+            renderer.render(containID)
+        };
+
+
+
+        function setBG() {
+            var BGW = parseInt(document.getElementById("widthBGA").value);
+            var BGH = parseInt(document.getElementById("heightBGA").value);
+            var BGColor = "0x" + document.getElementById("colorBGA").value.split('#')[1];
+            var BGAURL = document.getElementById("showBGA").value;
+            var BGA_Scale = document.getElementById("bgImageScale").value;
+            var BG_stage = new Container()
+            BG_stage.interactive = true
+            renderer.resize(BGW, BGH);
+
+            renderer.backgroundColor = BGColor;
+            redrawRender(BG_stage);
+
+            var background = resources.BGA_image;
+            background = new Sprite(textureCache[BGAURL]);
+            background.scale.set(BGA_Scale)
+
+
+            PIXI_globalData.BGA.URL = BGAURL;
+            PIXI_globalData.BGA.width = BGW;
+            PIXI_globalData.BGA.width = BGH;
+            console.log(textureCache.BGA_image.baseTexture.width);
+            console.log(background)
+
+            BG_stage.addChild(background);
+            redrawRender(BG_stage)
+        }
+
+
+        $(document).ready(function() {
+            $("#testAll").click(function() {
+                console.log(loader)
+                console.log(PIXI_globalData)
+            });
+            $("#resetA").click(function() {
+                console.log("resetA")
+                //console.log(PIXI_globalData)
+            });
+            $("#applyA").click(function() {
+                //console.log("applyA")
+                console.log(PIXI_globalData.inputA.spritesImageMode,typeof PIXI_globalData.inputA.spritesImageMode);
+                if(PIXI_globalData.inputA.spritesImageMode == 0){console.log("singal frame");
+                                                              }else{console.log("sequence frame")};
+               // console.log(PIXI_globalData)
+            });
+        });
+    </script>
+
+
+</body>
+
+<body>
+
+    <div class="container-fluid">
+
+        <div class="row-fluid">
+
+
+            <div class="col-xs-6 span8" style="background-color: black;height:2000px;" ;>
+                <!-- Left -->
+
+
+
+            </div>
+            <div class="col-xs-6 span4" style="background-color: rgb(230,230,200);padding:3px;margin:1px;width:380px ">
+
+                <div class="row-fluid" id="inputBG_Dialog" style="background-color:rgb(250,250,250);padding:5px;width:350px;margin:5px;border-radius: 10px;">
+                    <div>
+                        <button class="btn btn-warning" id="testAll" style="width:100px;font-size:16px;padding-left: 3px;line-height: 25px;margin-top: 5px">testA</button>
+                    </div>
+                    <div class="col-xs-3 span2" style="width:100px;line-height: 35px;">
+
+                        <input type="file" id="inputBGA">
+
+
+                    </div>
+                    <div class="col-xs-3 span2" style="width:230px;line-height: 35px;">
+
+                        <input type="text" id="showBGA" value="選取背景圖檔" style="width:150px;margin-top: 4px;color:darkcyan;">
+                        <button class="btn btn-dafault" style="width:40px;font-size:12px;padding-left: 3px;line-height: 15px;margin-top: -8px">option</button>
+                        <div id="bgSetup" style="border: 12px; border-color: cadetblue;background-color:rgb(220,220,220);border-radius: 5px;padding-left: 5px ;color:">
+                            <p style="font-size: 12px;color:brown;">背景圖檔須放在 /images 資料夾下</p>
+                            ResX:<input type="text" id="bgImageResX" value="400" style="text-align: center;color: darkcyan; width: 50px;padding: 2px;margin: 5px;"> ResY:
+                            <input type="text" id="bgImageResY" value="400" style="text-align: center;color: darkcyan; width: 50px;padding: 2px;margin: 5px;">
+                            <br> scale
+                            <input type="text" id="bgImageScale" value="1" style="text-align: center;color: darkcyan; width: 50px;padding: 2px;margin: 5px;">
+                        </div>
+                        <span>W:</span><input type="number" id="widthBGA" value="400" style="width:50px;margin-top: 4px;color:darkcyan;">
+                        <span>H:</span><input type="number" id="heightBGA" value="400" style="width:50px;margin-top: 4px;color:darkcyan;"><br>
+                        <span>background color: </span><input type="color" id="colorBGA" value="#11aaaa" style="width:50px;margin:0px "><br>
+                        <button id="BGA_apply" class="btn btn-success" style="width:70px;" onclick="setBG()">APPLY</button>
+
+
+
+                    </div>
+
+                </div>
+
+                <div style=" padding: 5px;letter-spacing: 1px;">
+                    <!-- Right  inputDataA-->
+
+                    <button id="input_a" class="btn btn-success">素材 A</button><small class="text-info" style=" padding-left: 10px;">點選展開 </small>
+
+
+                    <div id="inputDataA">
+
+                        <div id="inputADialog_1" style="background-color:rgb(250,250,250);padding:5px;width:350px;margin:5px;border-radius: 10px;">
+                            <p style=" padding-left: 10px; ">圖檔模式:</p>
+                            <form action="">
+                                <div class="container-fluid" style=" padding-left: 3px;">
+                                    <input type="radio" name="optionsRadiosinline" id="optionsRadiosA1" value="option1"> 單張圖
+                                    <input type="radio" name="optionsRadiosinline" id="optionsRadiosA2" value="option2" checked> 連續圖
+                                </div>
+                            </form>
+                            <div class="row" style=" padding-left: 5px; margin: 5px;width:350; ">
+                                <div class="col-xs-3 span2" style="width:110px;line-height: 35px;">
+                                    <input type="file" id="inputJsonA">
+                                    <input type="file" id="inputSpriteJsonA">
+                                    <input type="file" id="stageDescriptJsonA">
+
+                                </div>
+                                <div class="col-xs-3 span5" style="width:200px">
+                                    <input type="text" id="showMotionJsonA" value="選取動態JSON檔案" style="width:200px;margin-top: 4px;color:darkcyan;">
+                                    <input type="text" id="showSpriteJsonA" value="選取Sprites JSON檔案" style="width:200px;margin-top: -6px;color:darkcyan;">
+                                    <input type="text" id="showStageDescriptJsonA" value="選取stage描述JSON檔案" style="width:200px;margin-top: -4px;color:darkcyan;"> 
+
+                                </div>
+                            </div>
+
+
+                            <div class="dropdown" style=" padding-left: 10px;  line-height: 35px;">
+
+
+                                <button class="btn btn-warning dropdown-toggle" type="button" id="menuA_blendMode" data-toggle="dropdown" style="width: 120px;padding: 1px;">混色模式
+                            <span class="caret"></span></button><text id="blendModeTextA" style="padding-left:15px;color:darkcyan ">選擇混色模式</text><br>
+                                <ul class="dropdown-menu" role="menu" aria-labelledby="menuA_blendMode" id ="databoxA">
+                                    <li role="presentation"><a role="menuitem" tabindex="0" href="#">NORMAL</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="1" href="#">ADD</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="2" href="#">MULTIPKY</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="3" href="#">SCREEN</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="4" href="#">OVERLAY</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="5" href="#">LIGHTEN</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="6" href="#">COLOR_DODGE</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="7" href="#">COLOR_BURN</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="8" href="#">HARD_LIGHT</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="9" href="#">SOFT_LIGHT</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="10" href="#">DIFFERENCE</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="11" href="#">EXCLUSION</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="12" href="#">HUE</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="13" href="#">SATURATION</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="14" href="#">COLOR</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="15" href="#">LUMINOSITY</a></li>
+                                    <li role="presentation" class="divider"></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="87" href="#">沒事別亂按</a></li>
+                                </ul>
+
+                            </div>
+                        </div>
+                        <div class="row" id="inputADialog_2" style="background-color:rgb(250,250,250);padding:0px;width:360px;margin:5px;border-radius: 10px;">
+                            <h5 style="padding-left:12px">細部調整</h5>
+                            <div class="col-xs-6 span4" style="font-size: 12px ;margin-left: 5px;line-height: 22px;margin-top: 12px">
+                                speed <br>
+                                <line></line>
+                                frame Speed <br> Sprites Size <br> <span style="font-size: 12px"> random Size </span> <br> Sprites Rotate <br>rotate Random<br> frame Offset<br>Sprite Blur <br>
+                            </div>
+                            <div class="col-xs-6 span2" style="margin: 5px">
+                                <div id="speedSliderA" style="margin:10px;width:200px;">
+                                    <!-- slide bar -->
+
+                                    <div id="speedSliderA-handle" class="ui-slider-handle"></div>
+                                </div>
+                                <div id="frameSpeedA" style="margin:10px;width:200px">
+                                    <div id="frameSpeedA-handle" class="ui-slider-handle"></div>
+                                </div>
+                                <div id="SpritesSizeA" style="margin:10px;width:200px">
+                                    <div id="SpritesSizeA-handle" class="ui-slider-handle"></div>
+                                </div>
+                                <div id="SpritesSizeRandomA" style="margin:10px;width:200px">
+                                    <div id="SpritesSizeRandomA-handle" class="ui-slider-handle"></div>
+                                </div>
+                                <div id="SpritesRotateA" style="margin:10px;width:200px">
+                                    <div id="SpritesRotateA-handle" class="ui-slider-handle"></div>
+                                </div>
+                                <div id="SpritesRotateRandomA" style="margin:10px;width:200px">
+                                    <div id="SpritesRotateRandomA-handle" class="ui-slider-handle"></div>
+                                </div>
+                                <div id="SpritesframeOffsetA" style="margin:10px;width:200px">
+                                    <div id="SpritesframeOffsetA-handle" class="ui-slider-handle"></div>
+                                </div>
+                                <div id="SpriteBlurA" style="margin:10px;width:200px">
+                                    <div id="SpriteBlurA-handle" class="ui-slider-handle"></div>
+                                </div>
+                                <button id="resetA" type="button" class="btn btn-info" style="height: 25px;width:100px;">RESET</button>
+                                <button id="applyA" type="button" class="btn btn-success" style="height: 25px;width:100px;margin-top: 5px;">APPLY</button>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div style=" padding: 5px;letter-spacing: 1px;">
+                    <!-- Right  inputDataB-->
+
+                    <button id="inputB" class="btn btn-success">素材 B</button><small class="text-info" style=" padding-left: 10px;">點選展開 </small>
+
+
+                    <div id="inputDataB">
+
+                        <div id="inputBDialog_1" style="background-color:rgb(250,250,250);padding:5px;width:350px;margin:5px;border-radius: 10px;">
+                            <p style=" padding-left: 10px; ">圖檔模式:</p>
+                            <form action="">
+                                <div class="container-fluid" style=" padding-left: 3px;">
+                                    <input type="radio" name="optionsRadiosinline" id="optionsRadiosB1" value="option1"> 單張圖
+                                    <input type="radio" name="optionsRadiosinline" id="optionsRadiosB2" value="option2" checked> 連續圖
+                                </div>
+                            </form>
+                            <div class="row" style=" padding-left: 5px; margin: 5px;width:350; ">
+                                <div class="col-xs-3 span2" style="width:110px;line-height: 35px;">
+                                    <input type="file" id="inputJsonB">
+                                    <input type="file" id="inputSpriteJsonB">
+                                    <input type="file" id="inputSprtieImageB">
+
+                                </div>
+                                <div class="col-xs-3 span5" style="width:200px">
+                                    <input type="text" id="showMotionJsonB" value="選取動態JSON檔案" style="width:200px;margin-top: 4px;color:darkcyan;">
+                                    <input type="text" id="showSpriteJsonB" value="選取Sprites JSON檔案" style="width:200px;margin-top: -6px;color:darkcyan;">
+                                    <input type="text" id="showSpriteImageB" value="選取Sprite Image檔案" style="width:200px;margin-top: -4px;color:darkcyan;">
+
+                                </div>
+                            </div>
+
+
+                            <div class="dropdown" style=" padding-left: 10px;  line-height: 35px;">
+
+
+                                <button class="btn btn-warning dropdown-toggle" type="button" id="menuB_blendMode" data-toggle="dropdown" style="width: 120px;padding: 1px;">混色模式
+                            <span class="caret"></span></button><text id="blendModeTextB" style="padding-left:15px;color:darkcyan;">選擇混色模式</text><br>
+                                <ul class="dropdown-menu" role="menu" aria-labelledby="menuB_blendMode">
+                                    <li role="presentation"><a role="menuitem" tabindex="0" href="#">NORMAL</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="1" href="#">ADD</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="2" href="#">MULTIPKY</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="3" href="#">SCREEN</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="4" href="#">OVERLAY</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="5" href="#">LIGHTEN</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="6" href="#">COLOR_DODGE</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="7" href="#">COLOR_BURN</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="8" href="#">HARD_LIGHT</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="9" href="#">SOFT_LIGHT</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="10" href="#">DIFFERENCE</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="11" href="#">EXCLUSION</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="12" href="#">HUE</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="13" href="#">SATURATION</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="14" href="#">COLOR</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="15" href="#">LUMINOSITY</a></li>
+                                    <li role="presentation" class="divider"></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="87" href="#">沒事別亂按</a></li>
+                                </ul>
+
+                            </div>
+                        </div>
+                        <div class="row" id="inputBDialog_2" style="background-color:rgb(250,250,250);padding:0px;width:350px;margin:5px;border-radius: 10px;">
+                            <h5 style="padding-left:12px">細部調整</h5>
+                            <div class="col-xs-6 span4" style="font-size: 12px ;margin-left: 5px;line-height: 22px;margin-top: 12px">
+                                speed <br>
+                                <line></line>
+                                frame Speed <br> Sprites Size <br> <span style="font-size: 12px"> random Size </span> <br> Sprites Rotate <br> Sprite Blur <br>
+                            </div>
+                            <div class="col-xs-6 span2" style="margin: 5px">
+                                <div id="speedSliderB" style="margin:10px;width:200px;">
+                                    <!-- slide bar -->
+
+                                    <div id="speedSliderB-handle" class="ui-slider-handle"></div>
+                                </div>
+                                <div id="frameSpeedB" style="margin:10px;width:200px">
+                                    <div id="frameSpeedB-handle" class="ui-slider-handle"></div>
+                                </div>
+                                <div id="SpritesSizeB" style="margin:10px;width:200px">
+                                    <div id="SpritesSizeB-handle" class="ui-slider-handle"></div>
+                                </div>
+                                <div id="SpritesSizeRandomB" style="margin:10px;width:200px">
+                                    <div id="SpritesSizeRandomB-handle" class="ui-slider-handle"></div>
+                                </div>
+                                <div id="SpritesRotateB" style="margin:10px;width:200px">
+                                    <div id="SpritesRotateB-handle" class="ui-slider-handle"></div>
+                                </div>
+                                <div id="SpriteBlurB" style="margin:10px;width:200px">
+                                    <div id="SpriteBlurB-handle" class="ui-slider-handle"></div>
+                                </div>
+                                <button id="resetB" type="button" class="btn btn-info" style="height: 25px;width:100px;">RESET</button>
+                                <button id="applyB" type="button" class="btn btn-success" style="height: 25px;width:100px;margin-top: 5px;">APPLY</button>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div style=" padding: 5px;letter-spacing: 1px;">
+                    <!-- Right  inputDataC-->
+
+                    <button id="inputC" class="btn btn-success">素材 C</button><small class="text-info" style=" padding-left: 10px;">點選展開 </small>
+
+
+                    <div id="inputDataC">
+
+                        <div id="inputCDialog_1" style="background-color:rgb(250,250,250);padding:5px;width:350px;margin:5px;border-radius: 10px;">
+                            <p style=" padding-left: 10px; ">圖檔模式:</p>
+                            <form action="">
+                                <div class="container-fluid" style=" padding-left: 3px;">
+                                    <input type="radio" name="optionsRadiosinline" id="optionsRadiosC1" value="option1"> 單張圖
+                                    <input type="radio" name="optionsRadiosinline" id="optionsRadiosC2" value="option2" checked> 連續圖
+                                </div>
+                            </form>
+                            <div class="row" style=" padding-left: 5px; margin: 5px;width:350; ">
+                                <div class="col-xs-3 span2" style="width:110px;line-height: 35px;">
+                                    <input type="file" id="inputJsonC">
+                                    <input type="file" id="inputSpriteJsonC">
+                                    <input type="file" id="inputSprtieImageC">
+
+                                </div>
+                                <div class="col-xs-3 span5" style="width:200px">
+                                    <input type="text" id="showMotionJsonC" value="選取動態JSON檔案" style="width:200px;margin-top: 4px;color:darkcyan;">
+                                    <input type="text" id="showSpriteJsonC" value="選取Sprites JSON檔案" style="width:200px;margin-top: -6px;color:darkcyan;">
+                                    <input type="text" id="showSpriteImageC" value="選取Sprite Image檔案" style="width:200px;margin-top: -4px;color:darkcyan;">
+
+                                </div>
+                            </div>
+
+
+                            <div class="dropdown" style=" padding-left: 10px;  line-height: 35px;">
+
+
+                                <button class="btn btn-warning dropdown-toggle" type="button" id="menuC_blendMode" data-toggle="dropdown" style="width: 120px;padding: 1px;">混色模式
+                            <span class="caret"></span></button><text id="blendModeTextC" style="padding-left:15px;color:darkcyan ">選擇混色模式</text><br>
+                                <ul class="dropdown-menu" role="menu" aria-labelledby="menuC_blendMode">
+                                    <li role="presentation"><a role="menuitem" tabindex="0" href="#">NORMAL</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="1" href="#">ADD</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="2" href="#">MULTIPKY</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="3" href="#">SCREEN</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="4" href="#">OVERLAY</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="5" href="#">LIGHTEN</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="6" href="#">COLOR_DODGE</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="7" href="#">COLOR_BURN</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="8" href="#">HARD_LIGHT</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="9" href="#">SOFT_LIGHT</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="10" href="#">DIFFERENCE</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="11" href="#">EXCLUSION</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="12" href="#">HUE</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="13" href="#">SATURATION</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="14" href="#">COLOR</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="15" href="#">LUMINOSITY</a></li>
+                                    <li role="presentation" class="divider"></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="87" href="#">沒事別亂按</a></li>
+                                </ul>
+
+                            </div>
+                        </div>
+                        <div class="row" id="inputCDialog_2" style="background-color:rgb(250,250,250);padding:0px;width:350px;margin:5px;border-radius: 10px;">
+                            <h5 style="padding-left:12px">細部調整</h5>
+                            <div class="col-xs-6 span4" style="font-size: 12px ;margin-left: 5px;line-height: 22px;margin-top: 12px">
+                                speed <br>
+                                <line></line>
+                                frame Speed <br> Sprites Size <br> <span style="font-size: 12px"> random Size </span> <br> Sprites Rotate <br> Sprite Blur <br>
+                            </div>
+                            <div class="col-xs-6 span2" style="margin: 5px">
+                                <div id="speedSliderC" style="margin:10px;width:200px;">
+                                    <!-- slide bar -->
+
+                                    <div id="speedSliderC-handle" class="ui-slider-handle"></div>
+                                </div>
+                                <div id="frameSpeedC" style="margin:10px;width:200px">
+                                    <div id="frameSpeedC-handle" class="ui-slider-handle"></div>
+                                </div>
+                                <div id="SpritesSizeC" style="margin:10px;width:200px">
+                                    <div id="SpritesSizeC-handle" class="ui-slider-handle"></div>
+                                </div>
+                                <div id="SpritesSizeRandomC" style="margin:10px;width:200px">
+                                    <div id="SpritesSizeRandomC-handle" class="ui-slider-handle"></div>
+                                </div>
+                                <div id="SpritesRotateC" style="margin:10px;width:200px">
+                                    <div id="SpritesRotateC-handle" class="ui-slider-handle"></div>
+                                </div>
+                                <div id="SpriteBlurC" style="margin:10px;width:200px">
+                                    <div id="SpriteBlurC-handle" class="ui-slider-handle"></div>
+                                </div>
+                                <button id="resetC" type="button" class="btn btn-info" style="height: 25px;width:100px;">RESET</button>
+                                <button id="applyC" type="button" class="btn btn-success" style="height: 25px;width:100px;margin-top: 5px;">APPLY</button>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="input-group" style="padding:12px; ">
+                    <h6>輸出圖檔</h6>
+                    <span class="input-group-addon" style="height: 20px; ">起始格</span>
+                    <input id="startFrame" type="number" class="form-control" name="startFrameMsg" value="1" style="text-align: center; width:30px ; height:16px;">
+                    <span class="input-group-addon" style="padding:3px; ">結束格</span>
+                    <input id="endFrame" type="number" class="form-control" name="endFrameMsg" value="1" style="text-align: center; width:30px ; height:16px;"> <br>
+                    <button type="button" class="btn btn-info" onclick="WriteToFile()">輸出圖檔</button>
+
+                </div>
+                <div>
+                    <h1>testtesttest</h1>
+                    <input type="file" accept="text/json" onchange="openFile(event)"><br>
+                    <button onclick="myFunction()">Click me</button>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+</body>
+<!--initial data -->
+
+
+<script>
+
+    var KJJsonInputStyleA = {
+        rtl: false,
+        showPreview: false,
+        showRemove: false,
+        showUpload: false,
+        showCancel: false,
+        showCaption: false,
+        browseClass: "btn btn-info",
+        browseLabel: "選取檔案",
+        allowedFileExtensions: ["json", "JSON"]
+    };
+
+    var KJImageInputStyleA = {
+        rtl: false,
+        showPreview: false,
+        showRemove: false,
+        showUpload: false,
+        showCancel: false,
+        showCaption: false,
+        browseClass: "btn btn-success",
+        browseLabel: "選取檔案",
+        allowedFileExtensions: ["jpg", "png"]
+    }
+
+
+    $(document).ready(function() {
+        $("#inputDataA").show();
+        $("#inputDataB").hide();
+        $("#inputDataC").hide();
+        $("#input_a").click(function() {
+            $("#inputDataA").toggle();
+        });
+        $("#inputB").click(function() {
+            $("#inputDataB").toggle();
+        });
+        $("#inputC").click(function() {
+            $("#inputDataC").toggle();
+        });
+
+    });
+
+    
+    //get Bootstrap dropdown value
+    $("#databoxA a").click(function(e){
+        e.preventDefault(); // cancel the link behaviour
+        var selText = $(this).text();
+        $("#menuA_blendMode").text(selText);
+        console.log(selText);
+        PIXI_globalData.inputA.blendMode = selText
+    });
+
+    $("#inputBGA").fileinput(KJImageInputStyleA);
+
+
+    $('#inputBGA').on('fileloaded', function(event, data, previewId, index) {
+        $("#showBGA").val("images/" + data.name);
+        delete loader.resources["BGA_image"];
+        var imageURL = "images/" + data.name
+        PIXI_loader("BGA_image", imageURL);
+    });
+
+
+
+    //input A----------------------------
+
+    $(document).ready(function() {
+        $("#optionsRadiosA1").click(function() {
+            console.log('still Image');
+            PIXI_globalData.inputA.spritesImageMode = 0;
+        });
+        $("#optionsRadiosA2").click(function() {
+            console.log('sequence Images');
+            PIXI_globalData.inputA.spritesImageMode = 1;
+        });
+    });
+
+
+
+
+    $("#inputJsonA").fileinput(KJJsonInputStyleA); //load motion JsonA
+
+    $('#inputJsonA').on('fileloaded', function(event, data, previewId, index) {
+        // console.log(event, data, previewId, index,"filepreupload");
+        // console.log(event, data, previewId, index, 'fileloaded');
+        // console.log(data.name);
+        $("#showMotionJsonA").val(data.name);
+        delete loader.resources["MotionJsonA"];
+        var jsonURL = "json/" + data.name
+        PIXI_loader("MotionJsonA", jsonURL);
+       // console.log("jsonURL", jsonURL);
+       // console.log('loader', resources);
+        PIXI_globalData.inputA.motionJson = jsonURL;
+        console.log('PIXI_globalData',PIXI_globalData.inputA)
+    });
+
+
+
+
+    $("#inputSpriteJsonA").fileinput(KJJsonInputStyleA); //load spritesImages jsonA
+
+    $('#inputSpriteJsonA').on('fileloaded', function(event, data, previewId, index) {
+
+        $("#showSpriteJsonA").val(data.name);
+        delete loader.resources["spritesImagesJsonA"];
+        delete loader.resources["spritesImagesJsonA_image"];
+        var jsonURL = "sprites/" + data.name
+        PIXI_loader("spritesImagesJsonA", jsonURL);
+        var imgURL = jsonURL.split('.')[0]+".png"
+
+        PIXI_globalData.inputA.spritesJson = jsonURL;
+        PIXI_globalData.inputA.spritesImage = imgURL;
+       // console.log('PIXI_globalData',PIXI_globalData.inputA)
+    });
+
+    $("#stageDescriptJsonA").fileinput(KJJsonInputStyleA); //load spritesImages jsonA
+    
+    $('#stageDescriptJsonA').on('fileloaded', function(event, data, previewId, index) {
+
+        $("#showStageDescriptJsonA").val(data.name);
+        delete loader.resources["stageDescriptJsonA"];
+        var jsonURL = "sprites/" + data.name
+        PIXI_loader("stageDescriptJsonA", jsonURL);
+
+        PIXI_globalData.inputA.stageDescriptJsonFile = jsonURL;
+        PIXI_globalData.inputA.stageDescriptJsonData = "NONE";
+       // console.log('PIXI_globalData',PIXI_globalData.inputA)
+    });
+
+    $("#inputJsonB").fileinput(KJJsonInputStyleA);
+
+    $('#inputJsonB').on('fileloaded', function(event, data, previewId, index) {
+        // console.log(event, data, previewId, index,"filepreupload");
+        console.log(event, data, previewId, index, 'fileloaded');
+        console.log(data.name);
+        $("#showMotionJsonB").val(data.name);
+    });
+
+    $("#inputSpriteJsonB").fileinput(KJJsonInputStyleA);
+
+    $("#inputSprtieImageB").fileinput(KJImageInputStyleA);
+
+
+
+
+    $("#inputJsonC").fileinput(KJJsonInputStyleA);
+
+    $('#inputJsonC').on('fileloaded', function(event, data, previewId, index) {
+        // console.log(event, data, previewId, index,"filepreupload");
+        console.log(event, data, previewId, index, 'fileloaded');
+        console.log(data.name);
+        $("#showMotionJsonC").val(data.name);
+    });
+
+    $("#inputSpriteJsonC").fileinput(KJJsonInputStyleA);
+
+    $("#inputSprtieImageC").fileinput(KJImageInputStyleA);
+
+
+
+
+    function WriteToFile(text) {
+
+
+        window.location.href = image;
+
+    }
+    var JsonData = ""
+
+
+
+    function myFunction() {
+        // console.log(JsonData)  ;
+        //var pp = "PP"
+        delete PIXI.loader.resources["pp"];
+        //var data = JSON.parse(JsonData)
+        PIXI.loader
+            .add('pp', JsonData);
+
+        //console.log(PIXI.loader.resources)
+        // console.log(JsonData.length)
+        console.log(PIXI.loader.resources.pp);
+
+        //console.log(PIXI.loader.resources);
+    };
+
+    var openFile = function(event) {
+        JsonData = ""
+        var input = event.target;
+
+        var reader = new FileReader();
+        reader.onload = function() {
+            var text = reader.result;
+            JsonData += text
+            console.log(JsonData.length);
+        };
+        reader.readAsText(input.files[0]);
+        return JsonData
+    };
+
+    function ooo(event) {
+        console.log('asdasd')
+    }
+</script>
+<!--sliderA -->
+<script>
+    $(function() {
+        var handle = $("#speedSliderA-handle");
+        $("#speedSliderA").slider({
+            create: function() {
+                handle.text($(this).slider("value"));
+            },
+            value: 1,
+            min: -5,
+            max: 10,
+            step: 1,
+            slide: function(event, ui) {
+                handle.text(ui.value);
+                //console.log(ui.value);
+                PIXI_globalData.inputA.adjust.speed = ui.value
+            }
+        });
+    });
+    $(function() {
+        var handle = $("#frameSpeedA-handle");
+        $("#frameSpeedA").slider({
+            create: function() {
+                handle.text($(this).slider("value"));
+            },
+            value: 1,
+            min: 0,
+            max: 10,
+            step: 1,
+            slide: function(event, ui) {
+                handle.text(ui.value);
+               // console.log(ui.value);
+                PIXI_globalData.inputA.adjust.frameSpeed = ui.value
+            }
+        });
+    });
+    $(function() {
+        var handle = $("#SpritesSizeA-handle");
+        $("#SpritesSizeA").slider({
+            create: function() {
+                handle.text($(this).slider("value"));
+            },
+            value: 1,
+            min: 0,
+            max: 10,
+            step: 1,
+            slide: function(event, ui) {
+                handle.text(ui.value);
+               // console.log(ui.value);
+                PIXI_globalData.inputA.adjust.spritesSize = ui.value
+            }
+        });
+    });
+    $(function() {
+        var handle = $("#SpritesSizeRandomA-handle");
+        $("#SpritesSizeRandomA").slider({
+            create: function() {
+                handle.text($(this).slider("value"));
+            },
+            value: 0,
+            min: -10,
+            max: 10,
+            slide: function(event, ui) {
+                handle.text(ui.value);
+               // console.log(ui.value);
+                PIXI_globalData.inputA.adjust.spritesSizeRandom = ui.value
+                
+            }
+        });
+    });
+    $(function() {
+        var handle = $("#SpritesRotateA-handle");
+        $("#SpritesRotateA").slider({
+            create: function() {
+                handle.text($(this).slider("value"));
+            },
+            value: 0,
+            min: 0,
+            max: 360,
+            step: 1,
+            slide: function(event, ui) {
+                handle.text(ui.value);
+               // console.log(ui.value);
+                PIXI_globalData.inputA.adjust.spritesRotation = ui.value
+            }
+        });
+    });
+    
+    $(function() {
+        var handle = $("#SpritesRotateRandomA-handle");
+        $("#SpritesRotateRandomA").slider({
+            create: function() {
+                handle.text($(this).slider("value"));
+            },
+            value: 0,
+            min: 0,
+            max: 360,
+            step: 1,
+            slide: function(event, ui) {
+                handle.text(ui.value);
+               // console.log(ui.value);
+                PIXI_globalData.inputA.adjust.spritesRotationRandom = ui.value
+            }
+        });
+    });
+    
+    $(function() {
+        var handle = $("#SpritesframeOffsetA-handle");
+        $("#SpritesframeOffsetA").slider({
+            create: function() {
+                handle.text($(this).slider("value"));
+            },
+            value: 0,
+            min: 0,
+            max: 360,
+            step: 1,
+            slide: function(event, ui) {
+                handle.text(ui.value);
+                PIXI_globalData.inputA.adjust.spritesFrameOffset = ui.value
+
+            }
+        });
+    });
+    $(function() {
+        var handle = $("#SpriteBlurA-handle");
+        $("#SpriteBlurA").slider({
+            create: function() {
+                handle.text($(this).slider("value"));
+            },
+            value: 0,
+            min: 0,
+            max: 20,
+            slide: function(event, ui) {
+                handle.text(ui.value);
+                PIXI_globalData.inputA.adjust.spritesBlur = ui.value
+            }
+        });
+    });
+</script>
+<!--sliderB -->
+
+<script>
+    $(function() {
+        var handle = $("#speedSliderB-handle");
+        $("#speedSliderB").slider({
+            create: function() {
+                handle.text($(this).slider("value"));
+            },
+            value: 1,
+            min: 0,
+            max: 10,
+            step: 1,
+            slide: function(event, ui) {
+                handle.text(ui.value);
+            }
+        });
+    });
+    $(function() {
+        var handle = $("#frameSpeedB-handle");
+        $("#frameSpeedB").slider({
+            create: function() {
+                handle.text($(this).slider("value"));
+            },
+            value: 1,
+            min: 0,
+            max: 10,
+            step: 1,
+            slide: function(event, ui) {
+                handle.text(ui.value);
+            }
+        });
+    });
+    $(function() {
+        var handle = $("#SpritesSizeB-handle");
+        $("#SpritesSizeB").slider({
+            create: function() {
+                handle.text($(this).slider("value"));
+            },
+            value: 1,
+            min: 0,
+            max: 10,
+            step: 1,
+            slide: function(event, ui) {
+                handle.text(ui.value);
+            }
+        });
+    });
+    $(function() {
+        var handle = $("#SpritesSizeRandomB-handle");
+        $("#SpritesSizeRandomB").slider({
+            create: function() {
+                handle.text($(this).slider("value"));
+            },
+            value: 0,
+            min: -10,
+            max: 10,
+            slide: function(event, ui) {
+                handle.text(ui.value);
+            }
+        });
+    });
+    $(function() {
+        var handle = $("#SpritesRotateB-handle");
+        $("#SpritesRotateB").slider({
+            create: function() {
+                handle.text($(this).slider("value"));
+            },
+            value: 0,
+            min: 0,
+            max: 360,
+            step: 1,
+            slide: function(event, ui) {
+                handle.text(ui.value);
+            }
+        });
+    });
+    $(function() {
+        var handle = $("#SpriteBlurB-handle");
+        $("#SpriteBlurB").slider({
+            create: function() {
+                handle.text($(this).slider("value"));
+            },
+            value: 0,
+            min: 0,
+            max: 20,
+            slide: function(event, ui) {
+                handle.text(ui.value);
+            }
+        });
+    });
+</script>
+<!--sliderC -->
+
+<script>
+    $(function() {
+        var handle = $("#speedSliderC-handle");
+        $("#speedSliderC").slider({
+            create: function() {
+                handle.text($(this).slider("value"));
+            },
+            value: 1,
+            min: 0,
+            max: 10,
+            step: 1,
+            slide: function(event, ui) {
+                handle.text(ui.value);
+            }
+        });
+    });
+    $(function() {
+        var handle = $("#frameSpeedC-handle");
+        $("#frameSpeedC").slider({
+            create: function() {
+                handle.text($(this).slider("value"));
+            },
+            value: 1,
+            min: 0,
+            max: 10,
+            step: 1,
+            slide: function(event, ui) {
+                handle.text(ui.value);
+            }
+        });
+    });
+    $(function() {
+        var handle = $("#SpritesSizeC-handle");
+        $("#SpritesSizeC").slider({
+            create: function() {
+                handle.text($(this).slider("value"));
+            },
+            value: 1,
+            min: 0,
+            max: 10,
+            step: 1,
+            slide: function(event, ui) {
+                handle.text(ui.value);
+            }
+        });
+    });
+    $(function() {
+        var handle = $("#SpritesSizeRandomC-handle");
+        $("#SpritesSizeRandomC").slider({
+            create: function() {
+                handle.text($(this).slider("value"));
+            },
+            value: 0,
+            min: -10,
+            max: 10,
+            slide: function(event, ui) {
+                handle.text(ui.value);
+            }
+        });
+    });
+    $(function() {
+        var handle = $("#SpritesRotateC-handle");
+        $("#SpritesRotateC").slider({
+            create: function() {
+                handle.text($(this).slider("value"));
+            },
+            value: 0,
+            min: 0,
+            max: 360,
+            step: 1,
+            slide: function(event, ui) {
+                handle.text(ui.value);
+            }
+        });
+    });
+    $(function() {
+        var handle = $("#SpriteBlurC-handle");
+        $("#SpriteBlurC").slider({
+            create: function() {
+                handle.text($(this).slider("value"));
+            },
+            value: 0,
+            min: 0,
+            max: 20,
+            slide: function(event, ui) {
+                handle.text(ui.value);
+            }
+        });
+    });
+</script>
+
+</html>
