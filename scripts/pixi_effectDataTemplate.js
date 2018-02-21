@@ -9,6 +9,7 @@ function loadGlobalData(){
         "inputA": {
             "motionJson": "",
             "spritesImageMode":1,
+			"stillImageName":"",
             "spritesJson": "",
             "spritesImage": "",
             "anchor":0.5,
@@ -31,6 +32,7 @@ function loadGlobalData(){
         "inputB": {
             "motionJson": "",
             "spritesImageMode":1,
+			"stillImageName":"",
             "spritesJson": "",
             "spritesImage": "",
             "anchor":0.5,
@@ -53,6 +55,7 @@ function loadGlobalData(){
         "inputC": {
             "motionJson": "",
             "spritesImageMode":1,
+			"stillImageName":"",
             "spritesJson": "",
             "spritesImage": "",
             "anchor":0.5,
@@ -75,6 +78,7 @@ function loadGlobalData(){
         "inputD": {
             "motionJson": "",
             "spritesImageMode":1,
+			"stillImageName":"",
             "spritesJson": "",
             "spritesImage": "",
             "anchor":0.5,
@@ -97,6 +101,7 @@ function loadGlobalData(){
         "inputE": {
             "motionJson": "",
             "spritesImageMode":1,
+			"stillImageName":"",
             "spritesJson": "",
             "spritesImage": "",
             "anchor":0.5,

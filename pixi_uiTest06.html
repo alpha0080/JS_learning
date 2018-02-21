@@ -37,13 +37,15 @@
             loader = PIXI.loader,
             resources = PIXI.loader.resources,
             Sprite = PIXI.Sprite,
-            textureCache = PIXI.utils.TextureCache,
+            TextureCache = PIXI.utils.TextureCache,
+			Rectangle = PIXI.Rectangle,
+			Texture =PIXI.Texture,
             renderer = autoDetectRenderer(400, 400, {
                 antialias: false,
                 transparent: true,
                 resolution: 1,
                 preserveDrawingBuffer: true,
-                clearBeforeRender: true
+                clearBeforeRender: false
             });
         renderer.backgroundColor = "0x123456";
         renderer.view.style.border = "5px dashed red";
@@ -103,14 +105,14 @@
             redrawRender(BG_stage);
 
             var background = resources.BGA_image;
-            background = new Sprite(textureCache[BGAURL]);
+            background = new Sprite(TextureCache[BGAURL]);
             background.scale.set(BGA_Scale)
 
 
             PIXI_globalData.BGA.URL = BGAURL;
             PIXI_globalData.BGA.width = BGW;
             PIXI_globalData.BGA.width = BGH;
-            console.log(textureCache.BGA_image.baseTexture.width);
+            console.log(TextureCache.BGA_image.baseTexture.width);
             console.log(background)
 
             BG_stage.addChild(background);
@@ -131,11 +133,49 @@
             $("#applyA").click(function() {
                 //console.log("applyA")
                 console.log(PIXI_globalData.inputA.spritesImageMode,typeof PIXI_globalData.inputA.spritesImageMode);
-                if(PIXI_globalData.inputA.spritesImageMode == 0){console.log("singal frame");
-                                                              }else{console.log("sequence frame")};
-               // console.log(PIXI_globalData)
+                if(PIXI_globalData.inputA.spritesImageMode == 0)
+				{console.log("singal frame");
+				 var stillImageA = document.getElementById("stillImageNameA").value;
+				 PIXI_globalData.inputA.stillImageName = stillImageA;
+				 var frameListA = Object.keys(resources.spritesImagesJsonA.data.frames); 
+				 console.log(stillImageA,frameListA)
+				 checkImageInSpritesSheet(stillImageA,frameListA);
+			  	}else{console.log("sequence frame");
+					 PIXI_globalData.inputA.stillImageName = "sequence images";
+				 	};
+               // console.log(PIXI_globalData) stillImageNameA
             });
         });
+		
+		function checkImageInSpritesSheet(spriteName,spritesList){
+			var checkExist = jQuery.inArray( spriteName, spritesList);
+			if(checkExist == -1){
+				console.log("檔案不存在(sprite Image)");
+				document.getElementById("stillImageNameA").value ="檔案不存在(sprite Image)";
+				}else{console.log(checkExist,spritesList[checkExist]);
+					 var sprite = addSprite(spriteName);
+					 console.log("sprite",sprite);
+				     //texture.frame = Rectangle(720,454,143,453);
+					 var stageA = new Container();
+					 //console.log("texture.frame",texture.frame);
+					 stageA.addChild(sprite);
+					 console.log("stageA",stageA);
+					 //renderer.render(stageA);
+					 redrawRender(stageA);
+				  	// redrawRender(stageA);
+					 };
+			};
+		
+		function addSprite(imageName){
+			var imageItem = Sprite.fromFrame(imageName);
+			//console.log(imageItem);
+			return imageItem;
+		};
+		
+		
+	
+		
+		
     </script>
 
 
@@ -199,8 +239,9 @@
                         <div id="inputADialog_1" style="background-color:rgb(250,250,250);padding:5px;width:350px;margin:5px;border-radius: 10px;">
                             <p style=" padding-left: 10px; ">圖檔模式:</p>
                             <form action="">
-                                <div class="container-fluid" style=" padding-left: 3px;">
-                                    <input type="radio" name="optionsRadiosinline" id="optionsRadiosA1" value="option1"> 單張圖
+                                <div class="container-fluid" style=" padding-left: 15px;">
+                                    <input type="radio" name="optionsRadiosinline" id="optionsRadiosA1" value="option1"> 單張圖:
+                                    <input type="text" id="stillImageNameA" class="text-info" style="width:230px;padding:0px;margin-bottom: -2px;font-size: 12px;color:darkgray" value="輸入單張圖名(in Sprites Sheet image)"><br>
                                     <input type="radio" name="optionsRadiosinline" id="optionsRadiosA2" value="option2" checked> 連續圖
                                 </div>
                             </form>
