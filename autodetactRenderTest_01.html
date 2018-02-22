@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="scripts/bootstrap/css/bootstrap.min.css">
+    <link href="scripts/bootstrap/css/fileinput.min.css" rel="stylesheet">
+    <link href="scripts/bootstrap/css/fileinput-rtl.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="scripts/jqueryUI/jquery-ui.css">
+
+    <script src="scripts/jqueryUI/external/jquery/jquery.js"></script>
+    <script src="scripts/jqueryUI/jquery-ui.js"></script>
+    <script src="scripts/pixi.min.js"></script>
+    <script src="scripts/bootstrap/js/bootstrap.min.js"></script>
+
+    <script src="scripts/bootstrap/js/fileinput.min.js"></script>
+    <script src="scripts/pixi_effectDataTemplate.js"></script>
+</head>
+
+<body>
+    <script>
+        var app = new PIXI.Application(800, 600, {
+            backgroundColor: 0x1099bb
+        });
+        
+        app.backgroundColor = "0x123456";
+        app.view.style.border = "5px dashed red";
+        app.view.style.position = 'absolute';
+        app.view.style.left = "20px";
+        app.view.style.top = "20px";
+        
+        document.body.appendChild(app.view);
+
+        var basicText = new PIXI.Text('Basic text in pixi');
+        basicText.x = 30;
+        basicText.y = 90;
+
+        app.stage.addChild(basicText);
+
+        var style = new PIXI.TextStyle({
+            fontFamily: 'Arial',
+            fontSize: 36,
+            fontStyle: 'italic',
+            fontWeight: 'bold',
+            fill: ['#ffffff', '#00ff99'], // gradient
+            stroke: '#4a1850',
+            strokeThickness: 5,
+            dropShadow: true,
+            dropShadowColor: '#000000',
+            dropShadowBlur: 4,
+            dropShadowAngle: Math.PI / 6,
+            dropShadowDistance: 6,
+            wordWrap: true,
+            wordWrapWidth: 440
+        });
+
+        var richText = new PIXI.Text('Rich text with a lot of options and across multiple lines', style);
+        richText.x = 30;
+        richText.y = 180;
+
+        app.stage.addChild(richText);
+    </script>
+
+
+</body>
+</html>

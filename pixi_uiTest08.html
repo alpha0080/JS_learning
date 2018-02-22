@@ -33,29 +33,26 @@
         PIXI_globalData = loadGlobalData()
         
         var Container = PIXI.Container,
-            autoDetectRenderer = PIXI.autoDetectRenderer,
             loader = PIXI.loader,
             resources = PIXI.loader.resources,
             Sprite = PIXI.Sprite,
             TextureCache = PIXI.utils.TextureCache,
 			Rectangle = PIXI.Rectangle,
-			Texture =PIXI.Texture,
-            renderer = autoDetectRenderer(400, 400, {
-                antialias: false,
-                transparent: true,
-                resolution: 1,
-                preserveDrawingBuffer: true,
-                clearBeforeRender: false
-            });
-        renderer.backgroundColor = "0x123456";
-        renderer.view.style.border = "5px dashed red";
-        renderer.view.style.position = 'absolute';
-        renderer.view.style.left = "20px";
-        renderer.view.style.top = "20px";
-        document.body.appendChild(renderer.view);
+			Texture =PIXI.Texture
+        
+        var app = new PIXI.Application(400, 400, {
+            backgroundColor: 0x1099bb
+        });
+        
+        app.view.style.border = "5px dashed red";
+        app.view.style.position = 'absolute';
+        app.view.style.left = "20px";
+        app.view.style.top = "20px";
+        
+        document.body.appendChild(app.view);
 
-        var stage = new Container();
-        renderer.render(stage)
+        //var stage = new Container();
+        //app.render(stage)
 
         var renderEvent = []
 
@@ -78,20 +75,21 @@
             //var BGW = parseInt(document.getElementById("widthBGA").value);
             //var BGH = parseInt(document.getElementById("heightBGA").value);
             //console.log(BGW,BGH);
-            //renderer.resize(BGW, BGH); 
+            //app.resize(BGW, BGH); 
             //stage.addChild(cat);
             //cat.scale.set(0.2);
-            //renderer.render(stage);
+            //app.render(stage);
         };
 
 
         function redrawRender(containID) {
-            renderer.render(containID)
+            app.render(containID)
         };
 
 
 
         function setBG() {
+            app.stage.removeChildren(background);
             var BGW = parseInt(document.getElementById("widthBGA").value);
             var BGH = parseInt(document.getElementById("heightBGA").value);
             var BGColor = "0x" + document.getElementById("colorBGA").value.split('#')[1];
@@ -99,9 +97,9 @@
             var BGA_Scale = document.getElementById("bgImageScale").value;
             var BG_stage = new Container()
             BG_stage.interactive = true
-            renderer.resize(BGW, BGH);
+            app.renderer.resize(BGW, BGH);
 
-            renderer.backgroundColor = BGColor;
+            app.renderer.backgroundColor = BGColor;
             redrawRender(BG_stage);
 
             var background = resources.BGA_image;
@@ -113,10 +111,10 @@
             PIXI_globalData.BGA.width = BGW;
             PIXI_globalData.BGA.width = BGH;
             console.log(TextureCache.BGA_image.baseTexture.width);
-            console.log(background)
-
-            BG_stage.addChild(background);
-            redrawRender(BG_stage)
+            console.log("app.stage",app.stage)
+            
+            app.stage.addChild(background);
+           // redrawRender(BG_stage)
         }
 
 
@@ -128,24 +126,38 @@
             });
             $("#resetA").click(function() {
                 console.log("resetA")
-                //console.log(PIXI_globalData)
+
             });
             $("#applyA").click(function() {
-                //console.log("applyA")
+
                 console.log(PIXI_globalData.inputA.spritesImageMode,typeof PIXI_globalData.inputA.spritesImageMode);
+                var frameListA = Object.keys(resources.spritesImagesJsonA.data.frames); 
                 if(PIXI_globalData.inputA.spritesImageMode == 0)
 				{console.log("singal frame");
 				 var stillImageA = document.getElementById("stillImageNameA").value;
 				 PIXI_globalData.inputA.stillImageName = stillImageA;
-				 var frameListA = Object.keys(resources.spritesImagesJsonA.data.frames); 
-				 console.log(stillImageA,frameListA)
+				 
+                 appendListInfoIntoTextarea(frameListA);
+
 				 checkImageInSpritesSheet(stillImageA,frameListA);
 			  	}else{console.log("sequence frame");
 					 PIXI_globalData.inputA.stillImageName = "sequence images";
+                     buildSpritesSheetSequence(frameListA);
 				 	};
-               // console.log(PIXI_globalData) stillImageNameA
+
             });
         });
+        
+        function appendListInfoIntoTextarea(dataList){
+            //$("#info").val("images:");
+            var frameList = ""
+            for(var i in dataList){  
+                frameList += (dataList[i]+" \n");
+                //$("#info").append(dataList[i]);
+            };
+            //console.log("frameList",frameList);
+            $("#info").val(frameList)
+        };
 		
 		function checkImageInSpritesSheet(spriteName,spritesList){
 			var checkExist = jQuery.inArray( spriteName, spritesList);
@@ -156,15 +168,60 @@
 					 var sprite = addSprite(spriteName);
 					 console.log("sprite",sprite);
 				     //texture.frame = Rectangle(720,454,143,453);
-					 var stageA = new Container();
+					 //var stageA = new Container();
 					 //console.log("texture.frame",texture.frame);
-					 stageA.addChild(sprite);
-					 console.log("stageA",stageA);
-					 //renderer.render(stageA);
-					 redrawRender(stageA);
+                     //app.stage.removeChild(sprite);
+					 app.stage.addChild(sprite);
+					 console.log("sprite",sprite);
+					 //app.render(stageA);
+					 //redrawRender(stageA);
 				  	// redrawRender(stageA);
 					 };
 			};
+        
+        //創建anim Sprites event List
+        function buildSpritesSheetSequence(spritesList){ 
+            var stage = new Container();
+
+            var animList = []
+            for(var i in spritesList){
+                var imageItem = Sprite.fromFrame(spritesList[i]);
+                animList.push(imageItem)
+            };
+            console.log("animList",animList)
+            anim = new PIXI.extras.AnimatedSprite(animList);
+            anim.play();
+            console.log("anim",anim)
+            app.stage.addChild(anim)
+            //app.render(stage);
+
+        };
+        
+        
+        function play(){
+            
+        }
+        
+        
+        function animate() {
+            movie.rotation += 0.01;
+
+            // render the stage container
+            app.render(stage);
+
+            requestAnimationFrame(animate);
+        }
+        
+     
+
+        function getFrameList(spritesList){
+            var frameList = []
+            for(var i in spritesList){
+                //console.log(i,spritesList[i])
+                frameList.push(spritesList[i])
+            };
+            return frameList
+        };
 		
 		function addSprite(imageName){
 			var imageItem = Sprite.fromFrame(imageName);
@@ -173,7 +230,7 @@
 		};
 		
 		
-	
+                                              
 		
 		
     </script>
@@ -202,32 +259,28 @@
                     </div>
                     <div class="col-xs-3 span2" style="width:100px;line-height: 35px;">
 
-                        <input type="file" id="inputBGA">
+                        <input type="file" id="inputBGA" >
 
 
                     </div>
-                    <div class="col-xs-3 span2" style="width:230px;line-height: 35px;">
+                    <div class="col-xs-3 span2" style="width:230px;font-size: 14px">
 
-                        <input type="text" id="showBGA" value="選取背景圖檔" style="width:150px;margin-top: 4px;color:darkcyan;">
-                        <button class="btn btn-dafault" style="width:40px;font-size:12px;padding-left: 3px;line-height: 15px;margin-top: -8px">option</button>
-                        <div id="bgSetup" style=" background-color:rgb(220,220,220);border-radius: 5px;padding-left: 5px ;">
-                            <p style="font-size: 5px;color:brown;">背景圖檔須放在 /images 資料夾下</p>
-                            ResX:<input type="text" id="bgImageResX" value="400" style="text-align: center;color: darkcyan; width: 50px;padding: 2px;margin: 5px;"> ResY:
-                            <input type="text" id="bgImageResY" value="400" style="text-align: center;color: darkcyan; width: 50px;padding: 2px;margin: 5px;">
-                            <br> scale
-                            <input type="text" id="bgImageScale" value="1" style="text-align: center;color: darkcyan; width: 50px;padding: 2px;margin: 5px;">
-                        </div>
-                        <span>W:</span><input type="number" id="widthBGA" value="400" style="width:50px;margin-top: 4px;color:darkcyan;">
-                        <span>H:</span><input type="number" id="heightBGA" value="400" style="width:50px;margin-top: 4px;color:darkcyan;"><br>
-                        <span>background color: </span><input type="color" id="colorBGA" value="#11aaaa" style="width:50px;margin:0px "><br>
-                        <button id="BGA_apply" class="btn btn-success" style="width:70px;" onclick="setBG()">APPLY</button>
+                        <input type="text" id="showBGA" value="選取背景圖檔" style="width:150px;height: 16px; color:darkcyan;text-align:center;margin: 5px;line-height: 20px;">
+                        <button class="btn btn-dafault" style="width:40px;font-size:12px;padding-left: 3px;line-height: 16px;margin-top: 0px">option</button><br>
+                        scale:<input type="text" id="bgImageScale" value="1" style="width:25px;height: 20px; color:darkcyan;padding: 1px;text-align:center;margin-bottom: 2px;">
+                        <span>W:</span><input type="number" id="widthBGA" value="400" style="width:50px;height: 20px; color:darkcyan;padding: 1px;text-align:center;margin-bottom: 0px;">
+                        <span>H:</span><input type="number" id="heightBGA" value="400" style="width:50px;height: 20px;color:darkcyan;padding: 1px;text-align:center;margin-bottom: 0px;"><br>
+                        <span>background color: </span><input type="color" id="colorBGA" value="#11aaaa"  style="width:50px;height: 20px; margin-top: 5px;color:darkcyan;padding: 1px;text-align:center;"><br>
+                        <button id="BGA_apply" class="btn btn-success" onclick="setBG()" style="height: 25px;width:100px;margin-top: 5px;">APPLY</button>
 
-
+                        
 
                     </div>
-
                 </div>
-
+                <div id = "infoBox" style="background-color:rgb(250,250,250);padding:5px;width:360px;border-radius: 10px;">
+                  <textarea  id="info" style="width:340px;height: 50px;margin: 0px"></textarea>
+   
+                </div>
                 <div style=" padding: 5px;letter-spacing: 1px;">
                     <!-- Right  inputDataA-->
 
@@ -241,7 +294,8 @@
                             <form action="">
                                 <div class="container-fluid" style=" padding-left: 15px;">
                                     <input type="radio" name="optionsRadiosinline" id="optionsRadiosA1" value="option1"> 單張圖:
-                                    <input type="text" id="stillImageNameA" class="text-info" style="width:230px;padding:0px;margin-bottom: -2px;font-size: 12px;color:darkgray" value="輸入單張圖名(in Sprites Sheet image)"><br>
+                                    <input type="text" id="stillImageNameA" class="text-info" style="width:180px;padding:0px;margin-bottom: -2px;font-size: 12px;color:darkgray" >
+                                    <button id="inputExtA" class= "btn btn-info" style="line-height: 10px;width: 50px; font-size: 10px">展開</button><br>
                                     <input type="radio" name="optionsRadiosinline" id="optionsRadiosA2" value="option2" checked> 連續圖
                                 </div>
                             </form>
@@ -288,7 +342,9 @@
                                 </ul>
 
                             </div>
+                            
                         </div>
+                      
                         <div class="row" id="inputADialog_2" style="background-color:rgb(250,250,250);padding:0px;width:360px;margin:5px;border-radius: 10px;">
                             <h5 style="padding-left:12px">細部調整</h5>
                             <div class="col-xs-6 span4" style="font-size: 12px ;margin-left: 5px;line-height: 22px;margin-top: 12px">
@@ -590,11 +646,14 @@
         $("#inputC").click(function() {
             $("#inputDataC").toggle();
         });
-
+        $("#infoBox").show();
+        $("#inputExtA").click(function() {
+            $("#infoBox").toggle();
+        });
     });
 
     
-    //get Bootstrap dropdown value
+    //get Bootstrap dropdown value inputADialog_3
     $("#databoxA a").click(function(e){
         e.preventDefault(); // cancel the link behaviour
         var selText = $(this).text();
@@ -663,8 +722,13 @@
 
         PIXI_globalData.inputA.spritesJson = jsonURL;
         PIXI_globalData.inputA.spritesImage = imgURL;
-       // console.log('PIXI_globalData',PIXI_globalData.inputA)
+
+
+        //$("#info").val("");
+        //$("#info").append("admin:"+$("#talk").val()+"\n");  
+
     });
+    
 
     $("#stageDescriptJsonA").fileinput(KJJsonInputStyleA); //load spritesImages jsonA
     
