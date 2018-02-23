@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="scripts/bootstrap/css/bootstrap.min.css">
+    <link href="scripts/bootstrap/css/fileinput.min.css" rel="stylesheet">
+    <link href="scripts/bootstrap/css/fileinput-rtl.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="scripts/jqueryUI/jquery-ui.css">
+
+    
+    <script src="scripts/jqueryUI/external/jquery/jquery.js"></script>
+    <script src="scripts/jqueryUI/jquery-ui.js"></script>
+    <script src="scripts/pixi.min.js"></script>
+    <script src="scripts/bootstrap/js/bootstrap.min.js"></script>
+
+    <script src="scripts/bootstrap/js/fileinput.min.js"></script>
+    <script src="scripts/pixi_effectDataTemplate.js"></script>
+    <script src="scripts/pixi_UI_slideBarModule.js"></script>
+
+</head>
+
+<body>
+    <script>
+    var app = new PIXI.Application(800, 800, {backgroundColor : 0x1099bb});
+    document.body.appendChild(app.view);
+
+    var container = new PIXI.Container();
+        container.x= 500;
+    app.stage.addChild(container);
+
+    var texture = PIXI.Texture.fromImage('images/02.png');
+
+    for (var i = 0; i < 25; i++) {
+        var bunny = new PIXI.Sprite(texture);
+        bunny.x = (i % 5) * 30;
+        bunny.y = Math.floor(i / 5) * 30;
+        bunny.scale.set(0.2);
+        bunny.rotation = Math.random() * (Math.PI * 2)
+        container.addChild(bunny);
+        //container.x = 800;
+       // container.y= 400;
+        container.scale.set(0.5);
+        
+        
+    }
+    container.transform.worldTransform.tx =300;
+    console.log(container.transform);
+    console.log(container.transform.worldTransform.tx);
+    var brt = new PIXI.BaseRenderTexture(1200, 1200, PIXI.SCALE_MODES.LINEAR, 1);
+    var rt = new PIXI.RenderTexture(brt);
+
+    var sprite = new PIXI.Sprite(rt);
+
+    sprite.x = 450;
+    sprite.y = 60;
+    app.stage.addChild(sprite);
+
+        
+    var sprite2 = new PIXI.Sprite(rt);
+    sprite2.x = 650;
+    sprite2.y = 160;
+        sprite2.rotation =2;
+        sprite2.scale.set(2)
+    app.stage.addChild(sprite2);
+
+        
+    /*
+     * All the bunnies are added to the container with the addChild method
+     * when you do this, all the bunnies become children of the container, and when a container moves,
+     * so do all its children.
+     * This gives you a lot of flexibility and makes it easier to position elements on the screen
+     */
+    container.x = 100;
+    container.y = 60;
+        
+    var tick = 0    
+    app.ticker.add(function() {
+        tick += 1;
+        //tick = tick %3
+        container.x += Math.sin(tick*130);
+       app.renderer.render(container,rt);
+    });
+    </script>
+
+</body>
+</html>
