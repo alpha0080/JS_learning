@@ -128,7 +128,7 @@ $(function() {
         create: function() {
             handle.text($(this).slider("value"));
         },
-        value: 0,
+        value: 1,
         min: 0,
         max: 1,
         step: 0.01,

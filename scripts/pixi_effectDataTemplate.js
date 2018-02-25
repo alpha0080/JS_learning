@@ -1,10 +1,11 @@
 function loadGlobalData(){
     var PIXI_globalData = {
         "BGA": {
-            "URL": {},
+            "URL": "",
             "width": 800,
             "height": 800,
             "BGColor": "FFFFFF",
+            "screenScale":1
         },
         "inputA": {
             "motionJson": "",
@@ -21,6 +22,7 @@ function loadGlobalData(){
                       "spritesRotation":0,
                       "spritesRotationRandom":0,
                       "spritesFrameOffset":5,
+                      "spritesTrans":1,
                       "spritesBlur":0},
             "stageDescriptJsonFile":"",
             "stageDescriptJsonData":"",

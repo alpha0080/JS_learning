@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="scripts/bootstrap/css/bootstrap.min.css">
+	<link href="scripts/bootstrap/css/fileinput.min.css" rel="stylesheet">
+	<link href="scripts/bootstrap/css/fileinput-rtl.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="scripts/jqueryUI/jquery-ui.css">
+
+	<script src="scripts/jqueryUI/external/jquery/jquery.js"></script>
+	<script src="scripts/jqueryUI/jquery-ui.js"></script>
+	<script src="scripts/pixi.min.js"></script>
+	<script src="scripts/bootstrap/js/bootstrap.min.js"></script>
+
+	<script src="scripts/bootstrap/js/fileinput.min.js"></script>
+	<script src="scripts/pixi_effectDataTemplate.js"></script>
+</head>
+
+<body>
+	<script>
+		var app = new PIXI.Application(800, 800, {
+			antialias: true
+		});
+		
+		var baseRenderTexture = new PIXI.BaseRenderTexture(app, 800, 600);
+
+		document.body.appendChild(app.view);
+
+		var graphics = new PIXI.Graphics();
+		
+		
+		sprite = PIXI.Sprite.fromImage("images/02.png");
+		
+		
+		graphics.beginFill(0xFF3300);
+		graphics.lineStyle(4, 0xffd900, 1);
+		
+		app.stage.addChild(graphics)
+		app.stage.addChild(sprite)
+		
+		baseRenderTexture.render(sprite);
+	</script>
+</body>
+</html>

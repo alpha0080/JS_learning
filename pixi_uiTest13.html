@@ -28,8 +28,10 @@
     <script>
         console.log('start')
         // load setting Data json file,
-        var PIXI_globalData = loadGlobalData()
-        
+        var PIXI_globalData = loadGlobalData();
+        var frameListA = preLoadData()[0];
+		var motionData_A = preLoadData()[1];
+		
         var Container = PIXI.Container,
             loader = PIXI.loader,
             resources = PIXI.loader.resources,
@@ -68,16 +70,45 @@
         var elementResourceList_A=[];
 
         
-        function onDragMove() {
-            if (this.dragging) {
-                var newPosition = this.data.getLocalPosition(this.parent);
-                this.x = newPosition.x;
-                this.y = newPosition.y;
-                
-                console.log(this.x,this.y)
-            }
-        }
+            $(document).ready(function() {
+            $("#testAll").click(function() {
+                console.log('resources',resources);
+				console.log('resources_spritesImagesJson',resources.spritesImagesJsonA);
+                console.log(PIXI_globalData);
+                //build_elementResourceList(frameListA,motionData_A,elementResourceList_A);
+                //console.log("elementResourceList_A",elementResourceList_A)
+                //defineMotionJsonData(motionData_A,elementResourceList_A);  //create all anim A
+                       // defineMotionJsonData((motionData_A,elementResourceList_A);
 
+               // console.log("motionData_A",motionData_A);
+               // console.log("elementResourceList_A",elementResourceList_A);
+            });
+            $("#resetA").click(function() {
+                console.log("resetA")
+
+            });
+            $("#applyA").click(function() {
+
+                console.log(PIXI_globalData.inputA.spritesImageMode,typeof PIXI_globalData.inputA.spritesImageMode);
+                frameListA = Object.keys(resources.spritesImagesJsonA.data.frames); 
+                if(PIXI_globalData.inputA.spritesImageMode == 0)
+				{console.log("singal frame");
+				 var stillImageA = document.getElementById("stillImageNameA").value;
+				 PIXI_globalData.inputA.stillImageName = stillImageA;
+				 
+                 appendListInfoIntoTextarea(frameListA);
+
+				 checkImageInSpritesSheet(stillImageA,frameListA);
+			  	}else{console.log("sequence frame");
+					 PIXI_globalData.inputA.stillImageName = "sequence images";
+                     var spritesSpeed = PIXI_globalData.inputA.adjust.frameSpeed;
+                     console.log(spritesSpeed)
+                     buildSpritesSheetSequence(frameListA,spritesSpeed);
+                     
+				 	};
+
+            });
+        });
         var renderEvent = []
 
         function PIXI_loader(id, url) {
@@ -284,45 +315,7 @@
 		};
 		
 		
-        $(document).ready(function() {
-            $("#testAll").click(function() {
-                console.log('resources',resources);
-				console.log('resources_spritesImagesJson',resources.spritesImagesJsonA);
-                console.log(PIXI_globalData);
-                build_elementResourceList(frameListA,motionData_A,elementResourceList_A);
-                console.log("elementResourceList_A",elementResourceList_A)
-                defineMotionJsonData(motionData_A,elementResourceList_A);  //create all anim A
-                       // defineMotionJsonData((motionData_A,elementResourceList_A);
-
-               // console.log("motionData_A",motionData_A);
-               // console.log("elementResourceList_A",elementResourceList_A);
-            });
-            $("#resetA").click(function() {
-                console.log("resetA")
-
-            });
-            $("#applyA").click(function() {
-
-                console.log(PIXI_globalData.inputA.spritesImageMode,typeof PIXI_globalData.inputA.spritesImageMode);
-                frameListA = Object.keys(resources.spritesImagesJsonA.data.frames); 
-                if(PIXI_globalData.inputA.spritesImageMode == 0)
-				{console.log("singal frame");
-				 var stillImageA = document.getElementById("stillImageNameA").value;
-				 PIXI_globalData.inputA.stillImageName = stillImageA;
-				 
-                 appendListInfoIntoTextarea(frameListA);
-
-				 checkImageInSpritesSheet(stillImageA,frameListA);
-			  	}else{console.log("sequence frame");
-					 PIXI_globalData.inputA.stillImageName = "sequence images";
-                     var spritesSpeed = PIXI_globalData.inputA.adjust.frameSpeed;
-                     console.log(spritesSpeed)
-                     buildSpritesSheetSequence(frameListA,spritesSpeed);
-                     
-				 	};
-
-            });
-        });
+    
                                               
 		
 		
@@ -827,7 +820,6 @@
        // console.log("jsonURL", jsonURL);
        // console.log('loader', resources);
         motionData_A = resources["MotionJsonA"]
-        PIXI_globalData.inputA.motionJson = jsonURL;
         PIXI_globalData.inputA.motionJson = jsonURL;
         console.log(motionData_A)
     });
