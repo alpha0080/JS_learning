@@ -82,9 +82,17 @@
 		var motionData_A; //pre parpicle info from maya, 由maya輸出的particle資訊，json format
 		var container_A = new PIXI.Container(); //定義特效Sample容器A
 		var elementResourceList_A = [];
-		var tick = 0
+		
+        
+        //initial Data END
+        
+        
+        
+        
+        
+        
 		function deleteAllChildrenInStage() {
-			for (var i = 0; i < (app.stage.children.length+100 ); i++) {
+			for (var i = 0; i < (app.stage.children.length); i++) {
 				console.log("show children", i, app.stage.children[i]);
 				app.stage.removeChild(app.stage.children[i]);
 			};
@@ -93,10 +101,11 @@
 
 		$(document).ready(function() {
 			$("#testAll").click(function() {
-				deleteAllChildrenInStage();
+				//deleteAllChildrenInStage();
 				//container_A.destroy(true);
 				app.ticker.stop();
-				tick = 0;
+				var tick = 0;
+                console.log("PIXI_globalData",PIXI_globalData);
 				console.log("children", app.stage.children.length);
 
 				//console.log("app.render",app.renderer);
@@ -108,10 +117,11 @@
 				console.log('resources_spritesImagesJson', resources.spritesImagesJsonA);
 				frameListA = Object.keys(resources.spritesImagesJsonA.data.frames);
 				motionData_A = resources["MotionJsonA"];
-				build_elementResourceList(frameListA, motionData_A, container_A);
+                var inputIndex = "inputA"
+				build_elementResourceList(frameListA, motionData_A, container_A,inputIndex);
 				console.log("container_A",container_A);
-				var rt = referFromElementResource(container_A);
-				runApp(container_A,rt);
+				var rtA = referFromElementResource(container_A,motionData_A);
+				runApp(container_A,motionData_A,rtA);
 				/*
 				console.log("elementResourceList_A",elementResourceList_A)
 				*/
@@ -262,11 +272,26 @@
 		};
 
 		// 建立PP的樣本素材事件
-		function build_elementResourceList(frameList, motionData, container) {
+		function build_elementResourceList(frameList, motionData, container,inputIndex) {
 			var ppData = motionData.data;
 			console.log("ppData", ppData);
 			var ppID = Object.keys(ppData);
-			var ppCount = ppID.length;
+			var ppCount = ppID.length -2 ; //扣除 metaData ，instancer
+            
+            //input adjust data
+           // var speed = PIXI_globalData[inputIndex].adjust.speed;
+            var frameSpeed = PIXI_globalData[inputIndex].adjust.frameSpeed;
+            var spritesSizeRandom = PIXI_globalData[inputIndex].adjust.spritesSizeRandom;
+           // var spritesRotation = PIXI_globalData[inputIndex].adjust.spritesRotation;
+           // var spritesRotationRandom = PIXI_globalData[inputIndex].adjust.spritesRotationRandom;
+            var spritesFrameOffset = PIXI_globalData[inputIndex].adjust.spritesFrameOffset;
+            //var spritesTrans = PIXI_globalData[inputIndex].adjust.spritesTrans;
+           // var spritesBlur = PIXI_globalData[inputIndex].adjust.spritesBlur;
+
+            console.log("adjustData_spritesFrameOffset",spritesFrameOffset);
+            console.log("spritesSizeRandom",spritesSizeRandom);
+            
+            
 			var animSpritesList = []
 			for (var i in frameList) {
 				var imageItem = Texture.fromFrame(frameList[i])
@@ -285,19 +310,27 @@
 			for (var i = 0; i < ppCount; i++) { // <ppCount 為每個PP都建立一個anim event，< sampleCount 則為建立樣本數量
 				//var stageB = new container()
 				var anim = new PIXI.extras.AnimatedSprite(animSpritesList);
+                
+                anim.animationSpeed = frameSpeed;
+                //anim.rotation = spritesRotation;
+                anim.gotoAndPlay = Math.random()*spritesFrameOffset;
+                //anim.alpha = spritesTrans;
+                anim.scale.set(1);
+                
 				//將每個 anim 放入對應的位置。
-				anim.x = (app.screen.width) / 2 + (i % 5) * 20 ;
-				anim.y = (app.screen.height) / 2 + Math.floor(i / 5) * 20;
-				anim.anchor.set(0.5);
+				//anim.x = (app.screen.width) / 2 + (i % 5) * 20 ;
+				//anim.y = (app.screen.height) / 2 + Math.floor(i / 5) * 20;
+				//anim.anchor.set(0.5);
 
-				anim.scale.set(0.2);
+				//anim.scale.set(0.2);
+                console.log("anim",anim)
 
-				//anim.play()
+				anim.play()
 				container.addChild(anim);
 
 			};
 
-			console.log("A_children",container_A.children[0].x);	
+			//console.log("A_children",container_A.children[0].x);	
 				//app.renderer.render(container, rt);
 			
 				
@@ -310,42 +343,64 @@
 
 		//refer from elementResource and build instance to specific position
 		// 使用  renderTexture 建立instance ，當contain 更新， instance也會更新
+        //定義 instancer在 canvas中的 position， rotation, scale，timeOffset
 	
-		function referFromElementResource(container){
-			
-			var brt = new PIXI.BaseRenderTexture(800, 800, PIXI.SCALE_MODES.LINEAR, 1);
+		function referFromElementResource(container,motionData){
+			var instancerData = motionData.data.instancer
+            var instancerCount =  motionData.data.metaData.instancer_num
+            var instancerID = Object.keys(instancerData);
+            console.log("instancerData",instancerData,"instancerCount",instancerCount);
+			var brt = new PIXI.BaseRenderTexture(1200, 1200);//, PIXI.SCALE_MODES.LINEAR, 1
 			var rt = new PIXI.RenderTexture(brt);
-
-			for (var j = 0; j < 1000; j++) { // j 為複製的數量
+            
+			for (var j = 0; j < instancerCount; j++) { // j 為複製的數量
 				var sprite = new PIXI.Sprite(rt);
+                
+                //var instancerKey = 'instancer_' + String(j);
+                //var instancer_X = instancerData[instancerKey].translate.x;
+                //var instancer_y = instancerData[instancerKey].translate.y;
+                console.log("rtSprite",j,sprite);
+                //sprite.anchor.set(0.5);
+               // sprite.x = Math.random*10;
+               // sprite.y = Math.random*10;
 
-				sprite.x = Math.random() * 500;
-				sprite.y = Math.random() * 500;
-				sprite.anchor.set(0.5)
-				sprite.rotation = Math.random()*1
+
+
 				app.stage.addChild(sprite);
 				//sprite.rotation = Math.random*360;
 
 
 			};
+            
+            
 			//app.renderer.render(container, rt);
 			return rt;
 		};
 
-					var tick = 0
+        
 			//var ppCount = 100
 		
-		function runApp(container,rt){
+		function runApp(container,motionData,rt){
+            
+			var ppData = motionData.data;
+			var ppID = Object.keys(ppData);
+			var ppCount = ppID.length-2; //扣除 instancer 與 mataData
+			//var ppKey = 'pId_' + String(pp);
+			var timeLength = ppData[ppID[0]].translate.length;
+            var tick = 0
+           
 			app.ticker.stop();
-			deleteAllChildrenInStage();
-
+			//deleteAllChildrenInStage();
 			console.log(app.ticker.FPS);
-			app.renderer.clear();
 			app.ticker.start();
 			app.ticker.add(function() {
-				tick += 1;
-	
-				runContainMotion(container,motionData_A,tick)
+                var effectSpeed = PIXI_globalData.inputA.adjust.speed;
+
+				tick += effectSpeed;
+                eventTick = parseInt(tick);
+                eventTick= eventTick %timeLength
+                var inputA= "inputA"
+				runContainMotion(container,ppData,ppCount,timeLength,eventTick,inputA)
 				//container += 50;
 				app.renderer.render(container, rt);
 			});
@@ -353,36 +408,43 @@
 
 		
 		
-		function runContainMotion(container,motionData,eventTick){
+		function runContainMotion(container,ppData,ppCount,timeLength,eventTick,inputIndex){
 
-			var ppData = motionData.data;
-			var ppID = Object.keys(ppData);
-			var ppCount = ppID.length;
-			//var ppKey = 'pId_' + String(pp);
-			var timeLength = ppData[ppID[0]].translate.length;
-			eventTick = eventTick%timeLength
-			
+            var spritesSize = PIXI_globalData[inputIndex].adjust.spritesSize;
+            var effectSpeed = PIXI_globalData.inputA.adjust.speed;
+
+            var frameSpeed = PIXI_globalData[inputIndex].adjust.frameSpeed;
+            var spritesSizeRandom = PIXI_globalData[inputIndex].adjust.spritesSizeRandom;
+            var spritesRotation = PIXI_globalData[inputIndex].adjust.spritesRotation;
+            var spritesRotationRandom = PIXI_globalData[inputIndex].adjust.spritesRotationRandom;
+            var spritesTrans = PIXI_globalData[inputIndex].adjust.spritesTrans;
+            var spritesBlur = PIXI_globalData[inputIndex].adjust.spritesBlur;
+            console.log("stage",app.stage.children);
+            console.log("stageChild0",app.stage.children[0]);
+            //app.stage.children[0].x += eventTick;
+            for(var c =0;c<2;c++){
+                app.stage.children[c].x += eventTick
+                app.stage.children[c].y += eventTick
+            };
 			for (var pp = 0; pp < ppCount; pp++) {
-					//console.log(ppCount,ppAnimList[i])
+
 				var ppKey = 'pId_' + String(pp);
-				//console.log(ppKey)
-				// console.log(ppData)
+
 				var x = ppData[ppKey].translate[eventTick].x;
 				var y = ppData[ppKey].translate[eventTick].y;
 				var width = ppData[ppKey].scale[eventTick].w;
-				var heigth = ppData[ppKey].scale[eventTick].h;
+				var height = ppData[ppKey].scale[eventTick].h;
 				var trans = ppData[ppKey].translate[eventTick].trans;
-				var rotation = (ppData[ppKey].rotate[eventTick].z);
-				
-				
-				container.children[pp].scale.set(0.3);
+				var rotation = (ppData[ppKey].rotate[eventTick].angle);
+
 				container.children[pp].x = x;
 				container.children[pp].y = y;
-				//container.children[i].width = 0.1;
-				//container.children[i].height = 0.1;
-				container.children[pp].rotation = -((rotation / 57.3))
-				//var width = ppData[ppKey].scale[eventTick].w;
-				//var heigth = ppData[ppKey].scale[eventTick].h;
+                container.children[pp].width = width * spritesSize;
+                container.children[pp].height = height * spritesSize;
+                container.children[pp].alpha = trans * spritesTrans;
+
+				container.children[pp].rotation = -((rotation / 57.3));
+
 			};
 		};
 		
