@@ -82,7 +82,8 @@
 		var motionData_A; //pre parpicle info from maya, 由maya輸出的particle資訊，json format
 		var container_A = new PIXI.Container(); //定義特效Sample容器A
 		var elementResourceList_A = [];
-		var renderTextureScale = 0.2 ; //定義renderTexture的計算尺寸縮放
+		var renderTextureScale = 1 ; //定義renderTexture的計算尺寸縮放
+		var renderTextureInScreenOffset = 
 		
         
         //initial Data END
@@ -278,19 +279,12 @@
 			console.log("ppData", ppData);
 			var ppID = Object.keys(ppData);
 			var ppCount = ppID.length -2 ; //扣除 metaData ，instancer
-            
-            //input adjust data
-           // var speed = PIXI_globalData[inputIndex].adjust.speed;
+
             var frameSpeed = PIXI_globalData[inputIndex].adjust.frameSpeed;
             var spritesSizeRandom = PIXI_globalData[inputIndex].adjust.spritesSizeRandom;
-           // var spritesRotation = PIXI_globalData[inputIndex].adjust.spritesRotation;
-           // var spritesRotationRandom = PIXI_globalData[inputIndex].adjust.spritesRotationRandom;
-            var spritesFrameOffset = PIXI_globalData[inputIndex].adjust.spritesFrameOffset;
-            //var spritesTrans = PIXI_globalData[inputIndex].adjust.spritesTrans;
-           // var spritesBlur = PIXI_globalData[inputIndex].adjust.spritesBlur;
 
-           // console.log("adjustData_spritesFrameOffset",spritesFrameOffset);
-            //console.log("spritesSizeRandom",spritesSizeRandom);
+            var spritesFrameOffset = PIXI_globalData[inputIndex].adjust.spritesFrameOffset;
+
             
             
 			var animSpritesList = []
@@ -300,8 +294,6 @@
 				animSpritesList.push(imageItem)
 			};
 
-			//console.log("animSpritesList", animSpritesList);
-			//console.log("metaData",motionData.data.metaData)
 			console.log("app.screen",app.screen)
 
 			container.pivot.x = motionData.data.metaData.width/2;
@@ -310,48 +302,35 @@
 			container.y = (motionData.data.metaData.width*renderTextureScale)/2;//app.screen.height/2;
 			container.scale.set(renderTextureScale); //設定renderTexture 的scale
 			console.log("pivot",container.pivot.x,container.pivot.y,container.x,container.y)
-			/*
 
-			container.x = app.screen.width/2;
-			container.y = app.screen.height/2 
-			*/
-			//console.log("asdsadsadsad",container.x,container.y,container.width,container.height)
+		
 			//app.stage.addChild(container);  //reference 原始素材是否加入顯示，測試時可以開啟
 
-
+			var ppMulti =5
+	
 			for (var i = 0; i < ppCount; i++) { // <ppCount 為每個PP都建立一個anim event，< sampleCount 則為建立樣本數量
 				//var stageB = new container()
-				var anim = new PIXI.extras.AnimatedSprite(animSpritesList);
-                
-                anim.animationSpeed = frameSpeed;
-                //anim.rotation = spritesRotation;
-                anim.gotoAndPlay = Math.random()*spritesFrameOffset;
+				for(var count =0,count <5;count++){
+					var anim = new PIXI.extras.AnimatedSprite(animSpritesList);
+					anim.animationSpeed = frameSpeed;
+					//anim.rotation = spritesRotation;
+					anim.gotoAndPlay = Math.random()*spritesFrameOffset;
+					
+					anim.play()
+					container.addChild(anim);
+					
+					};
+
                 //anim.alpha = spritesTrans;
-                anim.scale.set(1);
-                
-				//將每個 anim 放入對應的位置。
-				//anim.x = (app.screen.width) / 2 + (i % 5) * 20 ;
-				//anim.y = (app.screen.height) / 2 + Math.floor(i / 5) * 20;
-				//anim.anchor.set(0.5);
+                //anim.scale.set(1);
+				//anim.anchor.set(Math.random(0.4,0.6));
 
-				//anim.scale.set(0.2);
-                ////console.log("anim",anim);
-				console.log("container.width",container.width);
-
-				anim.play()
-				container.addChild(anim);
+				//console.log("container.width",container.width);
 
 			};
-
-			//console.log("A_children",container_A.children[0].x);	
-				//app.renderer.render(container, rt);
 			
-				
-
-
-
 		};
-		
+
 
 
 		//refer from elementResource and build instance to specific position
@@ -359,17 +338,7 @@
         //定義 instancer在 canvas中的 position， rotation, scale，timeOffset
 	
 		function referFromElementResource(container,motionData){
-			//console.log("metaData",motionData.data.metaData)
-			//container.scale.set(0.5);
-			//container.anchor.set(0.5);
-			//container.x = 400;
-			//container.y = 400;
 
-			//containerWidth = motionData.data.metaData.width;
-			//containerHeight = motionData.data.metaData.height;
-
-			//container.x = (app.screen.width - container.width) / 2;
-			//container.y = (app.screen.height - container.height) / 2;
 			var instancerData = motionData.data.instancer
             var instancerCount =  motionData.data.metaData.instancer_num
             var instancerID = Object.keys(instancerData);
@@ -379,22 +348,17 @@
 			var brt = new PIXI.BaseRenderTexture(renderTextureRes, renderTextureRes);//, PIXI.SCALE_MODES.LINEAR, 1
 			var rt = new PIXI.RenderTexture(brt);
             
-			for (var j = 0; j < 10; j++) { // j 為複製的數量
+			for (var j = 0; j <instancerCount; j++) { // j 為複製的數量
 				var sprite = new PIXI.Sprite(rt);
 				console.log("renderTextureScaleBB",renderTextureScale)
 				//sprite.anchor.set(0.5)
                 sprite.scale.set((1/renderTextureScale));// (1/renderTextureScale) 還原成原素材尺寸
-				//sprite.x= 0;
-				//sprite.y = 0;
-                //var instancerKey = 'instancer_' + String(j);
-                //var instancer_X = instancerData[instancerKey].translate.x;
-                //var instancer_y = instancerData[instancerKey].translate.y;
-               // console.log("rtSprite",j,sprite);
-                //sprite.anchor.set(0.5);
-               // sprite.x = Math.random*10;
-               // sprite.y = Math.random*10;
-
-
+				instancerKey = "instancer_" +String(j);
+				//sprite.pivot.x = renderTextureRes/2;
+				//sprite.pivot.y = renderTextureRes/2;
+                //sprite.x =300; //instancerData[instancerKey].translate[1].x;
+                //sprite.y = 300;//instancerData[instancerKey].translate[1].y;
+				//console.log("instancePossition",eventTick,app.stage.children[c].x,app.stage.children[c].y)
 
 				app.stage.addChild(sprite);
 				//sprite.rotation = Math.random*360;
@@ -418,6 +382,10 @@
 			var ppCount = ppID.length-2; //扣除 instancer 與 mataData
 			//var ppKey = 'pId_' + String(pp);
 			var timeLength = ppData[ppID[0]].translate.length;
+			var instancerData = motionData.data.instancer
+            var instancerID = Object.keys(instancerData);
+            var instancerCount =  motionData.data.metaData.instancer_num
+
             var tick = 0
            
 			app.ticker.stop();
@@ -431,7 +399,7 @@
                 eventTick = parseInt(tick);
                 eventTick= eventTick %timeLength
                 var inputA= "inputA"
-				runContainMotion(container,ppData,ppCount,timeLength,eventTick,inputA)
+				runContainMotion(container,instancerData,instancerCount,ppData,ppCount,timeLength,eventTick,inputA)
 				//container += 50;
 				app.renderer.render(container, rt);
 			});
@@ -439,7 +407,7 @@
 
 		
 		
-		function runContainMotion(container,ppData,ppCount,timeLength,eventTick,inputIndex){
+		function runContainMotion(container,instancerData,instancerCount,ppData,ppCount,timeLength,eventTick,inputIndex){
 
             var spritesSize = PIXI_globalData[inputIndex].adjust.spritesSize;
             var effectSpeed = PIXI_globalData.inputA.adjust.speed;
@@ -453,32 +421,34 @@
             //console.log("stage",app.stage.children);
             //console.log("stageChild0",app.stage.children[0]);
             //app.stage.children[0].x += eventTick;
-			/*
-            for(var c =0;c<2;c++){
-                app.stage.children[c].x += eventTick
-                app.stage.children[c].y += eventTick
+			
+            for(var c =0;c<instancerCount;c++){ //instancerCount
+				instancerKey = "instancer_" +String(c);
+                app.stage.children[c].x = instancerData[instancerKey].translate[eventTick].x-512;
+                app.stage.children[c].y = instancerData[instancerKey].translate[eventTick].y-512;
+				console.log("instancePossition",app.stage.children[c].x,app.stage.children[c].y,app.stage.children[c].pivot.x,app.stage.children[c].pivot.y)
             };
-			*/
-			for (var pp = 0; pp < ppCount; pp++) {
+			
+				for (var pp = 0; pp < ppCount; pp++) {
 
-				var ppKey = 'pId_' + String(pp);
+					var ppKey = 'pId_' + String(pp);
 
-				var x = ppData[ppKey].translate[eventTick].x;
-				var y = ppData[ppKey].translate[eventTick].y;
-				var width = ppData[ppKey].scale[eventTick].w;
-				var height = ppData[ppKey].scale[eventTick].h;
-				var trans = ppData[ppKey].translate[eventTick].trans;
-				var rotation = (ppData[ppKey].rotate[eventTick].angle);
+					var x = ppData[ppKey].translate[eventTick].x;
+					var y = ppData[ppKey].translate[eventTick].y;
+					var width = ppData[ppKey].scale[eventTick].w;
+					var height = ppData[ppKey].scale[eventTick].h;
+					var trans = ppData[ppKey].translate[eventTick].trans;
+					var rotation = (ppData[ppKey].rotate[eventTick].angle);
 
-				container.children[pp].x = x;
-				container.children[pp].y = y;
-                container.children[pp].width = width * spritesSize;
-                container.children[pp].height = height * spritesSize;
-                container.children[pp].alpha = trans * spritesTrans;
+					container.children[pp].x = x;
+					container.children[pp].y = y;
+					container.children[pp].width = width * spritesSize;
+					container.children[pp].height = height * spritesSize;
+					container.children[pp].alpha = trans * spritesTrans;
 
-				container.children[pp].rotation = -((rotation / 57.3));
+					container.children[pp].rotation = -((rotation / 57.3));
 
-			};
+				};
 		};
 		
 		
