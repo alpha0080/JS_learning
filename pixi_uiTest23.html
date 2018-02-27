@@ -173,9 +173,26 @@
 			//app.start();
 
 		};
+        
+        
+        
+        //繪製測試圖形
+        function drawTestGraph(){
+            var graphics = new PIXI.Graphics();
+            graphics.beginFill(0xFF3300);
+            graphics.lineStyle(4, 0xffd900, 1);
 
-
-
+            graphics.moveTo(50,50);
+            graphics.lineTo(250, 50);
+            graphics.lineTo(100, 100);
+            graphics.lineTo(50, 50);
+            graphics.endFill();
+            
+            app.stage.addChild(graphics);
+            
+            
+            };
+            
 
 
 		function redrawRender(containID) {
@@ -187,6 +204,8 @@
 		function setBG() {
 			//app.renderer.clear();
 			console.log(app);
+            drawTestGraph();
+            app.stage.addChild(container_BG);
             /*
 			app.stage.removeChildren(background);
 			var BGW = PIXI_globalData.BGA.width;
@@ -215,7 +234,7 @@
 			app.stage.addChild(background);
 			// redrawRender(BG_stage)
             */
-
+            console.log(app);
 		}
             
 

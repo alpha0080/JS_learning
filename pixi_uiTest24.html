@@ -52,7 +52,6 @@
 			TextureCache = PIXI.utils.TextureCache,
 			Rectangle = PIXI.Rectangle,
 			Texture = PIXI.Texture
-
 		var app = new PIXI.Application(800, 800, {
 			backgroundColor: 0x1099bb
 		});
@@ -81,10 +80,16 @@
 		var frameListA;
 		var motionData_A; //pre parpicle info from maya, 由maya輸出的particle資訊，json format
 		var container_A = new PIXI.Container(); //定義特效Sample容器A
-        var container_BG = new PIXI.Container();
+        
+        var screenWidth = app.renderer.screen.width;
+        var screenHeight = app.renderer.screen.height;
+        var stageContainer = app.stage.children;
+
+        
+
 		var elementResourceList_A = [];
 		var renderTextureScale = 1 ; //定義renderTexture的計算尺寸縮放
-		var renderTextureInScreenOffset = 
+		//var renderTextureInScreenOffset = 
 		
         
         //initial Data END
@@ -95,12 +100,49 @@
         
         
 		function deleteAllChildrenInStage() {
-			for (var i = 0; i < (app.stage.children.length); i++) {
-				console.log("show children", i, app.stage.children[i]);
-				app.stage.removeChild(app.stage.children[i]);
-			};
+            app.stop();
+            app.ticker.stop();
+            var itemCount = app.stage.children.length;
+            console.log("show app",app);
+            console.log("deleteItem",itemCount);
+           // app.stage.destroy({children:true, texture:true, baseTexture:true});
+            //while (app.stage.children.length > 10) {
+           //     app.stage.destroy({children:true});
+               // app.stage.removeChild( app.stage.children[i])
+           // }
+            while (app.stage.children.length >= 1) {
+                for (var i = 0; i < 100; i++) {
+                    console.log("remove children", i, app.stage.children);
+                    app.stage.removeChild( app.stage.children[i]);
+                };
+            };                /*
+            console.log("stage",app);
+            console.log("stageChild_count",app.stage.children.length);
+            */
+            //app.start();
+            console.log("deleteItem",itemCount);
 		};
 
+        
+                
+		function deleteAllChildrenInStageB(keepItem) {
+            var stageCount = app.stage.children.length;
+            console.log("deleteItem",stageCount);
+            for (var i = 0; i < stageCount; i++) {
+                //console.log("stageContainer",stageContainer[i].name);
+                if(stageContainer[i].name == keepItem){
+                    console.log("keepItem",stageContainer[i].name)
+                    //app.stage.removeChild(stageContainer[i])
+                }else{
+                    //app.stage.removeChild(stageContainer[i])
+                    console.log("delete children", i, stageContainer[i]);
+                    app.stage.removeChild(stageContainer[i]);
+                 };
+
+
+            };
+        };
+        
 
 		$(document).ready(function() {
 			$("#testAll").click(function() {
@@ -173,20 +215,201 @@
 			//app.start();
 
 		};
+        
+        
+        
+        //繪製測試圖形
+        function drawTestGraph(container_BG){
+            var graphics = new PIXI.Graphics();
+            var screenWidth = app.renderer.screen.height;
+            var screenHeight = app.renderer.screen.width;
+            
+            var style = new PIXI.TextStyle({
+                
+                fontFamily: 'Arial',
+                fontSize: 20,
+                fontStyle: 'italic',
+                fontWeight: 'bold',
+                fill: ['#ffffff', '#00ff99'], // gradient
+                stroke: '#4a1850',
+                strokeThickness: 5,
+                dropShadow: true,
+                dropShadowColor: '#000000',
+                dropShadowBlur: 2,
+                dropShadowAngle: Math.PI / 6,
+                dropShadowDistance: 2,
+                wordWrap: true,
+                wordWrapWidth: 440 });
+          var styleB = new PIXI.TextStyle({
+                
+                fontFamily: 'Arial',
+                fontSize: 10,
+                fill: ['#ffffff', '#00ff99'], // gradient
+                stroke: '#4a1850',
+                strokeThickness: 1,
+                dropShadow: true,
+                dropShadowColor: '#000000',
+                dropShadowBlur: 1,
+                dropShadowAngle: Math.PI / 6,
+                dropShadowDistance: 1,
+                wordWrap: true,
+                wordWrapWidth: 440 });
 
+            
+            graphics.beginFill(0xFF3300);
+            graphics.lineStyle(2, 0xffd900, 1);
+            
 
+            for(var i=0;i<screenHeight;i+=100){
+                graphics.moveTo(0,i);
+                graphics.lineTo(screenWidth, i);
+                var cordXText = new PIXI.Text(i,styleB);
+                cordXText.x = 5+i;
+                cordXText.y = 10;
+               // app.stage.addChild(cordXText);
+                container_BG.addChild(cordXText);
+            };
+            for(var i=0;i<screenWidth;i+=100){
+                graphics.moveTo(i,0);
+                graphics.lineTo(i, screenHeight);
+                var cordXText = new PIXI.Text(i,styleB);
+                cordXText.x = 10;
+                cordXText.y = 10+i;
+                //app.stage.addChild(cordXText);
+                container_BG.addChild(cordXText);
 
+            };
+            //graphics.moveTo(0,50);
+            //graphics.lineTo(screenWidth, 50);
+            //graphics.lineTo(100, 100);
+            //graphics.lineTo(50, 50);
+            graphics.endFill();
+            
+            graphics.lineStyle(0);
+            graphics.beginFill(0xFF9999, 1);
+            graphics.drawCircle(screenWidth/2, screenHeight/2,10);
+            graphics.endFill();
+            
+            
+            //app.stage.addChild(graphics);
+            container_BG.addChild(graphics);
+            //console.log(app.renderer);
+            
+            var screenWidth = app.renderer.screen.height;
+            var screenHeight = app.renderer.screen.width;
+            
 
+            var originText = new PIXI.Text("(0,0)",style);
+            originText.x = 0;
+            originText.y = 0;  
+            
+            var centerText = new PIXI.Text("("+ screenWidth/2+","+screenHeight/2+")",style);
+            centerText.x = screenWidth/2;
+            centerText.y = screenHeight/2;  
+            
+            var rightBottom = new PIXI.Text("("+screenWidth +","+screenHeight+")",style);
+            rightBottom.x = screenWidth-100;
+            rightBottom.y = screenHeight-30;
+
+            //app.stage.addChild(centerText);   
+            //app.stage.addChild(originText);   
+            //app.stage.addChild(rightBottom);    
+            container_BG.addChild(centerText);
+            container_BG.addChild(originText);
+            container_BG.addChild(rightBottom);
+            };
+            
+        function drawEventTest(){
+            //
+            //
+            
+            var screenWidth = app.renderer.screen.height;
+            var screenHeight = app.renderer.screen.width;
+
+            var graphics = new PIXI.Graphics();
+            var squareWidth = 5;
+            graphics.beginFill(0xFF3300);
+            //graphics.lineStyle(4, 0xffd900, 1);
+            graphics.lineStyle(1, 0xFF00FF, 0.01);
+           
+            graphics.beginFill(0xFF00BB, 1);
+            for(var i=0;i<100;i++){
+               // var offset = Math.random()*100;
+                var square = graphics.drawRoundedRect(400+400*Math.random(), 400+400*Math.random(), squareWidth, squareWidth, 3);
+                //var square = graphics.drawRoundedRect((screenWidth), (screenHeight), squareWidth, squareWidth, 3);
+            };
+           // square.anchor.set(0.5);
+           // square.x = (i%5) *5;
+            //square.y = i *30
+            //square.y = Math.floor(i/ 5) * 5;
+           // square.x = 0 +Math.random()*30;
+            //square.y = 0 +Math.random()*30;
+            //square.anchor= 1;
+           // square.pivot.x =screenWidth/2+squareWidth/2;    //freeze pivot and move to center
+           // square.pivot.y =screenHeight/2+squareWidth/2;
+           // square.x = screenWidth/2;
+           // square.y = screenHeight/2;
+           // square.rotation = 0.5
+           // square.x = 100;
+
+            graphics.endFill();
+
+            return graphics
+            
+        };
 
 		function redrawRender(containID) {
 			app.render(containID)
 		};
 
+        function addItemToNewContainer(event){
+            var instancerContainer = new PIXI.Container();
+            var screenWidth = app.renderer.screen.height;
+            var screenHeight = app.renderer.screen.width;
+            instancerContainer.addChild(event);
+            //instancerContainer.pivot.x = -100//instancerContainer.width / 2;
+           // instancerContainer.pivot.y =-100//instancerContainer.height / 2;
+            //console.log("instancerContainer.width",instancerContainer.width);
+           // console.log("instancerContainer.height",instancerContainer.height);
+            //console.log("instancerContainer.pivot.x",instancerContainer.pivot.x);
 
+            //instancerContainer.pivot.x =screenWidth/2 + instancerContainer.width/2  //freeze pivot and move to center
+           // instancerContainer.pivot.y =screenHeight/2 + instancerContainer.height/2
+           // instancerContainer.x = screenWidth/2;
+           // instancerContainer.y = screenHeight/2;
+           // instancerContainer.alpha = 0.1
+           // instancerContainer.x =200;
+            app.stage.addChild(instancerContainer);
+        };
+        
+        
+        function createBaseCanvas(){
+              
+        };
 
-		function setBG() {
+		function setBG(){
 			//app.renderer.clear();
-			console.log(app);
+            app.start();
+            deleteAllChildrenInStage();
+            var container_BG = new PIXI.Container();
+            
+            
+            app.stage.addChild(container_BG);
+			console.log("appInitial",app);
+            //deleteAllChildrenInStage();
+            console.log("stage_initial",app.stage.children.length,app.stage);
+            //var keepItem = "stage_BG"
+            //deleteAllChildrenInStageB(keepItem)
+            
+
+            drawTestGraph(container_BG);
+            console.log("stage_initial",app.stage.children.length,app.stage);
+            for(var i=0;i<100;i++){
+
+                addItemToNewContainer(drawEventTest())
+
+            };
+           // console.log("stage_END",app.stage.children.length,app.stage);
             /*
 			app.stage.removeChildren(background);
 			var BGW = PIXI_globalData.BGA.width;
@@ -215,9 +438,90 @@
 			app.stage.addChild(background);
 			// redrawRender(BG_stage)
             */
+            //console.log("stage_allChildren",app.stage.children);
+;
 
+           // console.log("stage_allChildren",app.stage.children)
+            RunAppB();
+            //console.log(app.stage.children["0"]);
+            //app.stage.removeChild(container_BG);
+           // console.log(app.stage.children.length);
 		}
+        
+        
+        function freezeTransform(item,screenWidth,screenHeight){
+            item.pivot.x =screenWidth/2 + item.width/2  //freeze pivot and move to center
+            item.pivot.y =screenHeight/2 + item.height/2
+            item.x = screenWidth/2;
+            item.y = screenHeight/2;
             
+        };
+        
+        function showMessage(){
+            var container_message = new PIXI.Container();
+            container_message.name = "container_message"
+           // console.log("message")
+            var stageCount = app.stage.children.length;
+            var styleC = new PIXI.TextStyle({
+                
+                fontFamily: 'Arial',
+                fontSize: 20,
+                fill: ['#ffffff', '#00ff99'], // gradient
+                stroke: '#4a1850',
+                strokeThickness: 1,
+                dropShadow: true,
+                dropShadowColor: '#000000',
+                dropShadowBlur: 1,
+                dropShadowAngle: Math.PI / 6,
+                dropShadowDistance: 1,
+                wordWrap: true,
+                wordWrapWidth: 440 });
+            
+            var stageCountText = new PIXI.Text("stageCount : "+stageCount ,styleC);
+            stageCountText.x = 500;
+            stageCountText.y = 30;
+            container_message.addChild(stageCountText);
+            app.stage.addChild(container_message);
+            app.stage.removeChild("container_message")
+            //console.log("message end")
+
+
+        };
+            
+        function RunAppB(){
+            var tick = 0;
+            app.ticker.start();
+
+            var stageChildrenCount= app.stage.children.length;
+                        
+            var screenWidth = app.renderer.screen.height;
+            var screenHeight = app.renderer.screen.width;
+            
+            app.ticker.add(function(){
+                tick += 0.1;
+               // showMessage()
+                for(var i =1 ; i<stageChildrenCount;i++){
+                    var getContainer = app.stage.children[i]
+                    freezeTransform(getContainer,screenWidth,screenHeight);
+                   // getContainer.pivot.x =screenWidth/2//+squareWidth/2;    //freeze pivot and move to center
+                  //  getContainer.pivot.y =screenHeight/2//+squareWidth/2;
+                  //  getContainer.x = screenWidth/2;
+                  //  getContainer.y = screenHeight/2;
+                    //app.stage.children[i].x = 100;
+                    //app.stage.children[i].y = Math.random()*100 ;
+                    //app.stage.children[i].pivot.x = app.stage.children[i].width / 2;
+                   // app.stage.children[i].pivot.y = app.stage.children[i].height / 2;
+                   // app.stage.children[i].anchor= 1;
+                    //app.stage.children[i].pivot.x = 400;
+                   // app.stage.children[i].pivot.y = 400;
+                   // getContainer.x = Math.random()*100;
+                   // getContainer.y = Math.random()*100;
+                    getContainer.rotation = tick;
+                    //getContainer.scale.set((tick*0.1)%1);
+                    //app.stage.children[i].rotation = Math.random()*360;
+                    };
+                });
+            };
 
 		function appendListInfoIntoTextarea(dataList) {
 			//$("#info").val("images:");
@@ -1073,6 +1377,7 @@
 
 
 	function myFunction() {
+        deleteAllChildrenInStage();
 		console.log(miniApp.screen.width);
 
 	};

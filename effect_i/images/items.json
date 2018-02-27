@@ -1,0 +1,30 @@
+{
+"frames": {
+	"circle_b.png": {
+		"frame": {"x":0, "y":59, "w":494, "h":488},
+		"spriteSourceSize": {"x":7,"y":12,"w":512,"h":512},
+		"sourceSize": {"w":512,"h":512}
+	},
+	"glow_ray_a.png": {
+		"frame": {"x":495, "y":59, "w":174, "h":512},
+		"spriteSourceSize": {"x":17,"y":0,"w":210,"h":512},
+		"sourceSize": {"w":210,"h":512}
+	},
+	"line_light.png": {
+		"frame": {"x":0, "y":0, "w":509, "h":58},
+		"spriteSourceSize": {"x":0,"y":0,"w":509,"h":58},
+		"sourceSize": {"w":509,"h":58}
+	},
+	"yallow_paticle.png": {
+		"frame": {"x":0, "y":548, "w":11, "h":71},
+		"spriteSourceSize": {"x":0,"y":0,"w":11,"h":71},
+		"sourceSize": {"w":11,"h":71}
+	}
+
+},
+"meta": {
+	"image": "items.png",
+	"size": {"w": 670, "h": 620},
+	"scale": "1"
+}
+}
