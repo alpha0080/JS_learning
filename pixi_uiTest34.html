@@ -56,7 +56,7 @@
 			Texture = PIXI.Texture
 
 
-		var app = new PIXI.Application(800, 800, {
+		var app = new PIXI.Application(1920, 1080, {
 			backgroundColor: 0x1099bb
 		});
 
@@ -133,57 +133,6 @@
 		var renderTextureScale = 1; //定義renderTexture的計算尺寸縮放
 
 		//initial Data END
-
-
-
-		function preLoadData(motionJsonURL, spritsImageJsonURL,effectName) { //預讀檔案 motionJson ，sprites images json and png
-			//console.log("loader start",app.loader);
-			loader.reset();
-
-			var spritesImgURL = spritsImageJsonURL.split('.')[0] + ".png"
-
-			PIXI_globalData.inputA.motionJson = motionJsonURL;
-			
-
-			//getMotionData("MotionJsonA",motionJsonURL,"effect_A");
-			loader.add("MotionJsonA", motionJsonURL)
-				.add("spritesImagesJsonA", spritsImageJsonURL)
-				.load(function(loader, resources) {
-					var motionDataKeysCount = Object.keys(resources["MotionJsonA"].data).length;
-					var motionDataKeys = Object.keys(resources["MotionJsonA"].data)
-					effectDataTemplate.motionDataID = "MotionJsonA";
-					effectDataTemplate.motionDataURL = motionJsonURL;
-					effectDataTemplate.motionData = resources["MotionJsonA"].data;
-					var ppIDList = [];
-
-					for (var i = 0; i < motionDataKeysCount; i++) {
-						//console.log("show motionData", i ,motionDataKeys[i],motionDataKeys[i].slice(0,3));
-						if (motionDataKeys[i].slice(0, 3) == "pId") {
-							//console.log("show motionData 3",motionDataKeys[i] );
-							ppIDList.push(motionDataKeys[i]);
-						};
-					};
-					//console.log("ppidList",ppIDList);
-					effectDataTemplate.ppID = ppIDList;
-					effectDataTemplate.ppCount = resources["MotionJsonA"].data.metaData.particle_num;
-					effectDataTemplate.spritesImageId = "spritesImagesJsonA";
-					effectDataTemplate.spriteImage = spritsImageJsonURL.split('.')[0] + ".png";
-					effectDataTemplate.frameList = (Object.keys(resources["spritesImagesJsonA"].data.frames));
-					effectDataTemplate.frameLength = (Object.keys(resources["spritesImagesJsonA"].data.frames).length);
-					effectList["aaa"] = effectDataTemplate;
-
-
-				})
-				.load('complete');
-			//console.log("resources",resources);
-			//console.log("loader end",loader);
-
-		};
-
-
-
-
-
 
 
 
@@ -422,44 +371,66 @@
 		function runAppD() {
 
 			var callEffectList = effectList["effect_A"]
-			//var ppID = callEffectList["ppID"];.effect_A
+			var ppID = callEffectList["ppID"]
 			console.log("callEffectList", effectList["effect_A"]);
+			console.log("ppID", ppID);
 
-			//var ppCount = callEffectList.motionData.metaData.particle_num;
-			//var motionData = callEffectList.motionData;
-			//var timeStart = callEffectList.motionData.metaData.frame_start;
-			//var timeEnd = callEffectList.motionData.metaData.frame_end;
-			//var timeLength = timeEnd - timeStart +1; 
-			//var tick = 0;
-			/*
+			var ppCount = callEffectList.ppCount;
+			var motionData = callEffectList.motionData;
+			var timeStart = callEffectList.motionData.metaData.frame_start;
+			var timeEnd = callEffectList.motionData.metaData.frame_end;
+			var timeLength = timeEnd - timeStart +1; 
+			var tick = 0;
+			console.log("timeLength",timeLength,"ppCount",ppCount);
             defineEffectInstancer("effect_A");
+			console.log("stage all build", app.stage);
+			//console.log("effectContainer", app.stage.children[2].children[2],app.stage.children[2].children[2].width,app.stage.children[2].children[2].height);
+			//console.log("effectContainer", app.stage.children[2].children[2].x,app.stage.children[2].children[2].y);
             app.ticker.add(function(){
                 tick += 1;
-                tick = tick%timeLength;
-            
-                console.log("stage all build", app.stage);
-                    for(var i=1;i<6;i++){
-                        var effectContainer = app.stage.children[i]
-                        console.log("effectContainer",i, effectContainer,effectContainer.width,effectContainer.height);
+                eventTick = tick%timeLength;
+            	
+                    for(var i=1;i<101;i++){
+                        //var effectContainer = app.stage.children[i]
+                        //console.log("effectContainer",i, effectContainer,effectContainer.width,effectContainer.height);
+						//console.log("effectContainer",i, effectContainer,effectContainer.width,effectContainer.height);
+
                         for (var j=0;j<ppCount;j++){
                             var ppIDKey = ppID[i];
-                            var x = motionData[ppID[i]].translate[tick].x
-                            var y = motionData[ppID[i]].translate[tick].y
-                            effectContainer.children[j].x = x
-                            effectContainer.children[j].y = y
+                            var x = motionData[ppID[j]].translate[eventTick].x;
+                            var y = motionData[ppID[j]].translate[eventTick].y;
+							var w = motionData[ppID[j]].scale[eventTick].w;
+							var h = motionData[ppID[j]].scale[eventTick].h;
+							var rotation = motionData[ppID[j]].rotate[eventTick].angle;
+							var trans = motionData[ppID[j]].translate[eventTick].trans;
+							var vis = motionData[ppID[j]].translate[eventTick].vis;
 
+		
+							
+							
+                            app.stage.children[i].children[j].x = x +Math.sin(i*0.3)*50;
+                            app.stage.children[i].children[j].y = y;
+							//app.stage.children[i].children[j].width = w;
+							//app.stage.children[i].children[j].height = h;
+							app.stage.children[i].children[j].alpha = trans;
+							//console.log("pp",app.stage.children[i].children[j]);
                         }
-                        //effectContainer.x =Math.random()*500;
-                        //effectContainer.y =Math.random()*500;
+						//instancer transforme
+                       // app.stage.children[i].x =Math.sin(eventTick/57.3)*540+i;
+						//app.stage.children[i].y = Math.sin(eventTick/57.3)*540+i;
+						//app.stage.children[i].rotation = 0.1*tick;
+						//app.stage.children[i].scale.set(tick*0.01);
 
+                        //effectContainer.y += 1
                         //console.log("effectContainer_child",i, effectContainer.children[1]);
                     };
             });
+			
             
             //app.ticker.add(function(){
             //     defineEffectInstancer("effect_A",tick)
             //});
-			*/
+			
 		};
 
 
@@ -467,15 +438,19 @@
 			console.log("effectList", effectList);
 			console.log("effectList_effect_A", effectList.effect_A);
 			var callEffectList = effectList[effectName]
-			var ppCount = callEffectList.motionData.metaData.particle_num;
+			var ppCount = callEffectList.ppCount;
 			var ppID = callEffectList.ppID;
 			var frameList = callEffectList.frameList;
 			var motionData = callEffectList.motionData;
 			var timeStart = callEffectList.motionData.metaData.frame_start;
 			var timeEnd = callEffectList.motionData.metaData.frame_end;
 			var timeLength = timeEnd - timeStart + 1;
+			var containerHeight = callEffectList.motionData.metaData.source_height;
+			var containerWidth = callEffectList.motionData.metaData.source_width;
+			console.log("containerHeight", containerHeight,containerWidth);
+
 			//var instancerCount = callEffectList.motionData.metaData.instancer_num;
-			var instancerCount = 5;
+			var instancerCount = 100;
 			// console.log("effectList_effect_A_all","ppCount",ppCount,"ppID",ppID,"frameList",frameList,"motionData",motionData,"timeLength",timeLength,"instancerCount",instancerCount);
 
 			var animSpritesList = [];
@@ -486,46 +461,40 @@
 
 			for (var i = 0; i < instancerCount; i++) { //複製pp到instancer中
 				var effectContainer = new PIXI.Container();
-				effectContainer.name = "effect";
+				effectContainer.name = "container_effect";
 
 				app.stage.addChild(effectContainer);
 				// effectContainer.removeChildren();
 				// 設定instancer transformer
-				effectContainer.x = Math.random() * 500;
-				effectContainer.y = Math.random() * 500;
-				effectContainer.rotation = Math.random() * 300;
-				effectContainer.scale.set(0.2);
+				effectContainer.width = containerWidth;
+				effectContainer.Height = containerHeight;
+
+				//effectContainer.x = Math.random() * 500;
+				//effectContainer.y = Math.random() * 500;
+				//effectContainer.rotation = Math.random() * 300;
+				//effectContainer.scale.set(0.2);
 				//繪製邊界
 				var graphics = new PIXI.Graphics();
 				graphics.lineStyle(2, 0x0000FF, 1);
-				graphics.beginFill(0xFF700B, 1);
-				var sideLength = 100;
+				graphics.beginFill(0xFF700B, 0.1);
+				var sideLength = containerWidth;
 				graphics.drawRect(0, 0, sideLength, sideLength);
 				graphics.endFill();
-				effectContainer.addChild(graphics)
+				//effectContainer.addChild(graphics)
 
-				//編號
-				var style = new PIXI.TextStyle({
-					fontFamily: 'Arial',
-					fontSize: 25,
-					fontStyle: 'italic',
-					fontWeight: 'bold',
-					fill: ['#ffffff', '#00ff99'], // gradient
-					stroke: '#4a1850',
-					strokeThickness: 1,
-					dropShadow: true,
-					dropShadowColor: '#000000',
-					dropShadowBlur: 1,
-					dropShadowAngle: Math.PI / 1,
-					dropShadowDistance: 1,
-					wordWrap: true,
-					wordWrapWidth: 440
-				});
+				//effectContainer.x = 960;
+				//effectContainer.x = 540;
+				screenWidth =1920;
+				screenHeight =1080;
+				
+				effectContainer.pivot.x = containerWidth / 2 + effectContainer.width / 2 //freeze pivot and move to center
+				effectContainer.pivot.y = containerHeight / 2 + effectContainer.height / 2
+				effectContainer.x = screenWidth / 2;
+				effectContainer.y = screenHeight / 2;
+				effectContainer.scale.set(0.5);
 
-				//var noText = new PIXI.Text(i, style);
-				// noText.x = sideLength/2;
-				// noText.y = sideLength/2;
-				// effectContainer.addChild(noText);
+				
+				
 
 				for (var j = 0; j < ppCount; j++) { // <ppCount 為每個PP都建立一個anim event，< sampleCount 則為建立樣本數量
 					var anim = new PIXI.extras.AnimatedSprite(animSpritesList);
@@ -660,24 +629,20 @@
 		$(document).ready(function() {
 			$("#testAll").click(function() {
 
-				//var motionJsonURL = "json/effect_i_color_circle.json"
-				//var spritsImageJsonURL = "sprites/color_circle.json"
 					
 				//loader.reset();
 
-				preLoadData("json/effect_i_color_circle.json","sprites/color_circle.json","effect_A");
-				console.log("effectList_testAll",effectList);
-				console.log("effectList_effect_A",effectList.aaa);
-				console.log("effectList_effect_A",effectList["aaa"]);
+				//console.log("effectList_testAll",effectList);
+				//console.log("effectList_effect_A",effectList.effect_A);
 
 				//console.log("resources",resources);
 					
-				console.log("push TestA");
+				//console.log("push TestA");
 				//console.log("screenSize",app.renderer.screen.width,app.renderer.screen.height);
 				//console.log("loader",PIXI.loader);
 				setBG();
 				//console.log("stage start", app.stage);
-				//runAppD();
+				runAppD();
 				//defineEffect("effect_A");
 				//console.log("animPlayList",animPlayList);
 				//effectEventTransform(0,"effect_A");

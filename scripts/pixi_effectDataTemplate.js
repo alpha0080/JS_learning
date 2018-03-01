@@ -2,8 +2,8 @@ function loadGlobalData(){
     var PIXI_globalData = {
         "BGA": {
             "URL": "",
-            "width": 800,
-            "height": 800,
+            "width": 1920,
+            "height": 1080,
             "BGColor": "FFFFFF",
             "screenScale":1
         },
