@@ -89,7 +89,7 @@
 		container_BG.name = "container_BG";
 		app.stage.addChild(container_BG);
 
-		const effectList = {};
+		var effectList = {};
 		var effectDataTemplate = {
 			"spritesImageId": "",
 			"spriteImage": "",
@@ -98,6 +98,8 @@
 			"motionDataID": "",
 			"motionDataURL": "",
 			"motionData": "",
+            "instancerCount":"",
+            "instancerID":"",
 			"ppID": "",
 			"ppCount": "",
 		};
@@ -140,6 +142,10 @@
 		function setBG() {
 			//app.renderer.clear();
 			//initial stage
+           // PIXI_globalData.BGA.width = app.renderer.screen.width;
+            //PIXI_globalData.BGA.height = app.renderer.screen.height;
+            console.log("width",PIXI_globalData.BGA.width,PIXI_globalData.BGA.height);
+            console.log("PIXI_globalData",PIXI_globalData);
 
 			deleteAllChildrenInStage("event") //刪除所有名稱為 event的 container
 			//deleteAllChildrenInStage("effect")
@@ -148,35 +154,25 @@
 			//app.renderer = null;
 
 			app.start();
-			var BGW = PIXI_globalData.BGA.width;
-			var BGH = PIXI_globalData.BGA.height;
-			var BGColor = "0x" + document.getElementById("colorBGA").value.split('#')[1];
-			var BGAURL = document.getElementById("showBGA").value;
-			var BGA_Scale = PIXI_globalData.BGA.screenScale;
+			let BGW = PIXI_globalData.BGA.width;
+			let BGH = PIXI_globalData.BGA.height;
+			let BGColor = "0x" + document.getElementById("colorBGA").value.split('#')[1];
+			let BGAURL = document.getElementById("showBGA").value;
+			let BGA_Scale = PIXI_globalData.BGA.screenScale;
 			app.renderer.resize(BGW, BGH);
 
 			app.renderer.backgroundColor = BGColor;
 			//redrawRender(BG_stage);
 
-			var background = PIXI.loader.resources.BGA_image;
+			let background = PIXI.loader.resources.BGA_image;
 			background = new Sprite(TextureCache[BGAURL]);
 			background.scale.set(BGA_Scale)
 
 
-			PIXI_globalData.BGA.URL = BGAURL;
-			PIXI_globalData.BGA.width = BGW;
-			PIXI_globalData.BGA.width = BGH;
-			//var screenWidth = app.renderer.screen.width;
-			//var screenHeight =app.renderer.screen.height;
+			//PIXI_globalData.BGA.URL = BGAURL;
+			//PIXI_globalData.BGA.width = BGW;
+			//PIXI_globalData.BGA.width = BGH;
 
-
-
-
-			//console.log("appInitial",app);
-			//deleteAllChildrenInStage();
-			//console.log("stage_initial",app.stage.children.length,app.stage);
-			//var keepItem = "stage_BG"
-			//deleteAllChildrenInStageB(keepItem)
 
 			drawGrid(container_BG, BGW, BGH); //由 pixi_drawGraphic.js繪製 背景grid
 
@@ -186,103 +182,11 @@
 			};
 
 
-			// console.log("stage_END",app.stage.children.length,app.stage);
-			/*
-			app.stage.removeChildren(background);
-			var BGW = PIXI_globalData.BGA.width;
-			var BGH = PIXI_globalData.BGA.height;
-			var BGColor = "0x" + document.getElementById("colorBGA").value.split('#')[1];
-			var BGAURL = document.getElementById("showBGA").value;
-			var BGA_Scale = PIXI_globalData.BGA.screenScale;;
-			//var BG_stage = new Container()
-			//BG_stage.interactive = true
-			app.renderer.resize(BGW, BGH);
-
-			app.renderer.backgroundColor = BGColor;
-			//redrawRender(BG_stage);
-
-			var background = resources.BGA_image;
-			background = new Sprite(TextureCache[BGAURL]);
-			background.scale.set(BGA_Scale)
-
-
-			PIXI_globalData.BGA.URL = BGAURL;
-			PIXI_globalData.BGA.width = BGW;
-			PIXI_globalData.BGA.width = BGH;
-			//console.log(TextureCache.BGA_image.baseTexture.width);
-			//console.log("app.screen",app.screen)
-			
-			app.stage.addChild(background);
-			// redrawRender(BG_stage)
-            */
-			//console.log("stage_allChildren",app.stage.children);
-
-
-			//runAppC();
-			// console.log("tempAnimPlayList",tempAnimPlayList);
-			// console.log("tempAnimPlayList_container",tempAnimPlayList[ppID]);
-			// console.log("animPlayList_A",aa);
-			//console.log("animPlayList",animPlayList);
-
-			//JSON.parse(animPlayList)
-			//JSON.stringify(animPlayList)
-			//console.log("animPlayList_A",animPlayList[effect_A]);
-			//var data  = JSON.parse(animPlayList)
-			//console.log("animPlayList_A",data);
-			//var effectContainerSource = 
-			//function defineParticleTransformPreFrame(effectContainerSource,ppCount,ppID,motionData,frameIndex){
-
-			// console.log("animPlayList",animPlayList[0][0],animPlayList[0][1],animPlayList[0][2],animPlayList[0][3],5);
-
-			//console.log("stage_End, container Count,",app.stage.children.length,app.stage);
-
-			//console.log(app.stage.children["0"]);
-			//app.stage.removeChild(container_BG);
-			// console.log(app.stage.children.length);
 		};
 
 
-		function effectEventTransform(frameIndex, effectName) { //frame .app.ticker tick
-			//console.log("effect stage",app.stage);
-			//console.log("effect stage children",app.stage.children[frameIndex])
-			//Object.keys(resources[String(id)
-
-
-
-			var ppID = animPlayList[String(effectName)].ppID;
-			var effecteffectContainer = animPlayList[String(effectName)].effectContainer;
-			var timeLength = animPlayList[String(effectName)].length
-			frameIndex = frameIndex % timeLength
-			//console.log("animPlayList_target",effecteffectContainer);
-			//console.log("animPlayList_target_a",animPlayList["effect_A"]["length"]);
-
-			//console.log("ppID",ppID);
-
-
-			for (i in ppID) {
-				var ppIDKey = ppID[i];
-				var x = animPlayList[String(effectName)].motionData[ppIDKey].translate[frameIndex].x;
-				var y = animPlayList[String(effectName)].motionData[ppIDKey].translate[frameIndex].y;
-				var w = animPlayList[String(effectName)].motionData[ppIDKey].scale[frameIndex].w;
-				var h = animPlayList[String(effectName)].motionData[ppIDKey].scale[frameIndex].h;
-				var rotation = animPlayList[String(effectName)].motionData[ppIDKey].rotate[frameIndex].angle;
-				var alpha = animPlayList[String(effectName)].motionData[ppIDKey].translate[frameIndex].trans;
-				var vis = animPlayList[String(effectName)].motionData[ppIDKey].translate[frameIndex].vis;
-
-
-				var effectPP = effecteffectContainer.children[i];
-				effectPP.x = x;
-				effectPP.y = y;
-				effectPP.width = w;
-				effectPP.height = h;
-				effectPP.rotation = rotation;
-				effectPP.alpha = alpha;
-
-				//console.log("effectPP",i,effectPP,effectPP.width,effectPP.height,effectPP.rotation);
-				// console.log("x",x,"y",y,"w",w,"h",h,"rotation",rotation,"alpha",alpha,"vis",vis);
-			};
-			// /effectPP.x = 
-		};
+        
+        
 
 
 		function deleteAllChildrenInStage(deleteConteinaerName) {
@@ -324,108 +228,122 @@
 
 
 
-		function getSpritesImagesData(id, url, effectName) {
-			PIXI.loader.add(id, url)
-				.load(function(loader, resources) {
-					//console.log("frameList",resources[String(id)].data.frames);
-					//frameList = resources[String(id)].data.frames;
-					effectDataTemplate.spritesImageId = id;
-					effectDataTemplate.spriteImage = url.split('.')[0] + ".png";
-					effectDataTemplate.frameList = (Object.keys(resources[String(id)].data.frames));
-					effectDataTemplate.frameLength = (Object.keys(resources[String(id)].data.frames).length);
-					effectList[effectName] = effectDataTemplate;
-				});
-			console.log("effectList", effectList);
-		};
 
-
-		function getMotionData(id, url, effectName) {
-			PIXI.loader.add(id, url)
-				.load(function(loader, resources) {
-					var motionDataKeysCount = Object.keys(resources[String(id)].data).length;
-					var motionDataKeys = Object.keys(resources[String(id)].data)
-					effectDataTemplate.motionDataID = id;
-					effectDataTemplate.motionDataURL = url;
-					effectDataTemplate.motionData = resources[String(id)].data;
-					var ppIDList = [];
-
-					for (var i = 0; i < motionDataKeysCount; i++) {
-						//console.log("show motionData", i ,motionDataKeys[i],motionDataKeys[i].slice(0,3));
-						if (motionDataKeys[i].slice(0, 3) == "pId") {
-							//console.log("show motionData 3",motionDataKeys[i] );
-							ppIDList.push(motionDataKeys[i]);
-						};
-					};
-					//console.log("ppidList",ppIDList);
-					effectDataTemplate.ppID = ppIDList;
-					effectDataTemplate.ppCount = resources[String(id)].data.metaData.particle_num;
-					effectList[effectName] = effectDataTemplate;
-
-
-				});
-			console.log("effectList", effectList);
-
-		};
-
-
-		function runAppD() {
-
-			var callEffectList = effectList["effect_A"]
-			var ppID = callEffectList["ppID"]
-			console.log("callEffectList", effectList["effect_A"]);
-			console.log("ppID", ppID);
-
+		function runAppD(effectName) {
+           // console.log("PIXI_Global",PIXI_globalData)
+			var callEffectList = effectList[effectName];
+			//var ppID = callEffectList["ppID"];
+			//console.log("callEffectList", effectList["effect_A"]);
+			//console.log("ppID", ppID);
+            
 			var ppCount = callEffectList.ppCount;
 			var motionData = callEffectList.motionData;
 			var timeStart = callEffectList.motionData.metaData.frame_start;
 			var timeEnd = callEffectList.motionData.metaData.frame_end;
 			var timeLength = timeEnd - timeStart +1; 
 			var tick = 0;
-            var instancerCount = effectList["effect_A"].motionData.metaData.instancer_num;
+            var instancerCount =callEffectList.instancerCount;
+            //var instancerID =callEffectList.instancerID;
+            var instancerCountMulti =1;
 
-			console.log("timeLength",timeLength,"ppCount",ppCount);
-            defineEffectInstancer("effect_A");
-			console.log("stage all build", app.stage);
+			//console.log("instancerCount",instancerCount,"instancerID",instancerID);
+
+			//console.log("timeLength",timeLength,"ppCount",ppCount);
+            defineEffectInstancer(effectName);
+			//console.log("stage all build", app.stage);
 			//console.log("effectContainer", app.stage.children[2].children[2],app.stage.children[2].children[2].width,app.stage.children[2].children[2].height);
 			//console.log("effectContainer", app.stage.children[2].children[2].x,app.stage.children[2].children[2].y);
             app.ticker.add(function(){
                 tick += 1;
                 eventTick = tick%timeLength;
-            	
-                    for(var i=1;i<instancerCount+1;i++){
+                    for (var c =0;c<instancerCountMulti;c++){
+                                            for(var i=1;i<instancerCount+1;i++){
                         //var effectContainer = app.stage.children[i]
                         //console.log("effectContainer",i, effectContainer,effectContainer.width,effectContainer.height);
 						//console.log("effectContainer",i, effectContainer,effectContainer.width,effectContainer.height);
+                        let instancerKey = "instancer_" +String(i-1);
+                        let instancerData =  motionData.instancer[instancerKey]
+                        let offset =instancerData.offset;   //instancer frame offset
+                        
+                        //console.log(PIXI_globalData[effectName].adjust)
+                        var adjustTrans= PIXI_globalData[effectName].adjust.spritesTrans;
+                        var adjustSize= PIXI_globalData[effectName].adjust.spritesSize;
+                        var adjustRotation= PIXI_globalData[effectName].adjust.spritesRotation;
+                        var adjustSpeed= PIXI_globalData[effectName].adjust.speed;
+                        var adjustBlur= PIXI_globalData[effectName].adjust.spritesBlur;
+                       // console.log("adjustTrans",adjustTrans,"adjustSize",adjustSize,"adjustRotation",adjustRotation,"adjustSpeed",adjustSpeed,adjustBlur)
+                       // let containerX = instancerData.translate[eventTick-containerXtimeOffset].x;
+                        //let containerY = instancerData.translate[eventTick-containerXtimeOffset].y;
+                      //  console.log("containerInfo",instancerKey,offset);//,containerX,containerY);
+                        //let offsetEventTick = offset - eventTick
+                        if((offset - eventTick)>0){let offsetEventTick =0;
+                                                 var trans =0;
+                                               //  console.log("instancerInfo",offsetEventTick,trans);
+                                                 }else{
+                                                     let offsetEventTick = eventTick -offset
+                                                     var containerX = instancerData.translate[offsetEventTick].x;
+                                                     var containerY = instancerData.translate[offsetEventTick].y;
+                                                     var containerTrans = instancerData.translate[offsetEventTick].trans;
+                                                     var containerW = instancerData.scale[offsetEventTick].w;
+                                                     var containerH = instancerData.scale[offsetEventTick].h;
+                                                     var containerRotation = instancerData.rotate[offsetEventTick].angle;
+                                                     // console.log("instancerInfo",containerX,containerY);
 
-                        for (var j=0;j<ppCount;j++){
-                            var ppIDKey = ppID[i];
-                            var x = motionData[ppID[j]].translate[eventTick].x;
-                            var y = motionData[ppID[j]].translate[eventTick].y;
-							var w = motionData[ppID[j]].scale[eventTick].w;
-							var h = motionData[ppID[j]].scale[eventTick].h;
-							var rotation = motionData[ppID[j]].rotate[eventTick].angle;
-							var trans = motionData[ppID[j]].translate[eventTick].trans;
-							var vis = motionData[ppID[j]].translate[eventTick].vis;
-
-		
-							
-							
-                            app.stage.children[i].children[j].x = x +Math.sin(i*3)*300;
-                            app.stage.children[i].children[j].y = y +Math.sin(i*3)*300;;
-							//app.stage.children[i].children[j].width = w;
-							//app.stage.children[i].children[j].height = h;
-							app.stage.children[i].children[j].alpha = trans;
-							//console.log("pp",app.stage.children[i].children[j]);
-                        }
+                                                 };
 						//instancer transforme
-                       // app.stage.children[i].x =Math.sin(eventTick/57.3)*540+i;
-						//app.stage.children[i].y = Math.sin(eventTick/57.3)*540+i;
+                        //var instX = motionData[instancer]
+                        app.stage.children[i].x = containerX;
+						app.stage.children[i].y = containerY;
+                        //app.stage.children[i].width = containerW;
+                        //app.stage.children[i].height = containerH;
+                        //app.stage.children[i].alpha = containerTrans;
+                        //app.stage.children[i].rotation = -containerRotation/57.3;
 						//app.stage.children[i].rotation = 0.1*tick;
 						//app.stage.children[i].scale.set(tick*0.01);
 
                         //effectContainer.y += 1
-                        //console.log("effectContainer_child",i, effectContainer.children[1]);
+                       // console.log("effectContainer_child",containerX,containerY,containerTrans,containerW,containerH,containerRotation);
+
+                        for (var j=0;j<ppCount;j++){
+                            let ppIDKey = "pId_"+String(j)
+
+                            if((offset - eventTick)>0){let offsetEventTick =0;
+                                                     var trans =0;
+                                                     var x= 0;
+                                                     var y= 0;
+                                                     var w = 0;
+                                                     var h = 0;
+                                                     var rotation = 0;
+                                                     let vis = false  
+                                                     //console.log("instancerInfo",offsetEventTick,alpha);
+                                                     }else{
+                                                            let offsetEventTick = eventTick -offset;
+                                                            var x = motionData[ppIDKey].translate[offsetEventTick].x;
+                                                            var y = motionData[ppIDKey].translate[offsetEventTick].y;
+                                                            var w = motionData[ppIDKey].scale[offsetEventTick].w * adjustSize ;
+                                                            var h = motionData[ppIDKey].scale[offsetEventTick].h * adjustSize ;
+                                                            var rotation = motionData[ppIDKey].rotate[offsetEventTick].angle +adjustRotation;
+                                                            var trans = motionData[ppIDKey].translate[offsetEventTick].trans * adjustTrans;
+                                                            var vis = motionData[ppIDKey].translate[offsetEventTick].vis;
+                                                          //console.log("instancerInfo",containerX,containerY);
+
+                                                     };
+		
+							
+							
+                            app.stage.children[i].children[j].x = x
+                            app.stage.children[i].children[j].y = y
+							app.stage.children[i].children[j].width = w;
+							app.stage.children[i].children[j].height = h;
+							app.stage.children[i].children[j].alpha = trans;
+                            app.stage.children[i].children[j].rotation = -rotation/57.3;
+
+							//console.log("pp",app.stage.children[i].children[j]);
+                        }
+
                     };
+                    };
+
             });
 			
             
@@ -437,8 +355,7 @@
 
 
 		function defineEffectInstancer(effectName) {
-			console.log("effectList", effectList);
-			console.log("effectList_effect_A", effectList.effect_A);
+
 			var callEffectList = effectList[effectName]
 			var ppCount = callEffectList.ppCount;
 			var ppID = callEffectList.ppID;
@@ -449,9 +366,13 @@
 			var timeLength = timeEnd - timeStart + 1;
 			var containerHeight = callEffectList.motionData.metaData.source_height;
 			var containerWidth = callEffectList.motionData.metaData.source_width;
+            var instancerCount =callEffectList.instancerCount;
+            var instancerID =callEffectList.instancerID;
+            
 			console.log("containerHeight", containerHeight,containerWidth);
+			console.log("instancerCount", instancerCount,instancerID);
 
-			var instancerCount = effectList[effectName].motionData.metaData.instancer_num;
+
 			//var instancerCount = 100;
 			// console.log("effectList_effect_A_all","ppCount",ppCount,"ppID",ppID,"frameList",frameList,"motionData",motionData,"timeLength",timeLength,"instancerCount",instancerCount);
 
@@ -482,25 +403,39 @@
 				var sideLength = containerWidth;
 				graphics.drawRect(0, 0, sideLength, sideLength);
 				graphics.endFill();
-				//effectContainer.addChild(graphics)
+				//effectContainer.addChild(graphics);
 
 				//effectContainer.x = 960;
 				//effectContainer.x = 540;
-				screenWidth =1920;
-				screenHeight =1080;
+				screenWidth = app.renderer.screen.width;
+				screenHeight =app.renderer.screen.height;
 				
 				effectContainer.pivot.x = containerWidth / 2 + effectContainer.width / 2 //freeze pivot and move to center
 				effectContainer.pivot.y = containerHeight / 2 + effectContainer.height / 2
 				effectContainer.x = screenWidth / 2;
 				effectContainer.y = screenHeight / 2;
-				effectContainer.scale.set(0.5);
+				//effectContainer.scale.set(1);
 
 				
 				
 
 				for (var j = 0; j < ppCount; j++) { // <ppCount 為每個PP都建立一個anim event，< sampleCount 則為建立樣本數量
 					var anim = new PIXI.extras.AnimatedSprite(animSpritesList);
+                    
+                    let frameSpeed= PIXI_globalData[effectName].adjust.frameSpeed;
+                    let spritesFrameOffset= PIXI_globalData[effectName].adjust.spritesFrameOffset;
+                    let spritesSizeRandom= PIXI_globalData[effectName].adjust.spritesSizeRandom;
+                    let spritesRotationRandom= PIXI_globalData[effectName].adjust.spritesRotationRandom;
+                   // let spritesRotationRandom= PIXI_globalData[effectName].adjust.spritesRotationRandom;
+
+                    
+                    anim.gotoAndPlay(Math.random() * spritesFrameOffset);
+                    anim.animationSpeed = frameSpeed;
+                    anim.scale.set(Math.random()*spritesSizeRandom);
+
+                    
 					anim.play();
+                    
 					effectContainer.addChild(anim);
 
 					//設定PP transformer
@@ -513,173 +448,23 @@
 		};
 
 
-		function defineEffect(effectName) {
-
-
-			//deleteAllChildrenInStage("effect");
-			var effectContainer = new PIXI.Container();
-			//console.log("effectContainer start",effectContainer.children.length,effectContainer);    //會等於 ppCount，particle數量
-
-			effectContainer.name = "effect";
-
-			app.stage.addChild(effectContainer);
-			effectContainer.removeChildren();
-
-			var callEffectList = effectList[effectName]
-			//console.log("Call effectList",effectList);
-			//console.log("Call effectList",effectList[effectName]);
-
-			var ppCount = callEffectList.ppCount;
-			var ppID = callEffectList.ppID;
-			var frameList = callEffectList.frameList;
-			var motionData = callEffectList.motionData;
-			var timeStart = motionData.metaData.frame_start;
-			var timeEnd = motionData.metaData.frame_end;
-
-
-			//console.log("ppCount",ppCount);
-			//console.log("ppID",ppID);
-			//console.log("frameList",frameList);
-			// console.log("motionData",motionData);
-
-			var animSpritesList = [];
-			for (var i in frameList) {
-
-				animSpritesList.push(PIXI.Texture.fromFrame(frameList[i]));
-			};
-			//console.log("animSpritesList",animSpritesList);
-			for (var i = 0; i < ppCount; i++) { // <ppCount 為每個PP都建立一個anim event，< sampleCount 則為建立樣本數量
-				//var stageB = new container()
-				var anim = new PIXI.extras.AnimatedSprite(animSpritesList);
-				// console.log("anim",anim);
-				//anim.animationSpeed = frameSpeed;
-				//anim.rotation = spritesRotation;
-				// anim.gotoAndPlay = Math.random()*spritesFrameOffset;
-				//anim.alpha = spritesTrans;
-				//anim.scale.set(1);
-				//anim.anchor.set(Math.random(0.4,0.6));
-
-				//console.log("container.width",container.width);
-
-				anim.play();
-				effectContainer.addChild(anim);
-
-			};
-
-			tempAnimPlayList.effectContainer = effectContainer,
-				tempAnimPlayList.ppCount = ppCount,
-				tempAnimPlayList.ppID = ppID,
-				tempAnimPlayList.motionData = motionData,
-				tempAnimPlayList.timeStart = timeStart,
-				tempAnimPlayList.timeEnd = timeEnd,
-				tempAnimPlayList.length = (timeEnd - timeStart + 1);
-			animPlayList["effect_A"] = tempAnimPlayList;
-			//var tempAnimPlayList =[];
-
-			// tempAnimPlayList.effectName.push(ppCount);
-			//tempAnimPlayList.effectName.push(ppID);
-			//tempAnimPlayList.effectName.push(motionData);
-
-			//console.log("effectContainer end",effectContainer.children.length,effectContainer);    //會等於 ppCount，particle數量
-			//defineParticleTransformPreFrame(effectContainer,ppCount,ppID,motionData,1);  //為容器中每個particle 定義transform 資訊
-			//console.log("animPlayList",animPlayList);
-			//freezeTransform(effectContainer,400,400);
-		};
-
-
-
-
-		function runAppC() {
-			var tick = 0;
-			app.ticker.add(function() {
-				tick += 1;
-				// var timeLengthA = 
-				//tickA = tick % animPlayList[0][6];
-				// console.log("tick",tick);
-				//console.log("animPlayList",animPlayList[0][0],animPlayList[0][1],animPlayList[0][2],animPlayList[0][3],tick);
-				//defineParticleTransformPreFrame(animPlayList[0][0],animPlayList[0][1],animPlayList[0][2],animPlayList[0][3],tick);
-				effectEventTransform(tick, "effect_A");
-
-			});
-		};
-
-
-		function defineParticleTransformPreFrame(effectContainerSource, ppCount, ppID, motionData, frameIndex) {
-			console.log("effectContainerSource", effectContainerSource);
-			console.log("motionData", motionData);
-
-			for (i in ppID) {
-				var ppIDKey = ppID[i];
-				var x = motionData[ppID[i]].translate[frameIndex].x
-				var y = motionData[ppID[i]].translate[frameIndex].y
-				var vis = motionData[ppID[i]].translate[frameIndex].vis
-				var index = motionData[ppID[i]].translate / [frameIndex].index
-				//console.log("PPID",motionData,ppID[i],typeof ppID[i],motionData[ppID[i]]);
-				console.log("x", x, "y", y, "vis", vis, "index", "index");
-
-				//var x=
-
-				effectContainerSource.children[i].x = Math.random() * 300;
-				effectContainerSource.children[i].y = Math.random() * 300;
-
-				//console.log()
-			};
-		};
+		
 
 
 
 		$(document).ready(function() {
 			$("#testAll").click(function() {
-
-					
-				//loader.reset();
-
-				//console.log("effectList_testAll",effectList);
-				//console.log("effectList_effect_A",effectList.effect_A);
-
-				//console.log("resources",resources);
-					
-				//console.log("push TestA");
-				//console.log("screenSize",app.renderer.screen.width,app.renderer.screen.height);
-				//console.log("loader",PIXI.loader);
+               // loader.reset();
+               // preLoadMotionSources("json/effect_a_dot.json");
+               // app.ticker.stop();
+                
+                //console.log("loader",loader.resources);
+               // preLoadSpritesSources("sprites/color_circle.json");
+                console.log(PIXI_globalData);
 				setBG();
 				//console.log("stage start", app.stage);
-				runAppD();
-				//defineEffect("effect_A");
-				//console.log("animPlayList",animPlayList);
-				//effectEventTransform(0,"effect_A");
-				//runAppC()
-				//var emptyContainer = new PIXI.Container();
-				// emptyContainer.name = "notUsed";
-				//app.stage.addChild(emptyContainer);
+				runAppD("effect_A");
 
-				//app.renderer.clear();
-				//var frameListA = getEffectData("pp","sprites/color_circle.json");
-				//console.log("frameListA",frameListA);
-				//var frameListA = [];
-				//console.log("effectList",effectList);
-
-
-				/*;
-				app.ticker.stop();
-				var tick = 0;
-                console.log("PIXI_globalData",PIXI_globalData);
-				console.log("children", app.stage.children.length);
-
-
-				console.log("app", app);
-				console.log("app.stage", app.stage);
-				
-
-				console.log('resources_spritesImagesJson', resources.spritesImagesJsonA);
-				frameListA = Object.keys(resources.spritesImagesJsonA.data.frames);
-				motionData_A = resources["MotionJsonA"];
-                var inputIndex = "inputA"
-				build_elementResourceList(frameListA, motionData_A, container_A,inputIndex);
-				console.log("container_A",container_A);
-				var rtA = referFromElementResource(container_A,motionData_A);
-				runApp(container_A,motionData_A,rtA);
-				*/
 			});
 			$("#resetA").click(function() {
 				console.log("resetA")
@@ -687,22 +472,21 @@
 			});
 			$("#applyA").click(function() {
 
-				console.log(PIXI_globalData.inputA.spritesImageMode, typeof PIXI_globalData.inputA.spritesImageMode);
+				console.log(PIXI_globalData.effect_A.spritesImageMode, typeof PIXI_globalData.effect_A.spritesImageMode);
 				//frameListA = Object.keys(resources.spritesImagesJsonA.data.frames);
-				if (PIXI_globalData.inputA.spritesImageMode == 0) {
+				if (PIXI_globalData.effect_A.spritesImageMode == 0) {
 					console.log("singal frame");
 					var stillImageA = document.getElementById("stillImageNameA").value;
-					PIXI_globalData.inputA.stillImageName = stillImageA;
+					PIXI_globalData.effect_A.stillImageName = stillImageA;
 
 					appendListInfoIntoTextarea(frameListA);
 
 					checkImageInSpritesSheet(stillImageA, frameListA);
 				} else {
 					console.log("sequence frame");
-					PIXI_globalData.inputA.stillImageName = "sequence images";
-					var spritesSpeed = PIXI_globalData.inputA.adjust.frameSpeed;
+					PIXI_globalData.effect_A.stillImageName = "sequence images";
+					var spritesSpeed = PIXI_globalData.effect_A.adjust.frameSpeed;
 					console.log(spritesSpeed)
-					buildSpritesSheetSequence(frameListA, spritesSpeed);
 
 				};
 
@@ -801,43 +585,7 @@
 
 		};
 
-		function RunAppB() {
-			var tick = 0;
-			app.ticker.start();
 
-			var stageChildrenCount = app.stage.children.length;
-
-			var screenWidth = app.renderer.screen.width;
-			var screenHeight = app.renderer.screen.height;
-
-			app.ticker.add(function() {
-				tick += 0.1;
-				// showMessage()
-				for (var i = 1; i < stageChildrenCount; i++) {
-					var getContainer = app.stage.children[i]
-					freezeTransform(getContainer, screenWidth, screenHeight);
-					defineParticleTransformPreFrame(effectContainerSource, ppCount, ppID, motionData)
-					// getContainer.pivot.x =screenWidth/2//+squareWidth/2;    //freeze pivot and move to center
-					//  getContainer.pivot.y =screenHeight/2//+squareWidth/2;
-					//  getContainer.x = screenWidth/2;
-					//  getContainer.y = screenHeight/2;
-					//app.stage.children[i].x = 100;
-					//app.stage.children[i].y = Math.random()*100 ;
-					//app.stage.children[i].pivot.x = app.stage.children[i].width / 2;
-					// app.stage.children[i].pivot.y = app.stage.children[i].height / 2;
-					// app.stage.children[i].anchor= 1;
-					//app.stage.children[i].pivot.x = 400;
-					// app.stage.children[i].pivot.y = 400;
-					// getContainer.x = Math.random()*100;
-					// getContainer.y = Math.random()*100;
-
-					//defineParticleTransformPreFrame(effectContainer,ppCount,ppID,motionData,1)
-					//getContainer.rotation = tick;
-					//getContainer.scale.set((tick*0.1)%1);
-					//app.stage.children[i].rotation = Math.random()*360;
-				};
-			});
-		};
 
 		function appendListInfoIntoTextarea(dataList) {
 			//$("#info").val("images:");
@@ -866,35 +614,6 @@
 
 		//創建anim Sprites event List  , animSpritesList(將序列的sprties images建立成一個連續撥放的list),anim(使用PIXI.extras.AnimatedSprite將 animSpritesList建立為PIXI的動態撥放事件)
 
-		function buildSpritesSheetSequence(frameList, spritesSpeed) {
-			var animSpritesList = []
-
-			for (var i in frameList) {
-				//var imageItem = Sprite.fromFrame(spritesList[i]);
-				var imageItem = Texture.fromFrame(frameList[i])
-				//console.log("imageItem",imageItem);
-				animSpritesList.push(imageItem)
-			};
-			var sampleAnim = new PIXI.extras.AnimatedSprite(animSpritesList);
-			//console.log("anim",anim)
-			sampleAnim.animationSpeed = spritesSpeed;
-			//check anim scale ,width and height
-			if (sampleAnim.width >= sampleAnim.height) {
-				var animPreViewScale = (miniApp.screen.width / sampleAnim.width);
-			} else {
-				var animPreViewScale = (miniApp.screen.width / sampleAnim.height)
-			};
-
-
-			sampleAnim.scale.set(animPreViewScale);
-			sampleAnim.anchor.set(0.5);
-
-			sampleAnim.x = miniApp.screen.width / 2;
-			sampleAnim.y = miniApp.screen.width / 2;
-			sampleAnim.play();
-			miniApp.stage.removeChild(sampleAnim)
-			miniApp.stage.addChild(sampleAnim)
-		};
 
 		// 建立PP的樣本素材事件
 		function build_elementResourceList(frameList, motionData, container, inputIndex) {
@@ -998,39 +717,7 @@
 
 		//var ppCount = 100
 
-		function runApp(container, motionData, rt) {
-			console.log("stage", app.stage.children);
-			console.log("rt", rt);
 
-			//console.log("stageChild0",app.stage.children[0]);
-			var ppData = motionData.data;
-			var ppID = Object.keys(ppData);
-			var ppCount = ppID.length - 2; //扣除 instancer 與 mataData
-			//var ppKey = 'pId_' + String(pp);
-			var timeLength = ppData[ppID[0]].translate.length;
-			var instancerData = motionData.data.instancer
-			var instancerID = Object.keys(instancerData);
-			var instancerCount = motionData.data.metaData.instancer_num
-
-			var tick = 0
-
-			app.ticker.stop();
-			//deleteAllChildrenInStage();
-			console.log(app.ticker.FPS);
-			app.ticker.start();
-			app.ticker.add(function() {
-				var effectSpeed = PIXI_globalData.inputA.adjust.speed;
-
-				tick += effectSpeed;
-				eventTick = parseInt(tick);
-				eventTick = eventTick % timeLength
-				var inputA = "inputA"
-				defineInstanceTransform(instancerData, instancerCount, eventTick);
-				runContainMotion(container, instancerData, instancerCount, ppData, ppCount, timeLength, eventTick, inputA)
-				//container += 50;
-				app.renderer.render(container, rt);
-			});
-		};
 
 		//定義instancer的資訊
 		function defineInstanceTransform(instancerData, instancerCount, eventTick) { // i =0,app.stage.children[0]是背景
@@ -1048,54 +735,6 @@
 		};
 
 
-
-		function runContainMotion(container, instancerData, instancerCount, ppData, ppCount, timeLength, eventTick, inputIndex) {
-
-			var spritesSize = PIXI_globalData[inputIndex].adjust.spritesSize;
-			var effectSpeed = PIXI_globalData.inputA.adjust.speed;
-
-			var frameSpeed = PIXI_globalData[inputIndex].adjust.frameSpeed;
-			var spritesSizeRandom = PIXI_globalData[inputIndex].adjust.spritesSizeRandom;
-			var spritesRotation = PIXI_globalData[inputIndex].adjust.spritesRotation;
-			var spritesRotationRandom = PIXI_globalData[inputIndex].adjust.spritesRotationRandom;
-			var spritesTrans = PIXI_globalData[inputIndex].adjust.spritesTrans;
-			var spritesBlur = PIXI_globalData[inputIndex].adjust.spritesBlur;
-			//console.log("stage",app.stage.children);
-			//console.log("stageChild0",app.stage.children[0]);
-			//app.stage.children[0].x += eventTick;
-			/*
-            for(var c =0;c<instancerCount;c++){ //instancerCount
-				instancerKey = "instancer_" +String(c);
-              //  app.stage.children[c].x = instancerData[instancerKey].translate[eventTick].x-512;
-              //  app.stage.children[c].y = instancerData[instancerKey].translate[eventTick].y-512;
-				container.x =instancerData[instancerKey].translate[eventTick].x
-				container.y =instancerData[instancerKey].translate[eventTick].y
-				
-				console.log("container",container);
-				console.log("instancePossition",app.stage.children[c].x,app.stage.children[c].y,app.stage.children[c].pivot.x,app.stage.children[c].pivot.y)
-            };
-			*/
-			for (var pp = 0; pp < ppCount; pp++) {
-
-				var ppKey = 'pId_' + String(pp);
-
-				var x = ppData[ppKey].translate[eventTick].x;
-				var y = ppData[ppKey].translate[eventTick].y;
-				var width = ppData[ppKey].scale[eventTick].w;
-				var height = ppData[ppKey].scale[eventTick].h;
-				var trans = ppData[ppKey].translate[eventTick].trans;
-				var rotation = (ppData[ppKey].rotate[eventTick].angle);
-
-				container.children[pp].x = x;
-				container.children[pp].y = y;
-				container.children[pp].width = width * spritesSize;
-				container.children[pp].height = height * spritesSize;
-				container.children[pp].alpha = trans * spritesTrans;
-
-				container.children[pp].rotation = -((rotation / 57.3));
-
-			};
-		};
 
 
 		// 將素材依據 motion data，放入對應位置，並調整編輯
@@ -1563,7 +1202,7 @@
 		var selText = $(this).text();
 		$("#menuA_blendMode").text(selText);
 
-		PIXI_globalData.inputA.blendMode = selText
+		PIXI_globalData.effect_A.blendMode = selText
 	});
 
 	$("#inputBGA").fileinput(KJImageInputStyleA);
@@ -1584,11 +1223,11 @@
 	$(document).ready(function() {
 		$("#optionsRadiosA1").click(function() {
 			console.log('still Image');
-			PIXI_globalData.inputA.spritesImageMode = 0;
+			PIXI_globalData.effect_A.spritesImageMode = 0;
 		});
 		$("#optionsRadiosA2").click(function() {
 			console.log('sequence Images');
-			PIXI_globalData.inputA.spritesImageMode = 1;
+			PIXI_globalData.effect_A.spritesImageMode = 1;
 		});
 	});
 
@@ -1602,45 +1241,29 @@
 		// console.log(event, data, previewId, index, 'fileloaded');
 		// console.log(data.name);
 		$("#showMotionJsonA").val(data.name);
-		delete loader.resources["MotionJsonA"];
-		var jsonURL = "json/" + data.name
-		//PIXI_loader("MotionJsonA", jsonURL); //load json file
-		// console.log("jsonURL", jsonURL);
-		// console.log('loader', resources);
-		//motionData_A = resources["MotionJsonA"]
-		PIXI_globalData.inputA.motionJson = jsonURL;
-		//console.log(motionData_A)
-		getMotionData("MotionJsonA", jsonURL, "effect_A");
+		let url = "json/" + data.name;
+		PIXI_globalData.effect_A.motionJson = url;
+        let id = "MotionJsonA";
+        let effectName = "effect_A";
+		getMotionData(id, url, effectName);
 	});
 
-
+    
+    
 
 	$("#inputSpriteJsonA").fileinput(KJJsonInputStyleA); //load spritesImages jsonA
 
 	$('#inputSpriteJsonA').on('fileloaded', function(event, data, previewId, index) {
 
 		$("#showSpriteJsonA").val(data.name);
-		delete loader.resources["spritesImagesJsonA"];
-		delete loader.resources["spritesImagesJsonA_image"];
-		var jsonURL = "sprites/" + data.name
-		//PIXI_loader("spritesImagesJsonA", jsonURL);
-		var imgURL = jsonURL.split('.')[0] + ".png"
 
-		PIXI_globalData.inputA.spritesJson = jsonURL;
-		PIXI_globalData.inputA.spritesImage = imgURL;
-		//frameListA = resources["spritesImagesJsonA"];//Object.keys(resources.spritesImagesJsonA.data.frames);
-		getSpritesImagesData("spritesImagesJsonA", jsonURL, "effect_A");
-		//console.log("frameListA",frameListA);
-		//var dd = PIXI.loader.resources["spritesImagesJsonA"];
-		//loader.load()
-		//console.log("read spritesImageJsonA",dd["data"]);
-
-
-
-
-		//$("#info").val("");
-		//$("#info").append("admin:"+$("#talk").val()+"\n");  
-
+		let url = "sprites/" + data.name
+		var imgURL = url.split('.')[0] + ".png"
+        let id = "spritesImagesJsonA";
+        let effectName = "effect_A";
+		PIXI_globalData.effect_A.spritesJson = url;
+		PIXI_globalData.effect_A.spritesImage = imgURL;
+		getSpritesImagesData(id, url,effectName);
 	});
 
 
@@ -1653,8 +1276,8 @@
 		var jsonURL = "sprites/" + data.name
 		PIXI_loader("stageDescriptJsonA", jsonURL);
 
-		PIXI_globalData.inputA.stageDescriptJsonFile = jsonURL;
-		PIXI_globalData.inputA.stageDescriptJsonData = "NONE";
+		PIXI_globalData.effect_A.stageDescriptJsonFile = jsonURL;
+		PIXI_globalData.effect_A.stageDescriptJsonData = "NONE";
 		// console.log('PIXI_globalData',PIXI_globalData.inputA)
 	});
 
@@ -1703,7 +1326,6 @@
 	function myFunction() {
 		deleteAllChildrenInStage("container_BG");
 		console.log(miniApp.screen.width);
-		effectEventTransform(1, "effect_A")
 	};
 
 	var openFile = function(event) {

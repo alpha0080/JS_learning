@@ -12,7 +12,7 @@ $(function() {
         slide: function(event, ui) {
             handle.text(ui.value);
             //console.log(ui.value);
-            PIXI_globalData.inputA.adjust.speed = ui.value
+            PIXI_globalData.effect_A.adjust.speed = ui.value
         }
     });
 });
@@ -29,7 +29,7 @@ $(function() {
         slide: function(event, ui) {
             handle.text(ui.value);
            // console.log(ui.value);
-            PIXI_globalData.inputA.adjust.frameSpeed = ui.value
+            PIXI_globalData.effect_A.adjust.frameSpeed = ui.value
         }
     });
 });
@@ -46,7 +46,7 @@ $(function() {
         slide: function(event, ui) {
             handle.text(ui.value);
            // console.log(ui.value);
-            PIXI_globalData.inputA.adjust.spritesSize = ui.value
+            PIXI_globalData.effect_A.adjust.spritesSize = ui.value
         }
     });
 });
@@ -63,7 +63,7 @@ $(function() {
         slide: function(event, ui) {
             handle.text(ui.value);
            // console.log(ui.value);
-            PIXI_globalData.inputA.adjust.spritesSizeRandom = ui.value
+            PIXI_globalData.effect_A.adjust.spritesSizeRandom = ui.value
 
         }
     });
@@ -81,7 +81,7 @@ $(function() {
         slide: function(event, ui) {
             handle.text(ui.value);
            // console.log(ui.value);
-            PIXI_globalData.inputA.adjust.spritesRotation = ui.value
+            PIXI_globalData.effect_A.adjust.spritesRotation = ui.value
         }
     });
 });
@@ -99,7 +99,7 @@ $(function() {
         slide: function(event, ui) {
             handle.text(ui.value);
            // console.log(ui.value);
-            PIXI_globalData.inputA.adjust.spritesRotationRandom = ui.value
+            PIXI_globalData.effect_A.adjust.spritesRotationRandom = ui.value
         }
     });
 });
@@ -116,7 +116,7 @@ $(function() {
         step: 1,
         slide: function(event, ui) {
             handle.text(ui.value);
-            PIXI_globalData.inputA.adjust.spritesFrameOffset = ui.value
+            PIXI_globalData.effect_A.adjust.spritesFrameOffset = ui.value
 
         }
     });
@@ -134,7 +134,7 @@ $(function() {
         step: 0.01,
         slide: function(event, ui) {
             handle.text(ui.value);
-            PIXI_globalData.inputA.adjust.spritesTrans = ui.value
+            PIXI_globalData.effect_A.adjust.spritesTrans = ui.value
 
         }
     });
@@ -152,7 +152,7 @@ $(function() {
         max: 20,
         slide: function(event, ui) {
             handle.text(ui.value);
-            PIXI_globalData.inputA.adjust.spritesBlur = ui.value
+            PIXI_globalData.effect_A.adjust.spritesBlur = ui.value
         }
     });
 });
