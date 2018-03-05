@@ -91,6 +91,7 @@
 
 		container_BG.name = "container_BG";
 		app.stage.addChild(container_BG);
+		var fl =[];
 		const effectList ={};
 		const eventList = {};
 		const tempAnimPlayList = {
@@ -323,7 +324,7 @@
 							// called once when the queued resources all load.
 							function complete(loader, resources){
 								console.log("load",loader.resources);
-								loadEffect.myData = loader.resources
+								loadEffect.myData = "loader.resources"
 								console.log('all resources loaded');
 							}
 					
@@ -343,9 +344,9 @@
 					
 					loader.add(motionID,motionURL)	
 						  .add(spritesID,spritesURL)
-							.load((loader, resources) => {
-								console.log('loading complete');
-							});
+							.load(function(loader, resources){
+							console.log('readload',resources)
+							loadEffect.myData = Object.keys((loader.resources[spritesID].data.frames))});
 							loader.on('progress', progress);
 							loader.on('error', error);
 							loader.on('load', load);
@@ -368,24 +369,22 @@
 
 							// called once when the queued resources all load.
 							function complete(loader, resources){
-								console.log("load",loader.resources);
-								const aabb = loader.resources
+								//fl = Object.keys((loader.resources[spritesID].data.frames))
+								console.log("load",fl);
 								console.log('all resources loaded');
 								effectList[effectName] =loader.resources }
 							
 						//console.log("load2",loader.resources["motionData"]=>{};
 
 					};
-				effectData.readData4 = function(){
-					loader.load();
-					console.log("aaaa",loader)
-				};				
+			
 				//effectData.readEffectList= function(){return loadEffect.effectList};
 				effectData.readEffectEvent= function(){
 						console.log("aaa")	
 						
 		
 						console.log('loading complete',loadEffect.myData)
+					return loadEffect.myData
 						//loadEffect.myData = resources;
 		
 					};
@@ -501,14 +500,12 @@
 
 				//callEffect
 				var loadEffectA = loadEffect.createNew();
-				loadEffectA.readData3("motionData","json/effect_a_dot2.json","spritesData","sprites/color_circle.json","effect_A");
+				loadEffectA.readData2("motionData","json/effect_a_dot2.json","spritesData","sprites/color_circle.json","effect_A");
 				console.log("effectList",effectList);
 				console.log("effectList",effectList.effect_A);
-				console.log("effectList",effectList["effect_A"]);
-				loadEffectA.readData4();
-				console.log("effectList2",aabb);
-				console.log("effectList2",effectList["effect_A"]);
-				//loadEffectA.readEffectEvent();
+				console.log("fl",fl);
+
+				loadEffectA.readEffectEvent();
 				//var data = ["motionData","json/effect_a_dot2.json","spritesData","sprites/color_circle.json","effect_A"]
 		
 				/*
