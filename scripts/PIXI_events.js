@@ -11,6 +11,65 @@ function addParticleEffect() {
 //     defineEffectInstancer("effect_A",tick)
 //});
 
+
+
+function onDragStart(event) {
+	// store a reference to the data
+	// the reason for this is because of multitouch
+	// we want to track the movement of this particular touch
+	this.data = event.data;
+	this.alpha = 0.5;
+	this.dragging = true;
+}
+
+function onDragEnd() {
+	this.alpha = 1;
+	this.dragging = false;
+	// set the interaction data to null
+	this.data = null;
+};
+
+function onDragMove() {
+	if (this.dragging) {
+		var newPosition = this.data.getLocalPosition(this.parent);
+		this.x = newPosition.x;
+		this.y = newPosition.y;
+	}
+};
+
+function setBG() {
+
+	console.log("width", PIXI_globalData.BGA.width, PIXI_globalData.BGA.height);
+	console.log("PIXI_globalData", PIXI_globalData);
+
+	deleteAllChildrenInStage("event") //刪除所有名稱為 event的 container
+	//deleteAllChildrenInStage("effect")
+	//deleteAllChildrenInStage("container_BG") //刪除所有名稱為 event的 container
+	app.renderer.clear();
+	//app.renderer = null;
+
+	app.start();
+	let BGW = PIXI_globalData.BGA.width;
+	let BGH = PIXI_globalData.BGA.height;
+	let BGColor = "0x" + document.getElementById("colorBGA").value.split('#')[1];
+	let BGAURL = document.getElementById("showBGA").value;
+	let BGA_Scale = PIXI_globalData.BGA.screenScale;
+	app.renderer.resize(BGW, BGH);
+
+	app.renderer.backgroundColor = BGColor;
+	//redrawRender(BG_stage);
+
+	let background = PIXI.loader.resources.BGA_image;
+	background = new Sprite(TextureCache[BGAURL]);
+	background.scale.set(BGA_Scale)
+
+
+	drawGrid(container_BG, BGW, BGH); //由 pixi_drawGraphic.js繪製 背景grid
+
+
+};
+
+
 function addParticleEffectA() {
 	for (var i = 1; i < instancerCount + 1; i++) {
 
@@ -187,3 +246,4 @@ function defineEffectInstancer(effectName) {
 	};
 
 };
+
