@@ -7,14 +7,11 @@ function addParticleEffect() {
 
 };
 
-
 //app.ticker.add(function(){
 //     defineEffectInstancer("effect_A",tick)
 //});
 
-
-
-function addParticleEffectA {
+function addParticleEffectA() {
 	for (var i = 1; i < instancerCount + 1; i++) {
 
 		let instancerKey = "instancer_" + String(i - 1);
@@ -97,8 +94,6 @@ function addParticleEffectA {
 
 	};
 };
-
-
 
 function defineEffectInstancer(effectName) {
 
