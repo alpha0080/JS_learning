@@ -1,0 +1,20 @@
+{
+"frames": {
+	"effect_a_items_001.png": {
+		"frame": {"x":0, "y":0, "w":517, "h":1877},
+		"spriteSourceSize": {"x":0,"y":0,"w":517,"h":1877},
+		"sourceSize": {"w":517,"h":1877}
+	},
+	"effect_a_items_004.png": {
+		"frame": {"x":518, "y":0, "w":517, "h":1877},
+		"spriteSourceSize": {"x":0,"y":0,"w":517,"h":1877},
+		"sourceSize": {"w":517,"h":1877}
+	}
+
+},
+"meta": {
+	"image": "effect_a_item.png",
+	"size": {"w": 1036, "h": 1878},
+	"scale": "1"
+}
+}

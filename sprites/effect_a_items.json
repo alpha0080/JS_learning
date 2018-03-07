@@ -1,0 +1,45 @@
+{
+"frames": {
+	"Line_D.png": {
+		"frame": {"x":518, "y":0, "w":517, "h":1877},
+		"spriteSourceSize": {"x":0,"y":0,"w":517,"h":1877},
+		"sourceSize": {"w":517,"h":1877}
+	},
+	"dot.png": {
+		"frame": {"x":1036, "y":0, "w":512, "h":512},
+		"spriteSourceSize": {"x":0,"y":0,"w":512,"h":512},
+		"sourceSize": {"w":512,"h":512}
+	},
+	"light_ray_a_add.png": {
+		"frame": {"x":1306, "y":977, "w":55, "h":481},
+		"spriteSourceSize": {"x":0,"y":0,"w":55,"h":481},
+		"sourceSize": {"w":55,"h":481}
+	},
+	"line_A.png": {
+		"frame": {"x":1171, "y":977, "w":134, "h":499},
+		"spriteSourceSize": {"x":189,"y":13,"w":512,"h":512},
+		"sourceSize": {"w":512,"h":512}
+	},
+	"line_C_1.png": {
+		"frame": {"x":1036, "y":977, "w":134, "h":499},
+		"spriteSourceSize": {"x":0,"y":0,"w":134,"h":499},
+		"sourceSize": {"w":134,"h":499}
+	},
+	"line_E.png": {
+		"frame": {"x":0, "y":0, "w":517, "h":1877},
+		"spriteSourceSize": {"x":0,"y":0,"w":517,"h":1877},
+		"sourceSize": {"w":517,"h":1877}
+	},
+	"yallow_ball.png": {
+		"frame": {"x":1036, "y":513, "w":462, "h":463},
+		"spriteSourceSize": {"x":0,"y":0,"w":462,"h":463},
+		"sourceSize": {"w":462,"h":463}
+	}
+
+},
+"meta": {
+	"image": "item.png",
+	"size": {"w": 1549, "h": 1878},
+	"scale": "1"
+}
+}
