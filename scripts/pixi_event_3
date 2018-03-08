@@ -1,268 +1,3 @@
-function addParticleEffect() {
-	tick += 1;
-	eventTick = tick % timeLength;
-	for (var c = 0; c < instancerCountMulti; c++) {
-
-	};
-
-};
-
-//app.ticker.add(function(){
-//     defineEffectInstancer("effect_A",tick)
-//});
-
-function addParticleEffectA() {
-	for (var i = 1; i < instancerCount + 1; i++) {
-
-		let instancerKey = "instancer_" + String(i - 1);
-		let instancerData = motionData.instancer[instancerKey]
-		let offset = instancerData.offset; //instancer frame offset
-
-		//console.log(PIXI_globalData[effectName].adjust)
-		var adjustTrans = PIXI_globalData[effectName].adjust.spritesTrans;
-		var adjustSize = PIXI_globalData[effectName].adjust.spritesSize;
-		var adjustRotation = PIXI_globalData[effectName].adjust.spritesRotation;
-		var adjustSpeed = PIXI_globalData[effectName].adjust.speed;
-		var adjustBlur = PIXI_globalData[effectName].adjust.spritesBlur;
-
-		if ((offset - eventTick) > 0) {
-			let offsetEventTick = 0;
-			var trans = 0;
-			//  console.log("instancerInfo",offsetEventTick,trans);
-		} else {
-			let offsetEventTick = eventTick - offset
-			var containerX = instancerData.translate[offsetEventTick].x;
-			var containerY = instancerData.translate[offsetEventTick].y;
-			var containerTrans = instancerData.translate[offsetEventTick].trans;
-			var containerW = instancerData.scale[offsetEventTick].w;
-			var containerH = instancerData.scale[offsetEventTick].h;
-			var containerRotation = instancerData.rotate[offsetEventTick].angle;
-			// console.log("instancerInfo",containerX,containerY);
-
-		};
-		//instancer transforme
-		//var instX = motionData[instancer]
-		app.stage.children[i].x = containerX;
-		app.stage.children[i].y = containerY;
-		//app.stage.children[i].width = containerW;
-		//app.stage.children[i].height = containerH;
-		//app.stage.children[i].alpha = containerTrans;
-		//app.stage.children[i].rotation = -containerRotation/57.3;
-		//app.stage.children[i].rotation = 0.1*tick;
-		//app.stage.children[i].scale.set(tick*0.01);
-
-		//effectContainer.y += 1
-		//console.log("effectContainer_child",containerX,containerY,containerTrans,containerW,containerH,containerRotation);
-
-		for (var j = 0; j < ppCount; j++) {
-			let ppIDKey = "pId_" + String(j)
-
-			if ((offset - eventTick) > 0) {
-				let offsetEventTick = 0;
-				var trans = 0;
-				var x = 0;
-				var y = 0;
-				var w = 0;
-				var h = 0;
-				var rotation = 0;
-				let vis = false
-				//console.log("instancerInfo",offsetEventTick,alpha);
-			} else {
-				let offsetEventTick = eventTick - offset;
-				var x = motionData[ppIDKey].translate[offsetEventTick].x;
-				var y = motionData[ppIDKey].translate[offsetEventTick].y;
-				var w = motionData[ppIDKey].scale[offsetEventTick].w * adjustSize * 20;
-				var h = motionData[ppIDKey].scale[offsetEventTick].h * adjustSize * 20;
-				var rotation = motionData[ppIDKey].rotate[offsetEventTick].angle + adjustRotation;
-				var trans = motionData[ppIDKey].translate[offsetEventTick].trans * adjustTrans;
-				var vis = motionData[ppIDKey].translate[offsetEventTick].vis;
-				//console.log("instancerInfo",containerX,containerY);
-
-			};
-
-
-
-			app.stage.children[i].children[j].x = x
-			app.stage.children[i].children[j].y = y
-			app.stage.children[i].children[j].width = w;
-			app.stage.children[i].children[j].height = h;
-			app.stage.children[i].children[j].alpha = trans;
-			app.stage.children[i].children[j].rotation = -rotation / 57.3;
-
-			//console.log("pp",x,y,w,h,trans,rotation);
-		}
-
-	};
-};
-
-function defineEffectInstancer(effectName) {
-
-	var callEffectList = effectList[effectName]
-	var ppCount = callEffectList.ppCount;
-	var ppID = callEffectList.ppID;
-	var frameList = callEffectList.frameList;
-	var motionData = callEffectList.motionData;
-	var timeStart = callEffectList.motionData.metaData.frame_start;
-	var timeEnd = callEffectList.motionData.metaData.frame_end;
-	var timeLength = timeEnd - timeStart + 1;
-	var containerHeight = callEffectList.motionData.metaData.source_height;
-	var containerWidth = callEffectList.motionData.metaData.source_width;
-	var instancerCount = callEffectList.instancerCount;
-	var instancerID = callEffectList.instancerID;
-
-	console.log("containerHeight", containerHeight, containerWidth);
-	console.log("instancerCount", instancerCount, instancerID);
-
-
-	//var instancerCount = 100;
-	// console.log("effectList_effect_A_all","ppCount",ppCount,"ppID",ppID,"frameList",frameList,"motionData",motionData,"timeLength",timeLength,"instancerCount",instancerCount);
-
-	var animSpritesList = [];
-	for (var i in frameList) {
-
-		animSpritesList.push(PIXI.Texture.fromFrame(frameList[i]));
-	};
-
-	for (var i = 0; i < instancerCount; i++) { //複製pp到instancer中
-		var effectContainer = new PIXI.Container();
-		effectContainer.name = "container_effect";
-
-		app.stage.addChild(effectContainer);
-		// effectContainer.removeChildren();
-		// 設定instancer transformer
-		effectContainer.width = containerWidth;
-		effectContainer.Height = containerHeight;
-
-		//effectContainer.x = Math.random() * 500;
-		//effectContainer.y = Math.random() * 500;
-		//effectContainer.rotation = Math.random() * 300;
-		//effectContainer.scale.set(0.2);
-		//繪製邊界
-		var graphics = new PIXI.Graphics();
-		graphics.lineStyle(2, 0x0000FF, 1);
-		graphics.beginFill(0xFF700B, 0.1);
-		var sideLength = containerWidth;
-		graphics.drawRect(0, 0, sideLength, sideLength);
-		graphics.endFill();
-		//effectContainer.addChild(graphics);
-
-		//effectContainer.x = 960;
-		//effectContainer.x = 540;
-		screenWidth = app.renderer.screen.width;
-		screenHeight = app.renderer.screen.height;
-
-		effectContainer.pivot.x = containerWidth / 2 + effectContainer.width / 2 //freeze pivot and move to center
-		effectContainer.pivot.y = containerHeight / 2 + effectContainer.height / 2
-		effectContainer.x = screenWidth / 2;
-		effectContainer.y = screenHeight / 2;
-		//effectContainer.scale.set(1);
-
-
-
-
-		for (var j = 0; j < ppCount; j++) { // <ppCount 為每個PP都建立一個anim event，< sampleCount 則為建立樣本數量
-			var anim = new PIXI.extras.AnimatedSprite(animSpritesList);
-
-			let frameSpeed = PIXI_globalData[effectName].adjust.frameSpeed;
-			let spritesFrameOffset = PIXI_globalData[effectName].adjust.spritesFrameOffset;
-			let spritesSizeRandom = PIXI_globalData[effectName].adjust.spritesSizeRandom;
-			let spritesRotationRandom = PIXI_globalData[effectName].adjust.spritesRotationRandom;
-			// let spritesRotationRandom= PIXI_globalData[effectName].adjust.spritesRotationRandom;
-
-
-			anim.gotoAndPlay(Math.random() * spritesFrameOffset);
-			anim.animationSpeed = frameSpeed;
-			anim.scale.set(Math.random() * spritesSizeRandom);
-
-
-			anim.play();
-
-			effectContainer.addChild(anim);
-
-			//設定PP transformer
-			anim.x = Math.random() * sideLength;
-			anim.y = Math.random() * sideLength;
-			// anim.scale.set(0.1);
-		};
-	};
-
-};
-
-
-var drawBox = {
-
-	createNew: function () {
-		var draw = {};
-		draw.testA = "ggg";
-		draw.testB = function () {
-			for (var i = 0; i < 10; i++) {
-				console.log(i)
-			}
-		};
-		draw.rect = function (x, y, w, h) {
-			console.log("testC")
-			var graphics = new PIXI.Graphics();
-
-			// set a fill and line style
-			graphics.beginFill(0xcc9999, 0.7);
-			graphics.lineStyle(1, 0xffd900, 1);
-			graphics.drawRect(x, y, w, h);
-
-			graphics.endFill();
-			graphics.pivot.x = w / 2;
-			graphics.pivot.y = h / 2;
-			graphics.x = app.renderer.screen.width / 2;
-			graphics.y = app.renderer.screen.height / 2;
-
-			return graphics;
-		};
-		draw.circle = function (x, y, r) {
-			var graphics = new PIXI.Graphics();
-			graphics.beginFill(0xaa2255, 1);
-			graphics.lineStyle(2, 0x000000, 1);
-			graphics.drawCircle(x, y, r);
-			graphics.endFill();
-			graphics.pivot.x = r;
-			graphics.pivot.y = r;
-			graphics.x = app.renderer.screen.width / 2;
-			graphics.y = app.renderer.screen.height / 2;
-			return graphics
-		};
-		draw.cross = function (x, y, length) {
-			var graphics = new PIXI.Graphics();
-			graphics.beginFill(0xcccccc, 1);
-			graphics.lineStyle(2, 0xcc3333, 1);
-			graphics.moveTo(x - length, 0);
-			graphics.lineTo(x + length, 0);
-			graphics.moveTo(0, y - length);
-			graphics.lineTo(0, y + length);
-			graphics.pivot.x = x;
-			graphics.pivot.y = y;
-			graphics.x = app.renderer.screen.width / 2;
-			graphics.y = app.renderer.screen.height / 2;
-			graphics.endFill();
-			return graphics
-
-		};
-		draw.drawBB = function (x, y, containerW, containerH) {
-			var graphics = new PIXI.Graphics();
-
-			// set a fill and line style
-			graphics.beginFill(0x33FFFF, 0.3);
-			graphics.lineStyle(2, 0xff0900, 1);
-			graphics.drawRect(0, 0, containerW, containerH);
-
-			graphics.endFill();
-			graphics.pivot.x = containerW / 2;
-			graphics.pivot.y = containerH / 2;
-			graphics.x = app.renderer.screen.width / 2;
-			graphics.y = app.renderer.screen.height / 2;
-			return graphics
-		};
-		return draw;
-	} //注意格式，後面別加上;
-};
-
 var loadEffect = {
 	effectDataTemplate: {
 		"spritesImageId": "",
@@ -319,11 +54,11 @@ var loadEffect = {
 			}
 
 			function setup() {
-				//loadEffect.myData =  
+				//loadEffect.myData =
 
 				var effectDataTemplate = {};
 				console.log("All files loaded", loader.progress);
-				//  console.log("loaderData",loader.resources[motionID].data); 
+				//  console.log("loaderData",loader.resources[motionID].data);
 				// effectList[effectName]= loader.resources
 				//  let motionData = resources[motionID]["data"];
 				//function(){}
@@ -377,13 +112,13 @@ var loadEffect = {
 			}
 
 			function setup() {
-				//loadEffect.myData =  
+				//loadEffect.myData =
 				let motionData = loader.resources[motionID].data
 				let motionDataKeysCount = Object.keys(motionData).length;
 				let motionDataKeys = Object.keys(motionData);
 				var effectDataTemplate = {};
 				console.log("All files loaded", loader.progress);
-				//  console.log("loaderData",loader.resources[motionID].data); 
+				//  console.log("loaderData",loader.resources[motionID].data);
 				// effectList[effectName]= loader.resources
 				//  let motionData = resources[motionID]["data"];
 				//function(){}
@@ -441,14 +176,14 @@ var loadEffect = {
 			}
 
 			function setup() {
-				//loadEffect.myData =  
+				//loadEffect.myData =
 
 				let motionData = loader.resources[motionID].data
 				let motionDataKeysCount = Object.keys(motionData).length;
 				let motionDataKeys = Object.keys(motionData);
 				var effectDataTemplate = {};
 				//  console.log("All files loaded", loader.progress);
-				//  console.log("loaderData",loader.resources[motionID].data); 
+				//  console.log("loaderData",loader.resources[motionID].data);
 				// effectList[effectName]= loader.resources
 				//  let motionData = resources[motionID]["data"];
 				//function(){}
@@ -519,7 +254,79 @@ var loadEffect = {
 
 };
 
+var drawBox = {
 
+	createNew: function () {
+		var draw = {};
+		draw.testA = "ggg";
+		draw.testB = function () {
+			for (var i = 0; i < 10; i++) {
+				console.log(i)
+			}
+		};
+		draw.rect = function (x, y, w, h) {
+			console.log("testC")
+			var graphics = new PIXI.Graphics();
+
+			// set a fill and line style
+			graphics.beginFill(0xFF9922, 0.3);
+			graphics.lineStyle(1, 0xff22FF, 1);
+			graphics.drawRect(x, y, w, h);
+
+			graphics.endFill();
+			graphics.pivot.x = w / 2;
+			graphics.pivot.y = h / 2;
+			graphics.x = app.renderer.screen.width / 2;
+			graphics.y = app.renderer.screen.height / 2;
+
+			return graphics;
+		};
+		draw.circle = function (x, y, r) {
+			var graphics = new PIXI.Graphics();
+			graphics.beginFill(0xaa2255, 1);
+			graphics.lineStyle(2, 0x000000, 1);
+			graphics.drawCircle(x, y, r);
+			graphics.endFill();
+			graphics.pivot.x = r;
+			graphics.pivot.y = r;
+			graphics.x = app.renderer.screen.width / 2;
+			graphics.y = app.renderer.screen.height / 2;
+			return graphics
+		};
+		draw.cross = function (x, y, length) {
+			var graphics = new PIXI.Graphics();
+			graphics.beginFill(0xcccccc, 1);
+			graphics.lineStyle(2, 0xcc3333, 1);
+			graphics.moveTo(x - length, 0);
+			graphics.lineTo(x + length, 0);
+			graphics.moveTo(0, y - length);
+			graphics.lineTo(0, y + length);
+			graphics.pivot.x = x;
+			graphics.pivot.y = y;
+			graphics.x = app.renderer.screen.width / 2;
+			graphics.y = app.renderer.screen.height / 2;
+			graphics.endFill();
+			return graphics
+
+		};
+		draw.drawBB = function (x, y, containerW, containerH) {
+			var graphics = new PIXI.Graphics();
+
+			// set a fill and line style
+			graphics.beginFill(0x33FFFF, 0.3);
+			graphics.lineStyle(2, 0xff0900, 1);
+			graphics.drawRect(0, 0, containerW, containerH);
+
+			graphics.endFill();
+			graphics.pivot.x = containerW / 2;
+			graphics.pivot.y = containerH / 2;
+			graphics.x = app.renderer.screen.width / 2;
+			graphics.y = app.renderer.screen.height / 2;
+			return graphics
+		};
+		return draw;
+	} //注意格式，後面別加上;
+};
 
 var objectInfo = {
 	createNew: function () {
@@ -579,9 +386,9 @@ var defineSpriteEvent = {
 
 			for (var i = 0; i < instancerCount; i++) { //複製pp到instancer中
 				var effectContainer = new PIXI.Container();
-
+				let containerList = {}
 				effectContainer.name = "container_" + effectName;
-				containerList[effectName] = effectContainer
+				containerList[effectName] = effectContainer;
 				app.stage.addChild(effectContainer);
 
 				screenWidth = app.renderer.screen.width;
@@ -620,22 +427,35 @@ var defineSpriteEvent = {
 					var pw = motionData[ppIDKey].pivot_w;
 					var ph = motionData[ppIDKey].pivot_h;
 
-					var scale = w / sourceImagesW
+					var scale = w / sourceImagesW;
 
 					//	anim.pivot.x =w *pw;
 					//	anim.pivot.y =h *ph
 					//console.log("pivot w h",anim.pivot.x,anim.pivot.y,ppIDKey,pw,ph);
-					anim.animationSpeed = 1; //frameSpeed; 播放速度
+					//anim.animationSpeed = 1; //frameSpeed; 播放速度
 
 					//anim.gotoAndPlay(0) //跳至sprites images中的 相對圖序
 
 					anim.play();
+					console.log("containerWH", effectContainer.width, effectContainer.height);
+					/*
+					var graphics = new PIXI.Graphics();
+					graphics.beginFill(0xFF3300);
+					graphics.lineStyle(2, 0xffd900, 1);
+					graphics.moveTo(0,0);
+					graphics.lineTo(effectContainer.width, 0);
+					graphics.lineTo(effectContainer.width, effectContainer.height);
+					graphics.lineTo(0, 0);
+					graphics.endFill();
+
+					effectContainer.addChild(graphics);
+					*/
 
 					effectContainer.addChild(anim);
 					//anim.pivot.x =40;
 					// anim.pivot.x =80;
 					// anim.anchor.set(0.5);
-					//sprites 歸零            
+					//sprites 歸零
 					//anim.pivot.x = 40
 					//anim.pivot.y = 80
 					//anim.pivot.x = pw * w;
@@ -653,15 +473,11 @@ var defineSpriteEvent = {
 			};
 		};
 		event.getSpritesData = function (effectName) { //收集spritesData
-			//var callEffectList = effectList[effectName];
-			// var effectContainerLIst = {};
-			// effectContainerLIst[]
-			// containerList[effectName] ={}
+
 
 			containerKeys = Object.keys(app.stage.children);
 			var allContainer = app.stage.children;
-			//  console.log("containerKeys",containerKeys);
-			var allContainerList = {};
+			const allContainerList = {};
 			var allEffectContainer = [];
 			var allBGContainer = [];
 			var allDrawContainer = [];
@@ -669,7 +485,6 @@ var defineSpriteEvent = {
 
 
 			for (var i in allContainer) {
-				//console.log("container", allContainer[i]);
 				let containerName = allContainer[i].name;
 				//console.log(containerName,containerName.split("_"));
 				if (containerName.split("_")[1] == "effect") {
@@ -702,7 +517,7 @@ var defineSpriteEvent = {
 			for (i in animEventList) { //選取effect container
 				//console.log(i,animEventList[i]);
 
-				// console.log("animEventList.child",animEventList[i]) ; 
+				// console.log("animEventList.child",animEventList[i]) ;
 				for (j in animEventList[i].children) {
 					// console.log(i,j)
 					var anim = animEventList[i].children[j];
@@ -807,7 +622,7 @@ var defineSpriteEvent = {
 					var pp = effectContainer[i].children[j];
 
 
-					pp.anchor.set(pw, ph); // set to pivot scale  
+					pp.anchor.set(pw, ph); // set to pivot scale
 					pp.x = x + (-0.5 * w + w * pw) // 0.5 * width + width*(pivot width scale)
 					pp.y = y + (-0.5 * h + h * ph) // 0.5 * height + height*(pivot height scale)
 
@@ -831,28 +646,6 @@ var defineSpriteEvent = {
 		event.getStageData = function () {
 			console.log("app.stage", app.stage);
 		};
-
-		event.runSpritesFequence = function (allAnimSpritesList, timeLength) { //測試動態
-			console.log("allAnimSpritesList", allAnimSpritesList);
-			var tick = 0;
-			tick += 1;
-			tick = tick % timeLength;
-			app.ticker.add(function () {
-
-				for (i in allAnimSpritesList) {
-					//allAnimSpritesList[i]
-					//  console.log("allAnimSpritesList",allAnimSpritesList[i]);
-					var anim = allAnimSpritesList[i]; //取得個別 sprite / anim
-
-					anim.y += Math.random() * 300
-
-					//anim.alpha = 60*0.2
-
-
-				};
-			});
-		};
-
 		event.runApp = function (effectList, effectName) {
 			event.define(effectList, effectName);
 			var callEffectList = effectList[effectName];
@@ -863,8 +656,8 @@ var defineSpriteEvent = {
 			var getAllContainerList = event.getSpritesData(effectName);
 			//  console.log("getAllContainerList", getAllContainerList["effect"][effectName]);
 			var allAnimList = event.getAllAnimList(getAllContainerList["effect"][effectName]);
-			// console.log("allAnimList", allAnimList);
-			var tick = 0
+			console.log("getAllContainerList", getAllContainerList);
+			var tick = 0;
 			app.ticker.add(function () {
 
 				var speed = PIXI_globalData[effectName].adjust.speed
@@ -877,27 +670,4 @@ var defineSpriteEvent = {
 		return event;
 	}
 
-};
-
-
-var defineAsset ={
-	appStage : {
-		BG:{},
-		effect:{},
-		UI:{},
-		Graphics:{},
-		props:{}
-	},
-	createNew: function () {
-		var selectedInfo = {};
-
-		selectedInfo.getInfo = function () {
-			console.log("selectObject");
-
-
-		};
-
-		return selectedInfo;
-	} //注意格式，後面別加上;
-};
 };
