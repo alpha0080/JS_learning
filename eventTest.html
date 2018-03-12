@@ -3,15 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
-    <script src = scripts/PIXI_events.js></script>
-    PIXI_events.js
+	<script type="text/javascript" src="scripts/pixi.min.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="scripts/PIXI_events.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="scripts/pixi_drawGraphic.js" charset="UTF-8"></script>
+
 </head>
 <body>
    <h3>hello</h3>
     <script>
-    var cc = drawBox.createNew();
-        cc.rect(10,10,10,10)
-    console.log()
-    </script>
+		//console.log(helloTest);
+		helloworld();
+		var loadEffect = call_loadEffect();
+		console.log(loadEffect);
+		//var test = loadEffect.createNew();
+		
+	 	function callEffect(motionID, motionURL, spritesID, spritesURL, effectName) {
+            var loadEffectA = loadEffect.createNew();
+            (motionID, motionURL, spritesID, spritesURL, effectName)
+            loadEffectA.readData(motionID, motionURL, spritesID, spritesURL, effectName)
+            // loadEffectA.readData("motionData", "json/effect_a_dot.json", "spritesData", "sprites/color_circle.json", "effect_B")
+
+        };
+
+        callEffect("motionData", "json/test_E.json?1500", "spritesData", "sprites/effect_a_item.json?1501", "effect_A");
+
+
+	</script>
 </body>
 </html>
