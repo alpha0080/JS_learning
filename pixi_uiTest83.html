@@ -194,20 +194,10 @@
 			//console.log("show undeleteItem",app.stage.children.length,app.stage);
 		};
 
-		
-		// stageUI viewer start 
-		var ideUIA = ideUI.createNew();
-		const stageInfo = ideUIA.createStageInfo(app.stage, 500, 500, 300, 600);
-		console.log("stageInfo", stageInfo);
 
-		stageInfo.interactive = true;
-		stageInfo.buttonMode = true;
-		stageInfo
-			.on('pointerdown', onDragStart)
-			.on('pointerup', onDragEnd)
-			.on('pointerupoutside', onDragEnd)
-			.on('pointermove', onDragMove);
-		
+		// stageUI viewer start 
+		;
+
 		// stageUI viewer end 
 
 
@@ -251,7 +241,7 @@
 		callEffect("motionData", "json/test_F.json?1500", "spritesData", "sprites/effect_a_item.json?1501", "effect_A");
 		//callEffect("motionData", "json/test_E.json?1500", "spritesData", "sprites/effect_a_item.json?1501", "effect_A");
 
-		//callEffect("motionData", "json/test_E.json?1500", "spritesData", "sprites/effect_a_item.json?1501", "effect_B");
+		callEffect("motionData", "json/test_E.json?1500", "spritesData", "sprites/effect_a_item.json?1501", "effect_B");
 
 
 
@@ -294,20 +284,37 @@
 				//add event
 
 				//defineAssetDB.addEvent("containerEvent","container_effect_A","effects")
+				//runApp = function(effectList, effectName,effectContainer)
 
 				var defineEffectA = defineSpriteEvent.createNew();
-
-				// defineEffectA.runApp(effectList, "effect_A");
 				defineEffectA.define(effectList, "effect_A");
-				//defineEffectA.define(effectList,"effect_B");
+				var effectContainer_effect_A = appStageContainers.effects["container_effect_A"]
+				defineEffectA.runApp(effectList, "effect_A", effectContainer_effect_A,0);
+
+				
+				var defineEffectB = defineSpriteEvent.createNew();
+				defineEffectB.define(effectList, "effect_B");
+				var effectContainer_effect_B = appStageContainers.effects["container_effect_B"]
+				defineEffectB.runApp(effectList, "effect_B", effectContainer_effect_B,1);
+				
 
 				console.log("appStageContainers", appStageContainers);
-				var effectContainer_effect_A = appStageContainers.effects["container_effect_A"]
-
-				//runApp = function(effectList, effectName,effectContainer)
-				defineEffectA.runApp(effectList, "effect_A", effectContainer_effect_A);
 
 
+
+
+
+				var ideUIA = ideUI.createNew();
+				const stageInfo = ideUIA.createStageInfo(app.stage, 500, 500, 300, 600);
+				console.log("stageInfo", stageInfo);
+
+				stageInfo.interactive = true;
+				stageInfo.buttonMode = true;
+				stageInfo
+					.on('pointerdown', onDragStart)
+					.on('pointerup', onDragEnd)
+					.on('pointerupoutside', onDragEnd)
+					.on('pointermove', onDragMove)
 
 
 

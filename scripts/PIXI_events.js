@@ -432,8 +432,9 @@ function call_defineSpriteEvent(){
 
 
                 };
-                event.runApp = function(effectList, effectName,effectContainer) {
-                    var callEffectList = effectList[effectName];
+                event.runApp = function(effectList, effectName,effectContainer,blendModeIndex) {
+                   // console.log("blendModeIndex",blendModeIndex)
+					var callEffectList = effectList[effectName];
 
                     var timeStart = callEffectList.motionData.metaData.frame_start;
                     var timeEnd = callEffectList.motionData.metaData.frame_end;
@@ -443,7 +444,7 @@ function call_defineSpriteEvent(){
                     app.ticker.add(function() {
                         
                         var speed = PIXI_globalData[effectName].adjust.speed
-						var blendMode = 1
+						var blendMode = blendModeIndex
 						var filter = "null"
                         tick += Math.floor(speed);
                         eventTick = tick % timeLength;
