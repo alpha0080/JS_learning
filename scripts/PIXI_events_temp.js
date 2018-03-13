@@ -487,6 +487,7 @@ function call_loadEffect(){
 		"spritesImagesList": "",
 		"spritesImagesSize": ""
 	},
+
 	loading_Progress: 0,
 	createNew: function () {
 
@@ -495,14 +496,14 @@ function call_loadEffect(){
 		effectData.newEvent = function (effectList, effectName) {
 			effectList[effectName] = effectDataTemplate;
 		};
-        
-
-
 
 		effectData.readSources = function () {};
 		effectData.readSpritesData = function (spritesID, spritesURL, effectName) {
+			const loader = new PIXI.loaders.Loader();
 			//loader.reset();
+			const resources = PIXI.loader.resources;
 			delete loader.resources[spritesID];
+			let templete
 			loader.add(spritesID, spritesURL)
 				.on("progress", loadProgressHandler)
 				.load(setup);
@@ -556,9 +557,9 @@ function call_loadEffect(){
 		};
 		effectData.readMotionData = function (motionID, motionURL, effectName) {
 
-			//const loader = new PIXI.loaders.Loader()
+			const loader = new PIXI.loaders.Loader()
 			//loader.reset();
-			//const resources = PIXI.loader.resources;
+			const resources = PIXI.loader.resources;
 			delete loader.resources[motionID];
 			//let templete
 			loader.add(motionID, motionURL)
@@ -616,27 +617,16 @@ function call_loadEffect(){
 			// console.log("loaderData_finall",loader.resources);
 
 		};
-        effectData.loadData = function (motionID, motionURL, spritesID, spritesURL, effectName) {
+		effectData.readData = function (motionID, motionURL, spritesID, spritesURL, effectName) {
+
+			const loader = new PIXI.loaders.Loader()
 			//loader.reset();
+			const resources = PIXI.loader.resources;
 			delete loader.resources[motionID];
 			delete loader.resources[spritesID];
-            loader.add(motionID, motionURL)
-				    .add(spritesID, spritesURL)
-            console.log("loader",loader)
-        };
-        
-        effectData.defineEffectList(){
-            
-        };
-		effectData.readData = function (motionID, motionURL, spritesID, spritesURL, effectName) {
-            effectList[effectName] = loadEffect.effectDataTemplate;
-			//const loader = new PIXI.loaders.Loader()
-			//loader.reset();
-			//const resources = PIXI.loader.resources;
-			//delete loader.resources[motionID];
-			//delete loader.resources[spritesID];
 			//let templete
-			loader
+			loader.add(motionID, motionURL)
+				.add(spritesID, spritesURL)
 				.on("progress", loadProgressHandler)
 				.load(setup);
 
@@ -650,23 +640,16 @@ function call_loadEffect(){
 
 			function setup() {
 				//loadEffect.myData =  
-                
+
 				let motionData = loader.resources[motionID].data
-                console.log("loader",loader,effectName,motionData.metaData.instancer_num)
-                let instancerCount = motionData.metaData.instancer_num
 				let motionDataKeysCount = Object.keys(motionData).length;
 				let motionDataKeys = Object.keys(motionData);
 				var effectDataTemplate = {};
-                effectList[effectName]["instancerCount"] =motionData.metaData.instancer_num;
-                console.log("effectList_selectEffect",effectList[effectName])
-                //effectList[effectName][loadEffect.effectDataTemplate.instancerCount] = motionData.metaData.instancer_num;
-
 				//  console.log("All files loaded", loader.progress);
 				//  console.log("loaderData",loader.resources[motionID].data); 
 				// effectList[effectName]= loader.resources
 				//  let motionData = resources[motionID]["data"];
 				//function(){}
-                /*
 				loadEffect.loading_Progress = loader.progress;
 				loadEffect.effectDataTemplate.motionDataID = motionID;
 				loadEffect.effectDataTemplate.motionDataURL = motionURL;
@@ -681,8 +664,6 @@ function call_loadEffect(){
 				loadEffect.effectDataTemplate.screenWidth = motionData.metaData.canvas_width;
 				loadEffect.effectDataTemplate.screenHeight = motionData.metaData.canvas_height;
 				loadEffect.effectDataTemplate.sequence = motionData.metaData.sequence;
-                console.log("loader.resources",effectName,motionID,loader.resources, loadEffect.effectDataTemplate.instancerCount)
-
 				let ppIDList = [];
 				for (let i = 0; i < motionDataKeysCount; i++) {
 					if (motionDataKeys[i].slice(0, 3) == "pId") {
@@ -715,9 +696,9 @@ function call_loadEffect(){
 
 
 
-				console.log("loadEffect.effectDataTemplater", loadEffect.effectDataTemplate);
-                    */
-				
+				//console.log("Sprites laoder", loader.resources[spritesID]);
+
+				effectList[effectName] = loadEffect.effectDataTemplate;
 			}
 			// console.log("loaderData_finall",loader.resources);
 

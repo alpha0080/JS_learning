@@ -1,5 +1,3 @@
-var loader = PIXI.loader;
-var resources = PIXI.loader.resources;
 
 function loadGlobalData() {
     var PIXI_globalData = {
