@@ -618,16 +618,15 @@ function call_loadEffect(){
 		};
         effectData.loadData = function (motionID, motionURL, spritesID, spritesURL, effectName) {
 			//loader.reset();
+			console.log("run loadData")
 			delete loader.resources[motionID];
 			delete loader.resources[spritesID];
             loader.add(motionID, motionURL)
 				    .add(spritesID, spritesURL)
-            console.log("loader",loader)
+            console.log("loaderInSide",loader)
         };
-        
-        effectData.defineEffectList(){
-            
-        };
+     
+		
 		effectData.readData = function (motionID, motionURL, spritesID, spritesURL, effectName) {
             effectList[effectName] = loadEffect.effectDataTemplate;
 			//const loader = new PIXI.loaders.Loader()
