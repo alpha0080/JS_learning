@@ -19,7 +19,7 @@
 	<script src="scripts/jqueryUI/jquery-ui.js"></script>
 	<script src="scripts/pixi.min.js"></script>
 	<script src="scripts/pixi_drawGraphic.js?1501"></script>
-	<script src="scripts/PIXI_events_temp.js?1500"></script>
+	<script src="scripts/PIXI_events.js?1500"></script>
 	<script src="scripts/PIXI_ide_events.js?1500"></script>
 
 
@@ -31,7 +31,7 @@
 	<script src="scripts/bootstrap/js/fileinput.min.js"></script>
 	<script src="scripts/pixi_effectDataTemplate.js"></script>
 	<script src="scripts/pixi_UI_slideBarModule.js"></script>
-	<script src="../scripts/PIXI_fileInput_module.js"></script>
+	<script src="scripts/PIXI_fileInput_module.js"></script>
 
 
 
@@ -87,8 +87,10 @@
 		
 		
 		//create Canvas
+        
+        
 		var createUILayout = createUI.createNew();
-		var app =createUILayout.createCanvasStage(1920, 1080, 410, 5,  0x1099bb,"3px dashed red")
+		var app =createUILayout.createCanvasStage(1920, 1080, 410, 5,  0x000000,"3px dashed red")
 		document.body.appendChild(app.view);
 		console.log("app.stage", app.stage);
 
@@ -217,12 +219,14 @@
 			var defineEffect = defineSpriteEvent.createNew();
 			for(i in Object.keys(loadFiles)){
 				let effectName = Object.keys(loadFiles)[i];
-				let spritesBlendMode = loadFiles[effectName].blendMode;
-				console.log("spritesBlendMode",spritesBlendMode);
+                let adjustList =  loadFiles[effectName];
+				//let spritesBlendMode = loadFiles[effectName].blendMode;
+				//console.log("spritesBlendMode",spritesBlendMode);
 				let containerName = "container_" + effectName;
+               // console.log("effectName",effectName)
 				defineEffect.define(effectList, effectName);
 				let effectContainer = appStageContainers.effects[containerName];
-				defineEffect.runApp(effectList, effectName, effectContainer,spritesBlendMode);
+				defineEffect.runApp(effectList, effectName, effectContainer,adjustList);
 			};
 		};
 						
@@ -273,39 +277,20 @@
 				console.log("effectList", effectList)
 
 
-				//console.log("loader", loader);
 
 
 				app.stage.addChild(container_Graphic);
 
 
 
-				//add event
 
-				//defineAssetDB.addEvent("containerEvent","container_effect_A","effects")
-				//runApp = function(effectList, effectName,effectContainer)
-				
 				runEffect();
 				
-				/*
-				var defineEffectA = defineSpriteEvent.createNew();
-				defineEffectA.define(effectList, "effect_A");
-				var effectContainer_effect_A = appStageContainers.effects["container_effect_A"]
-				defineEffectA.runApp(effectList, "effect_A", effectContainer_effect_A,0);
-
-				
-				var defineEffectB = defineSpriteEvent.createNew();
-				defineEffectB.define(effectList, "effect_B");
-				var effectContainer_effect_B = appStageContainers.effects["container_effect_B"]
-				defineEffectB.runApp(effectList, "effect_B", effectContainer_effect_B,1);
-				
-				
-				//console.log("appStageContainers", appStageContainers);
-				*/
 
 
 
 
+                /*
 				var infoBoxA = createUI.createNew();
 				const stageInfo = infoBoxA.createStageInfo(app.stage, 500, 500, 300, 600);
 				console.log("stageInfo", stageInfo);
@@ -318,7 +303,7 @@
 					.on('pointerupoutside', onDragEnd)
 					.on('pointermove', onDragMove)
 
-
+                */
 
 			});
 
