@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="scripts/jszip.js"></script>
+	<script type="text/javascript" src="scripts/jszip-utils.js"></script>
+
+	<script>
+		//eval.call(window, text);
+
+		var zipFile = "json/effect_a_dot_min4.zip"
+		var jsonFile = "json/effect_a_dot_min4.json"
+
+		var zip = new JSZip();
+
+		var readData = new JSZip.external.Promise(function(resolve, reject) {
+				JSZipUtils.getBinaryContent(zipFile, function(err, data) {
+					if (err) {
+						reject(err);
+					} else {
+						resolve(data);
+					}
+				});
+			}).then(function(data) {
+				//JSZip.file(jsonFile).async("string");
+
+				return JSZip.loadAsync(data);
+			})
+		console.log(readData)
+		
+		console.log(readData)
+
+		
+		
+		
+		
+		
+	</script>
+
+
+
+</head>
+
+<body>
+
+
+</body>
+
+</html>

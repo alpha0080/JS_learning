@@ -2,7 +2,7 @@ var loadFiles = {
     
 	effect_A: {
 		"motionID": "motionDataA",
-		"motionURL": "json/effect_a_dot_min4.json",
+		"motionURL": "json/effect_a_dot_min5.json",
 		"spritesID": "spritesDataA",
 		"spritesURL": "sprites/effect_a_items.json",
 		"effectName": "effect_A",
@@ -22,7 +22,7 @@ var loadFiles = {
   
 	effect_B: {
 		"motionID": "motionDataB",
-		"motionURL": "json/effect_a_glow_ray_min.json",
+		"motionURL": "json/effect_a_glow_ray_min5.json",
 		"spritesID": "spritesDataB",
 		"spritesURL": "sprites/effect_a_items.json",
 		"effectName": "effect_B",
@@ -40,14 +40,14 @@ var loadFiles = {
         "containerScale":1,
 		"filter": ""
 	},
-     /*
+     
 	effect_C: {
-		"motionID": "motionDataV",
-		"motionURL": "json/effect_a_glow_ray.json",
+		"motionID": "motionDataC",
+		"motionURL": "json/effect_a_dot_min5.json",
 		"spritesID": "spritesDataC",
-		"spritesURL": "sprites/fireSprites.json",
+		"spritesURL": "sprites/effect_a_items.json",
 		"effectName": "effect_C",
-		"blendMode": 1,
+		"blendMode": 2,
 		"speed": 1,
 		"frameSpeed": 0,
         "frameIndex": 5,
@@ -58,10 +58,30 @@ var loadFiles = {
 		"spritesFrameOffset": 5,
 		"spritesTrans": 1,
 		"spritesBlur": 0,
-        "containerScale":0.6,
+        "containerScale":0.3,
 		"filter": ""
 	},
-     */
+		effect_D: {
+		"motionID": "motionDataD",
+		"motionURL": "json/effect_a_glow_ray_min5.json",
+		"spritesID": "spritesDataD",
+		"spritesURL": "sprites/effect_a_items.json",
+		"effectName": "effect_D",
+		"blendMode": 1,
+		"speed": 1,
+		"frameSpeed": 0,
+        "frameIndex": 3,
+		"spritesSize": 1,
+		"spritesSizeRandom": 0,
+		"spritesRotation": 0,
+		"spritesRotationRandom": 0,
+		"spritesFrameOffset": 5,
+		"spritesTrans": 1,
+		"spritesBlur": 0,
+        "containerScale":0.5,
+		"filter": ""
+	},
+     
  
 };
 

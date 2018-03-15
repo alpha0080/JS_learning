@@ -2,7 +2,7 @@ var loadFiles = {
     
 	effect_A: {
 		"motionID": "motionDataA",
-		"motionURL": "json/effect_a_dot_min.json",
+		"motionURL": "json/effect_a_dot_min5.json",
 		"spritesID": "spritesDataA",
 		"spritesURL": "sprites/effect_a_items.json",
 		"effectName": "effect_A",

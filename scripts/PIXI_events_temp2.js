@@ -212,6 +212,8 @@ var loadEffect = {
 				effectList[effectName]["motionDataID"] = motionID;
 				effectList[effectName]["motionDataURL"] = motionURL;
 				effectList[effectName]["motionData"] = motionData;
+				effectList[effectName]["instancerCount"] = motionData.metaData.instancer_num;
+				effectList[effectName]["instancerID"] = Object.keys(motionData.instancer);
 				effectList[effectName]["timeStart"] = motionData.metaData.frame_start;
 				effectList[effectName]["timeEnd"] = motionData.metaData.frame_end;
 				effectList[effectName]["timeLength"] = motionData.metaData.frame_end - motionData.metaData.frame_start + 1;
@@ -228,17 +230,6 @@ var loadEffect = {
 						ppIDList.push(motionDataKeys[i]);
 					};
 				};
-                
-                let instancerIDList = [];
-				for (let i = 0; i < motionDataKeysCount; i++) {
-					if (motionDataKeys[i].split("_")[0] == "instancer") {
-						instancerIDList.push(motionDataKeys[i]);
-					};
-				};
-                effectList[effectName]["instancerID"] = instancerIDList;
-
-                effectList[effectName]["instancerCount"] =Object.keys(instancerIDList).length;
-
 				effectList[effectName]["ppID"] = ppIDList;
 				effectList[effectName]["ppCount"] = motionData.metaData.particle_num;
 				let spritesData = loader.resources[spritesID].data;
@@ -304,7 +295,7 @@ var defineSpriteEvent = {
 			var instancerID = callEffectList.instancerID;
 			var sourceImagesW = callEffectList.spritesImagesSize[0].w
 			var sourceImagesH = callEffectList.spritesImagesSize[0].h
-			//console.log("effectName instancerCount", effectName, instancerCount)
+			console.log("effectName instancerCount", effectName, instancerCount)
 
 			var animSpritesList = [];
 			for (var i in frameList) {
@@ -318,14 +309,14 @@ var defineSpriteEvent = {
 				effectContainer.name = "container_" + effectName;
 				//containerList[effectName] = effectContainer
 				app.stage.addChild(effectContainer);
-				//console.log("app.stage", effectContainer.name)
+				console.log("app.stage", effectContainer.name)
 
 				screenWidth = app.renderer.screen.width;
 				screenHeight = app.renderer.screen.height;
 
 				templEffectList.push(effectContainer);
 
-				//console.log("tempEffectList", templEffectList)
+				console.log("tempEffectList", templEffectList)
 
 				/*
 					// container 置中
@@ -339,7 +330,6 @@ var defineSpriteEvent = {
 
 				for (var j = 0; j < ppCount; j++) { // <ppCount 為每個PP都建立一個anim event，< sampleCount 則為建立樣本數量
 					var anim = new PIXI.extras.AnimatedSprite(animSpritesList);
-                    /*
 					let ppIDKey = "pId_" + String(j);
 					var x = motionData[ppIDKey].translate[1].x; //[0]，在frame =0 時的取樣
 					var y = motionData[ppIDKey].translate[1].y;
@@ -357,10 +347,10 @@ var defineSpriteEvent = {
 					//	anim.pivot.x =w *pw;
 					//	anim.pivot.y =h *ph
 					//console.log("pivot w h",anim.pivot.x,anim.pivot.y,ppIDKey,pw,ph);
-					//anim.animationSpeed = 1; //frameSpeed; 播放速度
+					anim.animationSpeed = 1; //frameSpeed; 播放速度
 
 					//anim.gotoAndPlay(0) //跳至sprites images中的 相對圖序
-                    */
+
 					anim.play();
 
 					effectContainer.addChild(anim);
@@ -384,7 +374,6 @@ var defineSpriteEvent = {
 					//anim.y = y - h / 2;
 					// console.log("anim.pivot", w, h, anim.pivot.x, anim.pivot.y)
 					//anim.rotation = -rotation / (180 / Math.PI); //旋轉
-                    //anim.blendMode = 0;
 				};
 			};
 
@@ -398,7 +387,7 @@ var defineSpriteEvent = {
 
 			containerKeys = Object.keys(app.stage.children);
 			var allContainer = app.stage.children;
-		//	console.log("allContainer", allContainer);
+			console.log("allContainer", allContainer);
 			var allContainerList = {};
 			var allEffectContainer = [];
 			var allBGContainer = [];
@@ -456,9 +445,9 @@ var defineSpriteEvent = {
 
 		};
 
-		event.adjustAnimTransform = function (effectList, effectName, effectContainer, eventTick,adjustList) {
+		event.adjustAnimTransform = function (effectList, effectName, effectContainer, eventTick, blendMode, filter) {
 			//eventTick = 0
-			// console.log("effectContainer",effectContainer)
+			// console.log("eventTick",eventTick)
 			var callEffectList = effectList[effectName];
 			var ppCount = callEffectList.ppCount;
 			var ppID = callEffectList.ppID;
@@ -478,9 +467,9 @@ var defineSpriteEvent = {
 
 			for (i in effectContainer) {
 				let instancerKey = "instancer_" + String(i);
-			//	 console.log("instancerKey",i,instancerKey);
-				let instancerData = motionData[instancerKey];
-				let offset = instancerData.base[4]; //instancer frame offset
+				// console.log("instancerKey",i,instancerKey);
+				let instancerData = motionData.instancer[instancerKey];
+				let offset = instancerData.offset; //instancer frame offset
 
 				//console.log(effectContainer[effectName].adjust)
 				var adjustTrans = PIXI_globalData[effectName].adjust.spritesTrans;
@@ -490,34 +479,26 @@ var defineSpriteEvent = {
 				var adjustBlur = PIXI_globalData[effectName].adjust.spritesBlur;
 				// console.log("offset",offset)
 
-				if ((offset - eventTick) >= 0) {
+				if ((offset - eventTick) > 0) {
 					var offsetEventTick = 0;
 					var trans = 0;
 
 				} else {
-					var offsetEventTick = parseInt(eventTick - offset)
+					var offsetEventTick = eventTick - offset
 
-             //   console.log("offsetEventTick",offsetEventTick, typeof offsetEventTick)
+
+
 				};
-               // console.log("containerX",containerX,offsetEventTick)
-                        
-				var containerX = instancerData.dt[offsetEventTick][0];
-	
-		
-				
-				var containerY = instancerData.dt[offsetEventTick][1];
-				
-			
-				var containerTrans = instancerData.dt[offsetEventTick][2];
+				var containerX = instancerData.translate[offsetEventTick].x;
+				var containerY = instancerData.translate[offsetEventTick].y;
+				var containerTrans = instancerData.translate[offsetEventTick].trans;
 				//var containerW = instancerData.scale[offsetEventTick].w;
 				// var containerH = instancerData.scale[offsetEventTick].h;
-				var containerRotation = instancerData.dt[offsetEventTick][3];
-				//console.log("containerX",offset,offsetEventTick,containerX,containerY,containerTrans,containerRotation)
-					
-				var container_bbw = instancerData.base[0]; 
-				var container_bbh = instancerData.base[1]; 
-				var container_pw = instancerData.base[2]; 
-				var container_ph = instancerData.base[3]; 
+				var containerRotation = instancerData.rotate[offsetEventTick].angle;
+				var container_bbw = instancerData.bbox_w;
+				var container_bbh = instancerData.bbox_h;
+				var container_pw = instancerData.pivot_w;
+				var container_ph = instancerData.pivot_h;
 				effectContainer[i].pivot.x = containerWidth / 2 + container_pw;
 				effectContainer[i].pivot.y = containerHeight / 2 + container_ph;
 				// effectContainer[i].pivot.y =0//container_ph + effectContainer[i].height/2;
@@ -527,7 +508,7 @@ var defineSpriteEvent = {
 				effectContainer[i].y = containerY + container_ph;
 				effectContainer[i].rotation = -containerRotation / (180 / Math.PI);
 				effectContainer[i].alpha = containerTrans;
-                effectContainer[i].scale.set(adjustList.containerScale)
+
 				// console.log("chgange2")
 				// effectContainer[i].x = containerX;
 				// effectContainer[i].y = containerY;
@@ -536,81 +517,62 @@ var defineSpriteEvent = {
 				//effectContainer[i].height = containerH;
 				// effectContainer[i].alpha = containerTrans;
 				// effectContainer[i].rotation = -containerRotation/57.3;
-				//  console.log(offsetEventTick, "containerX",containerX,"containerY", containerY,"container_bbw", container_bbw,"container_bbh", //container_bbh,"container_pw", container_pw,"container_ph", container_ph,"containerRotation",containerRotation)
-                  //  console.log("effectContainer",effectContainer[i])
+				//  console.log("1", "containerX",containerX,"containerY", containerY,"container_bbw", container_bbw,"container_bbh", //container_bbh,"container_pw", container_pw,"container_ph", container_ph,"containerRotation",containerRotation)
 				for (j in effectContainer[i].children) {
 					let ppIDKey = "pId_" + String(j)
-                    
-                    var x = motionData[ppIDKey].dt[offsetEventTick][0];
 
-  
-					var y = motionData[ppIDKey].dt[offsetEventTick][1];
-					var w = motionData[ppIDKey].dt[offsetEventTick][4] //* adjustSize;
-					var h = motionData[ppIDKey].dt[offsetEventTick][5]; //* adjustSize;
-					var rotation = motionData[ppIDKey].dt[offsetEventTick][3]; //+ adjustRotation;
-					var trans = motionData[ppIDKey].dt[offsetEventTick][2]; //* adjustTrans;
-					var vis = motionData[ppIDKey].base[3];
-					var pw = motionData[ppIDKey].base[0];
-					var ph = motionData[ppIDKey].base[1];
+					//   console.log(ppIDKey);
+					var x = motionData[ppIDKey].translate[offsetEventTick].x;
+					var y = motionData[ppIDKey].translate[offsetEventTick].y;
+					var w = motionData[ppIDKey].scale[offsetEventTick].w * adjustSize;
+					var h = motionData[ppIDKey].scale[offsetEventTick].h * adjustSize;
+					var rotation = motionData[ppIDKey].rotate[offsetEventTick].angle + adjustRotation;
+					var trans = motionData[ppIDKey].translate[offsetEventTick].trans * adjustTrans;
+					var vis = motionData[ppIDKey].translate[offsetEventTick].vis;
+					var pw = motionData[ppIDKey].pivot_w;
+					var ph = motionData[ppIDKey].pivot_h;
 					var pp = effectContainer[i].children[j];
-                    var imageIndex =motionData[ppIDKey].base[2] -1;
-                    
-                    if (imageIndex == null){
-                        pp.gotoAndPlay(adjustList.frameIndex);
-                        //console.log("frameIndex null",adjustList.frameIndex)
-                     
-                    }else{ pp.gotoAndPlay(imageIndex);
-                          //console.log("frameIndex index",imageIndex)
-                        };
-                    if (motionData.metaData.sequence == false){pp.animationSpeed = 0}else{
-                        pp.animationSpeed = adjustList.frameSpeed; //frameSpeed; 播放速度
-                    }
-                    
-                   // pp.gotoAndPlay(4);
-                    //console.log("adjustList.frameSpeed",adjustList.frameSpeed,trans,);
-                   // pp.gotoAndPlay(5);
-                    //pp.animationSpeed = 0;
+
+
 					pp.anchor.set(pw, ph); // set to pivot scale  
 					pp.x = x + (-0.5 * w + w * pw) // 0.5 * width + width*(pivot width scale)
 					pp.y = y + (-0.5 * h + h * ph) // 0.5 * height + height*(pivot height scale)
 
-					pp.width = w*adjustList.spritesSize;
-					pp.height = h*adjustList.spritesSize;
-					pp.alpha = trans*adjustList.spritesTrans;
-					pp.rotation = -rotation / 57.3 -adjustList.spritesRotation/57.3 ;
-					
-					//pp.gotoAndPlay(adjustList.frameIndex)
-					pp.blendMode = adjustList.blendMode;
+					pp.width = w;
+					pp.height = h;
+					pp.alpha = trans;
+					pp.rotation = -rotation / 57.3;
+					pp.animationSpeed = adjustSpeed; //frameSpeed; 播放速度
+					pp.gotoAndPlay(0)
+					pp.blendMode = blendMode
 					//console.log("adjustSpeed",adjustSpeed)
 
-      
-                 //   let xx = x[offsetEventTick-1][1]
-                   // console.log(offsetEventTick)
-                   // console.log("adjustList.frameSpeed",ppIDKey,offsetEventTick,x);
-				  
+
+
 				};
-                  
- 				
+
 			};
 
 
 		};
-		event.runApp = function (effectList, effectName, effectContainer, adjustList) {
+		event.runApp = function (effectList, effectName, effectContainer, blendModeIndex) {
+			console.log("blendModeIndex",blendModeIndex)
 			var callEffectList = effectList[effectName];
 
 			var timeStart = callEffectList.motionData.metaData.frame_start;
 			var timeEnd = callEffectList.motionData.metaData.frame_end;
 			var timeLength = timeEnd - timeStart + 1;
-            
+
 			var tick = 0
 			app.ticker.add(function () {
 
 				var speed = PIXI_globalData[effectName].adjust.speed
 				//var blendMode = blendModeIndex
+				var filter = "null"
 				tick += Math.floor(speed);
 				eventTick = tick % timeLength;
-				event.adjustAnimTransform(effectList, effectName, effectContainer, eventTick, adjustList);
-				//event.adjustAnimTransform = function(effectList, effectName, effectContainer, eventTick,adjustList) 
+				event.adjustAnimTransform(effectList, effectName, effectContainer, eventTick, blendModeIndex, filter)
+				//event.adjustAnimTransform = function(effectList, effectName, effectContainer, eventTick,blendMode,filter) 
 			});
 
 		};

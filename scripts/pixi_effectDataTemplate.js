@@ -123,7 +123,7 @@ function loadGlobalData() {
                     }]
             }
         },
-        "inputD": {
+		"effect_D": {
             "motionJson": "",
             "spritesImageMode": 1,
             "stillImageName": "",
@@ -139,6 +139,7 @@ function loadGlobalData() {
                 "spritesRotation": 0,
                 "spritesRotationRandom": 0,
                 "spritesFrameOffset": 5,
+                "spritesTrans": 1,
                 "spritesBlur": 0
             },
             "stageDescriptJsonFile": "",
@@ -161,7 +162,7 @@ function loadGlobalData() {
                     }]
             }
         },
-        "inputE": {
+		"effect_E": {
             "motionJson": "",
             "spritesImageMode": 1,
             "stillImageName": "",
@@ -177,6 +178,85 @@ function loadGlobalData() {
                 "spritesRotation": 0,
                 "spritesRotationRandom": 0,
                 "spritesFrameOffset": 5,
+                "spritesTrans": 1,
+                "spritesBlur": 0
+            },
+            "stageDescriptJsonFile": "",
+            "stageDescriptJsonData": "",
+            "stage": {
+                "stage_01": [{
+                        "position": {
+                            "x": 0,
+                            "y": 0
+                        }
+                    },
+                    {
+                        "scale": 1
+                    },
+                    {
+                        "rotation": 0
+                    },
+                    {
+                        "blendMode": 0
+                    }]
+            }
+        },
+		"effect_F": {
+            "motionJson": "",
+            "spritesImageMode": 1,
+            "stillImageName": "",
+            "spritesJson": "",
+            "spritesImage": "",
+            "anchor": 0.5,
+            "blendMode": "NORMAL",
+            "adjust": {
+                "speed": 1,
+                "frameSpeed": 1,
+                "spritesSize": 1,
+                "spritesSizeRandom": 0,
+                "spritesRotation": 0,
+                "spritesRotationRandom": 0,
+                "spritesFrameOffset": 5,
+                "spritesTrans": 1,
+                "spritesBlur": 0
+            },
+            "stageDescriptJsonFile": "",
+            "stageDescriptJsonData": "",
+            "stage": {
+                "stage_01": [{
+                        "position": {
+                            "x": 0,
+                            "y": 0
+                        }
+                    },
+                    {
+                        "scale": 1
+                    },
+                    {
+                        "rotation": 0
+                    },
+                    {
+                        "blendMode": 0
+                    }]
+            }
+        },
+		"effect_G": {
+            "motionJson": "",
+            "spritesImageMode": 1,
+            "stillImageName": "",
+            "spritesJson": "",
+            "spritesImage": "",
+            "anchor": 0.5,
+            "blendMode": "NORMAL",
+            "adjust": {
+                "speed": 1,
+                "frameSpeed": 1,
+                "spritesSize": 1,
+                "spritesSizeRandom": 0,
+                "spritesRotation": 0,
+                "spritesRotationRandom": 0,
+                "spritesFrameOffset": 5,
+                "spritesTrans": 1,
                 "spritesBlur": 0
             },
             "stageDescriptJsonFile": "",
@@ -199,6 +279,7 @@ function loadGlobalData() {
                     }]
             }
         }
+      
 
     };
 
