@@ -1,45 +1,45 @@
 {
 "frames": {
 	"effect_a_items_001.png": {
-		"frame": {"x":518, "y":0, "w":517, "h":1877},
-		"spriteSourceSize": {"x":0,"y":0,"w":517,"h":1877},
-		"sourceSize": {"w":517,"h":1877}
+		"frame": {"x":0, "y":0, "w":71, "h":256},
+		"spriteSourceSize": {"x":0,"y":0,"w":71,"h":256},
+		"sourceSize": {"w":71,"h":256}
 	},
 	"effect_a_items_002.png": {
-		"frame": {"x":1171, "y":977, "w":134, "h":499},
-		"spriteSourceSize": {"x":189,"y":13,"w":512,"h":512},
-		"sourceSize": {"w":512,"h":512}
+		"frame": {"x":212, "y":0, "w":67, "h":254},
+		"spriteSourceSize": {"x":1,"y":1,"w":69,"h":256},
+		"sourceSize": {"w":69,"h":256}
 	},
 	"effect_a_items_003.png": {
-		"frame": {"x":1036, "y":977, "w":134, "h":499},
-		"spriteSourceSize": {"x":0,"y":0,"w":134,"h":499},
-		"sourceSize": {"w":134,"h":499}
+		"frame": {"x":144, "y":0, "w":67, "h":254},
+		"spriteSourceSize": {"x":1,"y":1,"w":69,"h":256},
+		"sourceSize": {"w":69,"h":256}
 	},
 	"effect_a_items_004.png": {
-		"frame": {"x":0, "y":0, "w":517, "h":1877},
-		"spriteSourceSize": {"x":0,"y":0,"w":517,"h":1877},
-		"sourceSize": {"w":517,"h":1877}
+		"frame": {"x":72, "y":0, "w":71, "h":256},
+		"spriteSourceSize": {"x":0,"y":0,"w":71,"h":256},
+		"sourceSize": {"w":71,"h":256}
 	},
 	"effect_a_items_005.png": {
-		"frame": {"x":1306, "y":977, "w":55, "h":481},
-		"spriteSourceSize": {"x":0,"y":0,"w":55,"h":481},
-		"sourceSize": {"w":55,"h":481}
+		"frame": {"x":280, "y":0, "w":29, "h":256},
+		"spriteSourceSize": {"x":0,"y":0,"w":29,"h":256},
+		"sourceSize": {"w":29,"h":256}
 	},
 	"effect_a_items_006.png": {
-		"frame": {"x":1036, "y":513, "w":462, "h":463},
-		"spriteSourceSize": {"x":0,"y":0,"w":462,"h":463},
-		"sourceSize": {"w":462,"h":463}
+		"frame": {"x":209, "y":255, "w":64, "h":64},
+		"spriteSourceSize": {"x":0,"y":0,"w":64,"h":64},
+		"sourceSize": {"w":64,"h":64}
 	},
 	"effect_a_items_007.png": {
-		"frame": {"x":1036, "y":0, "w":512, "h":512},
-		"spriteSourceSize": {"x":0,"y":0,"w":512,"h":512},
-		"sourceSize": {"w":512,"h":512}
+		"frame": {"x":144, "y":255, "w":64, "h":64},
+		"spriteSourceSize": {"x":0,"y":0,"w":64,"h":64},
+		"sourceSize": {"w":64,"h":64}
 	}
 
 },
 "meta": {
 	"image": "effect_a_items.png",
-	"size": {"w": 1549, "h": 1878},
+	"size": {"w": 310, "h": 320},
 	"scale": "1"
 }
 }

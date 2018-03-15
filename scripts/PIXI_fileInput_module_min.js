@@ -2,7 +2,7 @@ var loadFiles = {
     
 	effect_A: {
 		"motionID": "motionDataA",
-		"motionURL": "json/effect_a_dot_min.json",
+		"motionURL": "json/effect_a_dot_min4.json",
 		"spritesID": "spritesDataA",
 		"spritesURL": "sprites/effect_a_items.json",
 		"effectName": "effect_A",
@@ -10,7 +10,7 @@ var loadFiles = {
 		"speed": 1,
 		"frameSpeed": 0,
         "frameIndex": 4,
-		"spritesSize": 1,
+		"spritesSize": 5,
 		"spritesSizeRandom": 0,
 		"spritesRotation": 0,
 		"spritesRotationRandom": 0,
@@ -19,10 +19,10 @@ var loadFiles = {
         "containerScale":1,
 		"filter": ""
 	},
-    /*
+  
 	effect_B: {
 		"motionID": "motionDataB",
-		"motionURL": "json/effect_a_glow_ray.json",
+		"motionURL": "json/effect_a_glow_ray_min.json",
 		"spritesID": "spritesDataB",
 		"spritesURL": "sprites/effect_a_items.json",
 		"effectName": "effect_B",
@@ -40,7 +40,7 @@ var loadFiles = {
         "containerScale":1,
 		"filter": ""
 	},
-   
+     /*
 	effect_C: {
 		"motionID": "motionDataV",
 		"motionURL": "json/effect_a_glow_ray.json",
