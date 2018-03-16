@@ -1,0 +1,30 @@
+{
+"frames": {
+	"effect_i_items_001.png": {
+		"frame": {"x":239, "y":0, "w":42, "h":127},
+		"spriteSourceSize": {"x":0,"y":0,"w":42,"h":127},
+		"sourceSize": {"w":42,"h":127}
+	},
+	"effect_i_items_002.png": {
+		"frame": {"x":0, "y":228, "w":127, "h":13},
+		"spriteSourceSize": {"x":0,"y":1,"w":128,"h":15},
+		"sourceSize": {"w":128,"h":15}
+	},
+	"effect_i_items_003.png": {
+		"frame": {"x":239, "y":128, "w":10, "h":64},
+		"spriteSourceSize": {"x":0,"y":0,"w":10,"h":64},
+		"sourceSize": {"w":10,"h":64}
+	},
+	"effect_i_items_004.png": {
+		"frame": {"x":0, "y":0, "w":238, "h":227},
+		"spriteSourceSize": {"x":12,"y":14,"w":262,"h":256},
+		"sourceSize": {"w":262,"h":256}
+	}
+
+},
+"meta": {
+	"image": "effect_i_items.png",
+	"size": {"w": 282, "h": 242},
+	"scale": "1"
+}
+}

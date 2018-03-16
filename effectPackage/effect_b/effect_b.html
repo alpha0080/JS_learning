@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>PIXI import Test</title>
+    
+    
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+
+
+    <!-- 呼叫PIXI.js -->
+    <script src="scripts/pixi.min.js"></script>
+    <!-- 呼叫事件檔案 -->
+    <script src="scripts/PIXI_eventsB.js?1501"></script>
+    <!-- 呼叫圖形繪製模組 -->
+    <script src="scripts/pixi_drawGraphic.js?1501"></script>
+    <!-- 呼叫圖形繪製模組 -->
+    <script src="scripts/PIXI_fileInput_module.js?1501"></script>
+
+</head>
+
+<body>
+
+    <script>
+        //顯示FPS
+        javascript: (function() {
+			var script = document.createElement('script');
+			script.onload = function() {
+				var stats = new Stats();
+				document.body.appendChild(stats.dom);
+				requestAnimationFrame(function loop() {
+					stats.update();
+					requestAnimationFrame(loop)
+				});
+			};
+			script.src = '//rawgit.com/mrdoob/stats.js/master/build/stats.min.js';
+			document.head.appendChild(script);
+		})()
+
+
+        
+        //初始化背景
+        const effectList = {};
+        const allContainerList = {};
+        const eventList = {};
+        
+        var style = new PIXI.TextStyle({
+            fontFamily: 'Arial',
+            fontSize: 30,
+            fontStyle: 'italic',
+            fontWeight: 'bold',
+            fill: ['#ffffff', '#00ff99'], // gradient
+            stroke: '#4a1850',
+            strokeThickness: 2,
+            dropShadow: true,
+            dropShadowColor: '#000000',
+            dropShadowBlur: 2,
+            dropShadowAngle: Math.PI / 6,
+            dropShadowDistance: 2,
+            wordWrap: true,
+            wordWrapWidth: 440
+        });
+
+        
+        //  UI，測試介面
+        const appStageContainers = defineAssetLib.appStageContainers;
+        const loader = new PIXI.loaders.Loader();
+        const resources = loader.resources;
+        var createUILayout = createUI.createNew();
+        var app = createUILayout.createCanvasStage(1920, 1080, 5, 5, 0x223344, "3px dashed red")
+        var container_BG = new PIXI.Container();
+        container_BG.name = "container_BG";
+        app.stage.addChild(container_BG);
+        drawGrid(container_BG, 1920, 1080);
+        var buttonA = new PIXI.Graphics();
+        buttonA.lineStyle(2, 0xFF00FF, 1);
+        buttonA.beginFill(0xFF00BB, 0.25);
+        buttonA.drawRoundedRect(0, 0, 200, 60, 15);
+        buttonA.endFill();
+        var buttonText = new PIXI.Text('Click Me', style);
+        buttonText.anchor.set(0.5)
+
+        buttonText.x = 100
+        buttonText.y = 30
+
+        buttonA.addChild(buttonText);
+        buttonA.x = 1700;
+        buttonA.y = 50;
+        container_BG.addChild(buttonA);
+
+        buttonA.interactive = true;
+        buttonA.buttonMode = true;
+        buttonA
+            //.on('pointerdown', onDragStart)
+            .on('pointerup', onDragEnd)
+            .on('pointerupoutside', onDragEnd)
+            //  .on('pointermove', onDragMove)
+        
+
+        addEffectFiles()
+
+        loadEffectFiles()
+
+
+        function onDragEnd() {
+            this.alpha = 1;
+            this.dragging = false;
+            // set the interaction data to null
+            this.data = null;
+            runEffect()
+            console.log("click",app)
+        }
+
+
+
+
+
+    </script>
+
+
+</body>
+
+</html>

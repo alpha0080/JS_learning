@@ -1,0 +1,70 @@
+{
+"frames": {
+	"yallow_ball_0001.png": {
+		"frame": {"x":0, "y":47, "w":45, "h":46},
+		"spriteSourceSize": {"x":0,"y":0,"w":45,"h":46},
+		"sourceSize": {"w":45,"h":46}
+	},
+	"yallow_ball_0002.png": {
+		"frame": {"x":0, "y":0, "w":45, "h":46},
+		"spriteSourceSize": {"x":0,"y":0,"w":45,"h":46},
+		"sourceSize": {"w":45,"h":46}
+	},
+	"yallow_ball_0003.png": {
+		"frame": {"x":46, "y":94, "w":45, "h":46},
+		"spriteSourceSize": {"x":0,"y":0,"w":45,"h":46},
+		"sourceSize": {"w":45,"h":46}
+	},
+	"yallow_ball_0004.png": {
+		"frame": {"x":138, "y":47, "w":45, "h":46},
+		"spriteSourceSize": {"x":0,"y":0,"w":45,"h":46},
+		"sourceSize": {"w":45,"h":46}
+	},
+	"yallow_ball_0005.png": {
+		"frame": {"x":138, "y":0, "w":45, "h":46},
+		"spriteSourceSize": {"x":0,"y":0,"w":45,"h":46},
+		"sourceSize": {"w":45,"h":46}
+	},
+	"yallow_ball_0006.png": {
+		"frame": {"x":92, "y":94, "w":45, "h":46},
+		"spriteSourceSize": {"x":0,"y":0,"w":45,"h":46},
+		"sourceSize": {"w":45,"h":46}
+	},
+	"yallow_ball_0007.png": {
+		"frame": {"x":92, "y":47, "w":45, "h":46},
+		"spriteSourceSize": {"x":0,"y":0,"w":45,"h":46},
+		"sourceSize": {"w":45,"h":46}
+	},
+	"yallow_ball_0008.png": {
+		"frame": {"x":92, "y":0, "w":45, "h":46},
+		"spriteSourceSize": {"x":0,"y":0,"w":45,"h":46},
+		"sourceSize": {"w":45,"h":46}
+	},
+	"yallow_ball_0009.png": {
+		"frame": {"x":138, "y":94, "w":45, "h":46},
+		"spriteSourceSize": {"x":0,"y":0,"w":45,"h":46},
+		"sourceSize": {"w":45,"h":46}
+	},
+	"yallow_ball_0010.png": {
+		"frame": {"x":46, "y":47, "w":45, "h":46},
+		"spriteSourceSize": {"x":0,"y":0,"w":45,"h":46},
+		"sourceSize": {"w":45,"h":46}
+	},
+	"yallow_ball_0011.png": {
+		"frame": {"x":46, "y":0, "w":45, "h":46},
+		"spriteSourceSize": {"x":0,"y":0,"w":45,"h":46},
+		"sourceSize": {"w":45,"h":46}
+	},
+	"yallow_ball_0012.png": {
+		"frame": {"x":0, "y":94, "w":45, "h":46},
+		"spriteSourceSize": {"x":0,"y":0,"w":45,"h":46},
+		"sourceSize": {"w":45,"h":46}
+	}
+
+},
+"meta": {
+	"image": "effect_i_color_circle.png",
+	"size": {"w": 184, "h": 141},
+	"scale": "1"
+}
+}

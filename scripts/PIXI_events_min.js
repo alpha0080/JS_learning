@@ -480,7 +480,7 @@ var defineSpriteEvent = {
 				let instancerKey = "instancer_" + String(i);
 			//	 console.log("instancerKey",i,instancerKey);
 				let instancerData = motionData[instancerKey];
-				let offset = instancerData.base["of"]; //instancer frame offset
+				let offset = instancerData.base[4]; //instancer frame offset
 
 				//console.log(effectContainer[effectName].adjust)
 				var adjustTrans = PIXI_globalData[effectName].adjust.spritesTrans;
@@ -491,7 +491,7 @@ var defineSpriteEvent = {
 				// console.log("offset",offset)
 
 				if ((offset - eventTick) >= 0) {
-					var offsetEventTick = 1;
+					var offsetEventTick = 0;
 					var trans = 0;
 
 				} else {
@@ -501,16 +501,23 @@ var defineSpriteEvent = {
 				};
                // console.log("containerX",containerX,offsetEventTick)
                         
-				var containerX = instancerData.dt[offsetEventTick].x;
-				var containerY = instancerData.dt[offsetEventTick].y;
-				var containerTrans = instancerData.dt[offsetEventTick].t;
+				var containerX = instancerData.dt[offsetEventTick][0];
+	
+		
+				
+				var containerY = instancerData.dt[offsetEventTick][1];
+				
+			
+				var containerTrans = instancerData.dt[offsetEventTick][2];
 				//var containerW = instancerData.scale[offsetEventTick].w;
 				// var containerH = instancerData.scale[offsetEventTick].h;
-				var containerRotation = instancerData.dt[offsetEventTick].a
-				var container_bbw = instancerData.base["bw"]; 
-				var container_bbh = instancerData.base["bh"]; 
-				var container_pw = instancerData.base["pw"]; 
-				var container_ph = instancerData.base["ph"]; 
+				var containerRotation = instancerData.dt[offsetEventTick][3];
+				//console.log("containerX",offset,offsetEventTick,containerX,containerY,containerTrans,containerRotation)
+					
+				var container_bbw = instancerData.base[0]; 
+				var container_bbh = instancerData.base[1]; 
+				var container_pw = instancerData.base[2]; 
+				var container_ph = instancerData.base[3]; 
 				effectContainer[i].pivot.x = containerWidth / 2 + container_pw;
 				effectContainer[i].pivot.y = containerHeight / 2 + container_ph;
 				// effectContainer[i].pivot.y =0//container_ph + effectContainer[i].height/2;
@@ -534,19 +541,19 @@ var defineSpriteEvent = {
 				for (j in effectContainer[i].children) {
 					let ppIDKey = "pId_" + String(j)
                     
-                    var x = motionData[ppIDKey].dt[offsetEventTick].x;
+                    var x = motionData[ppIDKey].dt[offsetEventTick][0];
 
   
-					var y = motionData[ppIDKey].dt[offsetEventTick].y;
-					var w = motionData[ppIDKey].dt[offsetEventTick].w; //* adjustSize;
-					var h = motionData[ppIDKey].dt[offsetEventTick].h; //* adjustSize;
-					var rotation = motionData[ppIDKey].dt[offsetEventTick].a; //+ adjustRotation;
-					var trans = motionData[ppIDKey].dt[offsetEventTick].t; //* adjustTrans;
-					var vis = motionData[ppIDKey].base.v;
-					var pw = motionData[ppIDKey].base.pw;
-					var ph = motionData[ppIDKey].base.ph;
+					var y = motionData[ppIDKey].dt[offsetEventTick][1];
+					var w = motionData[ppIDKey].dt[offsetEventTick][4] //* adjustSize;
+					var h = motionData[ppIDKey].dt[offsetEventTick][5]; //* adjustSize;
+					var rotation = motionData[ppIDKey].dt[offsetEventTick][3]; //+ adjustRotation;
+					var trans = motionData[ppIDKey].dt[offsetEventTick][2]; //* adjustTrans;
+					var vis = motionData[ppIDKey].base[3];
+					var pw = motionData[ppIDKey].base[0];
+					var ph = motionData[ppIDKey].base[1];
 					var pp = effectContainer[i].children[j];
-                    var imageIndex =motionData[ppIDKey].base.i -1;
+                    var imageIndex =motionData[ppIDKey].base[2] -1;
                     
                     if (imageIndex == null){
                         pp.gotoAndPlay(adjustList.frameIndex);
@@ -580,9 +587,10 @@ var defineSpriteEvent = {
                  //   let xx = x[offsetEventTick-1][1]
                    // console.log(offsetEventTick)
                    // console.log("adjustList.frameSpeed",ppIDKey,offsetEventTick,x);
+				  
 				};
-                    
-
+                  
+ 				
 			};
 
 

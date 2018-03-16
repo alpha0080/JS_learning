@@ -1,8 +1,11 @@
 import json
 from pprint import pprint
     
-file = "C:/Users/alpha/Documents/GitHub/JS_learning/json/effect_a_glow_ray.json"
-exportFile = "C:/Users/alpha/Documents/GitHub/JS_learning/json/effect_a_glow_ray_min5.json"
+#file = "C:/Users/alpha/Documents/GitHub/JS_learning/json/effect_a_glow_ray.json"
+file = "C:/alphaOnly/github/JS_learning/json/effect_a_glow_ray.json"
+#exportFile = "C:/Users/alpha/Documents/GitHub/JS_learning/json/effect_a_glow_ray_min5.json"
+exportFile = "C:/alphaOnly/github/JS_learning/json/effect_a_glow_ray_min5_read.json"
+
 with open(file) as data_file:    
     data = json.load(data_file)
     
@@ -92,8 +95,8 @@ newDictData.update({"metaData":originalData["metaData"]})
 #for i in range(0,totalTime):
 #    print i
 
-writeData = json.dumps(newDictData) 
-#writeData = json.dumps(newDictData, sort_keys=True , indent =4) 
+#writeData = json.dumps(newDictData) 
+writeData = json.dumps(newDictData, sort_keys=True , indent =4) 
 #writeData = json.dumps(newDictData, sort_keys=True , indent =4) 
 
 #print timeList       
