@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="scripts/pixi.js?1500"></script>
+	<script src="scripts/pixi-spine.js?1500"></script>
+
+</head>
+
+<body>
+	<script>
+		var app = new PIXI.Application(1920,1080);
+		document.body.appendChild(app.view);
+
+		// load spine data
+		PIXI.loader
+			.add('powerup', 'spineTest/powerup.json')
+			.load(onAssetsLoaded);
+
+		app.stage.interactive = true;
+
+		function onAssetsLoaded(loader, res) {
+			// create a spine boy
+			var powerup = new PIXI.spine.Spine(res.powerup.spineData);
+
+			// set the position
+			powerup.x = app.screen.width / 2;
+			powerup.y = app.screen.height/2;
+
+			powerup.scale.set(1);
+
+			// set up the mixes!
+			//spineBoy.stateData.setMix('walk', 'jump', 0.2);
+			//spineBoy.stateData.setMix('jump', 'walk', 0.4);
+
+			// play animation
+			powerup.state.setAnimation(0, 'testAction', true);
+
+			app.stage.addChild(powerup);
+			/*
+			app.stage.on('pointerdown', function() {
+				spineBoy.state.setAnimation(0, 'jump', false);
+				spineBoy.state.addAnimation(0, 'walk', true, 0);
+			});
+			*/
+			console.log("loader",PIXI.loader)
+		}
+	</script>
+</body>
+</html>

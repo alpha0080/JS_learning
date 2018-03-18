@@ -4383,7 +4383,7 @@ var pixi_spine;
                                 for (var i = 0; i < timelineMap.length; i++) {
                                     var valueMap = timelineMap[i];
                                     var color = new core.Color();
-                                    color.setFromString(valueMap.color || "ffffffff");
+                                    color.setFromString(valueMap.color);
                                     timeline.setFrame(frameIndex, valueMap.time, color.r, color.g, color.b, color.a);
                                     this.readCurve(valueMap, timeline, frameIndex);
                                     frameIndex++;
@@ -6611,10 +6611,6 @@ var pixi_spine;
 })(pixi_spine || (pixi_spine = {}));
 var pixi_spine;
 (function (pixi_spine) {
-    PIXI.spine = pixi_spine;
-})(pixi_spine || (pixi_spine = {}));
-var pixi_spine;
-(function (pixi_spine) {
     function isJson(resource) {
         return resource.type === PIXI.loaders.Resource.TYPE.JSON;
     }
@@ -6994,7 +6990,9 @@ var pixi_spine;
                     clippingContainer.children.length = 0;
                     this.children[i] = slotContainer;
                     if (clippingAttachment.endSlot == slot.data) {
-                        clippingAttachment.endSlot = null;
+                        clippingContainer.renderable = false;
+                        clippingContainer = null;
+                        clippingAttachment = null;
                     }
                 }
                 else {
@@ -7181,4 +7179,5 @@ var pixi_spine;
         this._currentBounds = null;
     }
 })(pixi_spine || (pixi_spine = {}));
+PIXI.spine = pixi_spine;
 //# sourceMappingURL=pixi-spine.js.map

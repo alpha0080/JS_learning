@@ -1,0 +1,119 @@
+{
+	//定義spine 中data的 基本資訊
+"skeleton": { "hash": "", "spine": "", "width": 419.84, "height": 686.08, "images": "./images/" },
+"bones": [
+	//root 為最底層的group
+	{ "name": "background", "bone": "root" },
+	{ "name": "root","rotation": 0, "x": 0, "y" :0 ,"color" :"FFFFFFFF"},
+	//在spine下為定義bone的data， 如果是在maya下或是particle中，有多少particle，或是多少單獨的移動物件就需要多少個bone。
+	//x,y,color,rotation，則為起始位置與旋轉，顏色(與原來的圖做相乘)
+
+	{ "name": "pId_1", "parent":"root","length":1,"rotation": 0, "x": 0, "y" :0 ,"color" :"FFFFFFFF"},
+	{ "name": "pId_2", "parent":"root","length":1,"rotation": 0, "x": 0, "y" :0 ,"color" :"FFFFFFFF"}
+	],
+"slots":[
+	//定義每個bone下 所賦予的物件，物件名稱，對應的圖，連續圖，或對應的顏色，以及疊加模式
+	{ "name": "portsl-streaks2", "bone": "portal-streaks2", "blend": "additive" },
+		{ "name": "exhaust1", "bone": "exhaust2", "color": "5eb4ffff", "blend": "additive" },
+	{ "name": "dust", "bone": "dust" },//陣列圖(連續圖)
+	{ "name": "clipping", "bone": "clipping" },
+	{ "name": "front-shin", "bone": "front-shin", "attachment": "front-shin" },//單張圖帶mask
+	{ "name": "exhaust1", "bone": "exhaust2", "color": "5eb4ffff", "blend": "additive" }, //如果沒有指定對應圖檔，name就是圖檔名稱
+	{ "name": "leaves", "bone": "leaves", "attachment": "leaves" },
+	{ "name": "play", "bone": "play", "color": "fff99dff", "attachment": "play" },
+
+	{ "name": "front-upper-arm", "bone": "front-upper-arm", "attachment": "front-upper-arm" },//單張圖
+
+	],
+	
+"skin":{
+	"default":{
+		"clipping": {
+			"clipping": {
+				"type": "clipping",
+				"end": "dust",
+				"vertexCount": 9,
+				"vertices": [ 66.76, 509.48, 19.98, 434.54, 5.34, 336.28, 22.19, 247.93, 77.98, 159.54, 182.21, -97.56, 1452.26, -99.8, 1454.33, 843.61, 166.57, 841.02 ],
+				"color": "ce3a3aff"
+			}
+		},
+		"front-upper-arm": {
+			"front-upper-arm": { "x": 28.31, "y": 7.37, "rotation": 97.9, "width": 54, "height": 97 }
+		},
+		
+		"dust": {//圖串
+			"dust01": { "x": -31.79, "y": 25.97, "width": 96, "height": 73 },
+			"dust02": { "x": -27.29, "y": 14.27, "width": 86, "height": 88 },
+			"dust03": { "x": -20.11, "y": 21.6, "width": 62, "height": 52 }
+		},
+	}
+},
+	
+"animations":{
+	"eventName":{
+		"slots":{
+			"leaves": {
+				"leaves": { "y": -28.54, "width": 1042, "height": 522 }
+				},
+			"play": {
+				"play": { "width": 218, "height": 77 }
+				},
+			"logo": {
+			"logo": { "y": -20.4, "width": 917, "height": 323 }
+		},
+			},
+		
+		},
+		"bones":{
+			
+			"logo": {
+				"translate": [
+					{
+						"time": 0,
+						"x": 0,
+						"y": 40.8,
+						"curve": [ 0.043, 0.15, 0.345, 1.27 ]
+					}
+					
+					],
+				"scale": [
+					{
+						"time": 0,
+						"x": 0.342,
+						"y": 0.342,
+						"curve": [ 0, 0, 0.744, 0.4 ]
+					},
+					],
+				"rotate": [
+					{ "time": 0, "angle": 36.08 }
+				],
+				
+			},
+			"dust": {
+				"color": [
+					{ "time": 0, "color": "ffffff3e" },
+					{ "time": 0.0667, "color": "ffffff00", "curve": "stepped" },
+					{ "time": 0.1333, "color": "ffffff00" },
+					{ "time": 0.2, "color": "fffffffe" },
+					{ "time": 0.4667, "color": "ffffff00", "curve": "stepped" },
+					{ "time": 0.5667, "color": "ffffff00" },
+					{ "time": 0.6333, "color": "fffffffe" },
+					{ "time": 0.8, "color": "ffffff3e" }
+				],
+				"attachment": [
+					{ "time": 0, "name": "dust03" },
+					{ "time": 0.0667, "name": null },
+					{ "time": 0.1333, "name": "dust01" },
+					{ "time": 0.2, "name": "dust02" },
+					{ "time": 0.3, "name": "dust03" },
+					{ "time": 0.5667, "name": "dust01" },
+					{ "time": 0.6333, "name": "dust02" },
+					{ "time": 0.7333, "name": "dust03" }
+				]
+			}
+	}
+}
+
+
+	
+}
