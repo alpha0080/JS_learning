@@ -1,0 +1,2679 @@
+{
+    "animations": {
+        "testAction": {
+            "bones": {
+                "bgRingA": {
+                    "rotate": [
+                        {
+                            "angle": 0.0, 
+                            "time": 0.0
+                        }, 
+                        {
+                            "angle": 1.0, 
+                            "time": 0.1
+                        }, 
+                        {
+                            "angle": 32.51, 
+                            "time": 0.7
+                        }, 
+                        {
+                            "angle": 70.0, 
+                            "time": 1.2
+                        }, 
+                        {
+                            "angle": 223.23, 
+                            "time": 3.0
+                        }, 
+                        {
+                            "angle": 318.87, 
+                            "time": 4.6
+                        }, 
+                        {
+                            "angle": 359.0, 
+                            "time": 6.0
+                        }
+                    ], 
+                    "scale": [
+                        {
+                            "time": 0.0, 
+                            "x": 1.0, 
+                            "y": 1.0
+                        }, 
+                        {
+                            "time": 0.1, 
+                            "x": 1.0, 
+                            "y": 1.0
+                        }, 
+                        {
+                            "time": 0.7, 
+                            "x": 1.0, 
+                            "y": 1.0
+                        }, 
+                        {
+                            "time": 1.2, 
+                            "x": 1.0, 
+                            "y": 1.0
+                        }, 
+                        {
+                            "time": 3.0, 
+                            "x": 1.0, 
+                            "y": 1.0
+                        }, 
+                        {
+                            "time": 4.6, 
+                            "x": 1.0, 
+                            "y": 1.0
+                        }, 
+                        {
+                            "time": 6.0, 
+                            "x": 1.0, 
+                            "y": 1.0
+                        }
+                    ], 
+                    "translate": [
+                        {
+                            "time": 0.0, 
+                            "x": 0.0, 
+                            "y": 0.0
+                        }, 
+                        {
+                            "time": 0.1, 
+                            "x": 0.0, 
+                            "y": 0.0
+                        }, 
+                        {
+                            "time": 0.7, 
+                            "x": 0.0, 
+                            "y": 0.0
+                        }, 
+                        {
+                            "time": 1.2, 
+                            "x": 0.0, 
+                            "y": 0.0
+                        }, 
+                        {
+                            "time": 3.0, 
+                            "x": 0.0, 
+                            "y": 0.0
+                        }, 
+                        {
+                            "time": 4.6, 
+                            "x": 0.0, 
+                            "y": 0.0
+                        }, 
+                        {
+                            "time": 6.0, 
+                            "x": 0.0, 
+                            "y": 0.0
+                        }
+                    ]
+                }, 
+                "bgRingB": {
+                    "rotate": [
+                        {
+                            "angle": 0.0, 
+                            "time": 0.0
+                        }, 
+                        {
+                            "angle": 0.0, 
+                            "time": 0.1
+                        }, 
+                        {
+                            "angle": 51.54, 
+                            "time": 1.5
+                        }, 
+                        {
+                            "angle": 146.19, 
+                            "time": 3.0
+                        }, 
+                        {
+                            "angle": 243.8, 
+                            "time": 4.5
+                        }, 
+                        {
+                            "angle": 300.0, 
+                            "time": 6.0
+                        }
+                    ], 
+                    "scale": [
+                        {
+                            "time": 0.0, 
+                            "x": 1.0, 
+                            "y": 1.0
+                        }, 
+                        {
+                            "time": 0.1, 
+                            "x": 1.0, 
+                            "y": 1.0
+                        }, 
+                        {
+                            "time": 1.5, 
+                            "x": 1.0, 
+                            "y": 1.0
+                        }, 
+                        {
+                            "time": 3.0, 
+                            "x": 1.0, 
+                            "y": 1.0
+                        }, 
+                        {
+                            "time": 4.5, 
+                            "x": 1.0, 
+                            "y": 1.0
+                        }, 
+                        {
+                            "time": 6.0, 
+                            "x": 1.0, 
+                            "y": 1.0
+                        }
+                    ], 
+                    "translate": [
+                        {
+                            "time": 0.0, 
+                            "x": 0.0, 
+                            "y": 0.0
+                        }, 
+                        {
+                            "time": 0.1, 
+                            "x": 0.0, 
+                            "y": 0.0
+                        }, 
+                        {
+                            "time": 1.5, 
+                            "x": 0.0, 
+                            "y": 0.0
+                        }, 
+                        {
+                            "time": 3.0, 
+                            "x": 0.0, 
+                            "y": 0.0
+                        }, 
+                        {
+                            "time": 4.5, 
+                            "x": 0.0, 
+                            "y": 0.0
+                        }, 
+                        {
+                            "time": 6.0, 
+                            "x": 0.0, 
+                            "y": 0.0
+                        }
+                    ]
+                }
+            }, 
+            "slots": {
+                "slotA1": {
+                    "color": [
+                        {
+                            "color": "00caff4c", 
+                            "time": 0.0
+                        }, 
+                        {
+                            "color": "00caff4c", 
+                            "time": 0.1
+                        }, 
+                        {
+                            "color": "00caff4c", 
+                            "time": 6.0
+                        }
+                    ]
+                }, 
+                "slotA10": {
+                    "color": [
+                        {
+                            "color": "00caff4c", 
+                            "time": 0.0
+                        }, 
+                        {
+                            "color": "00caff4c", 
+                            "time": 0.1
+                        }, 
+                        {
+                            "color": "00caff4c", 
+                            "time": 6.0
+                        }
+                    ]
+                }, 
+                "slotA11": {
+                    "color": [
+                        {
+                            "color": "00caff4c", 
+                            "time": 0.0
+                        }, 
+                        {
+                            "color": "00caff4c", 
+                            "time": 0.1
+                        }, 
+                        {
+                            "color": "00caff4c", 
+                            "time": 6.0
+                        }
+                    ]
+                }, 
+                "slotA12": {
+                    "color": [
+                        {
+                            "color": "00caff4c", 
+                            "time": 0.0
+                        }, 
+                        {
+                            "color": "00caff4c", 
+                            "time": 0.1
+                        }, 
+                        {
+                            "color": "00caff4c", 
+                            "time": 6.0
+                        }
+                    ]
+                }, 
+                "slotA13": {
+                    "color": [
+                        {
+                            "color": "00caff4c", 
+                            "time": 0.0
+                        }, 
+                        {
+                            "color": "00caff4c", 
+                            "time": 0.1
+                        }, 
+                        {
+                            "color": "00caff4c", 
+                            "time": 6.0
+                        }
+                    ]
+                }, 
+                "slotA14": {
+                    "color": [
+                        {
+                            "color": "00caff4c", 
+                            "time": 0.0
+                        }, 
+                        {
+                            "color": "00caff4c", 
+                            "time": 0.1
+                        }, 
+                        {
+                            "color": "00caff4c", 
+                            "time": 6.0
+                        }
+                    ]
+                }, 
+                "slotA15": {
+                    "color": [
+                        {
+                            "color": "00caff4c", 
+                            "time": 0.0
+                        }, 
+                        {
+                            "color": "00caff4c", 
+                            "time": 0.1
+                        }, 
+                        {
+                            "color": "00caff4c", 
+                            "time": 6.0
+                        }
+                    ]
+                }, 
+                "slotA16": {
+                    "color": [
+                        {
+                            "color": "00caff4c", 
+                            "time": 0.0
+                        }, 
+                        {
+                            "color": "00caff4c", 
+                            "time": 0.1
+                        }, 
+                        {
+                            "color": "00caff4c", 
+                            "time": 6.0
+                        }
+                    ]
+                }, 
+                "slotA17": {
+                    "color": [
+                        {
+                            "color": "00caff4c", 
+                            "time": 0.0
+                        }, 
+                        {
+                            "color": "00caff4c", 
+                            "time": 0.1
+                        }, 
+                        {
+                            "color": "00caff4c", 
+                            "time": 6.0
+                        }
+                    ]
+                }, 
+                "slotA18": {
+                    "color": [
+                        {
+                            "color": "00caff4c", 
+                            "time": 0.0
+                        }, 
+                        {
+                            "color": "00caff4c", 
+                            "time": 0.1
+                        }, 
+                        {
+                            "color": "00caff4c", 
+                            "time": 6.0
+                        }
+                    ]
+                }, 
+                "slotA2": {
+                    "color": [
+                        {
+                            "color": "00caff4c", 
+                            "time": 0.0
+                        }, 
+                        {
+                            "color": "00caff4c", 
+                            "time": 0.1
+                        }, 
+                        {
+                            "color": "00caff4c", 
+                            "time": 6.0
+                        }
+                    ]
+                }, 
+                "slotA3": {
+                    "color": [
+                        {
+                            "color": "00caff4c", 
+                            "time": 0.0
+                        }, 
+                        {
+                            "color": "00caff4c", 
+                            "time": 0.1
+                        }, 
+                        {
+                            "color": "00caff4c", 
+                            "time": 6.0
+                        }
+                    ]
+                }, 
+                "slotA4": {
+                    "color": [
+                        {
+                            "color": "00caff4c", 
+                            "time": 0.0
+                        }, 
+                        {
+                            "color": "00caff4c", 
+                            "time": 0.1
+                        }, 
+                        {
+                            "color": "00caff4c", 
+                            "time": 6.0
+                        }
+                    ]
+                }, 
+                "slotA5": {
+                    "color": [
+                        {
+                            "color": "00caff4c", 
+                            "time": 0.0
+                        }, 
+                        {
+                            "color": "00caff4c", 
+                            "time": 0.1
+                        }, 
+                        {
+                            "color": "00caff4c", 
+                            "time": 6.0
+                        }
+                    ]
+                }, 
+                "slotA6": {
+                    "color": [
+                        {
+                            "color": "00caff4c", 
+                            "time": 0.0
+                        }, 
+                        {
+                            "color": "00caff4c", 
+                            "time": 0.1
+                        }, 
+                        {
+                            "color": "00caff4c", 
+                            "time": 6.0
+                        }
+                    ]
+                }, 
+                "slotA7": {
+                    "color": [
+                        {
+                            "color": "00caff4c", 
+                            "time": 0.0
+                        }, 
+                        {
+                            "color": "00caff4c", 
+                            "time": 0.1
+                        }, 
+                        {
+                            "color": "00caff4c", 
+                            "time": 6.0
+                        }
+                    ]
+                }, 
+                "slotA8": {
+                    "color": [
+                        {
+                            "color": "00caff4c", 
+                            "time": 0.0
+                        }, 
+                        {
+                            "color": "00caff4c", 
+                            "time": 0.1
+                        }, 
+                        {
+                            "color": "00caff4c", 
+                            "time": 6.0
+                        }
+                    ]
+                }, 
+                "slotA9": {
+                    "color": [
+                        {
+                            "color": "00caff4c", 
+                            "time": 0.0
+                        }, 
+                        {
+                            "color": "00caff4c", 
+                            "time": 0.1
+                        }, 
+                        {
+                            "color": "00caff4c", 
+                            "time": 6.0
+                        }
+                    ]
+                }, 
+                "slotB10_1": {
+                    "color": [
+                        {
+                            "color": "ffffff33", 
+                            "time": 0.0
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 0.1
+                        }, 
+                        {
+                            "color": "ffffff55", 
+                            "time": 1.5
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 3.0
+                        }, 
+                        {
+                            "color": "ffffff55", 
+                            "time": 4.5
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 6.0
+                        }
+                    ]
+                }, 
+                "slotB11_1": {
+                    "color": [
+                        {
+                            "color": "ffffff33", 
+                            "time": 0.0
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 0.1
+                        }, 
+                        {
+                            "color": "ffffff55", 
+                            "time": 1.5
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 3.0
+                        }, 
+                        {
+                            "color": "ffffff55", 
+                            "time": 4.5
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 6.0
+                        }
+                    ]
+                }, 
+                "slotB11_2": {
+                    "color": [
+                        {
+                            "color": "ffffff33", 
+                            "time": 0.0
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 0.1
+                        }, 
+                        {
+                            "color": "ffffff55", 
+                            "time": 1.5
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 3.0
+                        }, 
+                        {
+                            "color": "ffffff55", 
+                            "time": 4.5
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 6.0
+                        }
+                    ]
+                }, 
+                "slotB12_1": {
+                    "color": [
+                        {
+                            "color": "ffffff33", 
+                            "time": 0.0
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 0.1
+                        }, 
+                        {
+                            "color": "ffffff55", 
+                            "time": 1.5
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 3.0
+                        }, 
+                        {
+                            "color": "ffffff55", 
+                            "time": 4.5
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 6.0
+                        }
+                    ]
+                }, 
+                "slotB12_2": {
+                    "color": [
+                        {
+                            "color": "ffffff33", 
+                            "time": 0.0
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 0.1
+                        }, 
+                        {
+                            "color": "ffffff55", 
+                            "time": 1.5
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 3.0
+                        }, 
+                        {
+                            "color": "ffffff55", 
+                            "time": 4.5
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 6.0
+                        }
+                    ]
+                }, 
+                "slotB132": {
+                    "color": [
+                        {
+                            "color": "ffffff33", 
+                            "time": 0.0
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 0.1
+                        }, 
+                        {
+                            "color": "ffffff55", 
+                            "time": 1.5
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 3.0
+                        }, 
+                        {
+                            "color": "ffffff55", 
+                            "time": 4.5
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 6.0
+                        }
+                    ]
+                }, 
+                "slotB13_1": {
+                    "color": [
+                        {
+                            "color": "ffffff33", 
+                            "time": 0.0
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 0.1
+                        }, 
+                        {
+                            "color": "ffffff55", 
+                            "time": 1.5
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 3.0
+                        }, 
+                        {
+                            "color": "ffffff55", 
+                            "time": 4.5
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 6.0
+                        }
+                    ]
+                }, 
+                "slotB14_1": {
+                    "color": [
+                        {
+                            "color": "ffffff33", 
+                            "time": 0.0
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 0.1
+                        }, 
+                        {
+                            "color": "ffffff55", 
+                            "time": 1.5
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 3.0
+                        }, 
+                        {
+                            "color": "ffffff55", 
+                            "time": 4.5
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 6.0
+                        }
+                    ]
+                }, 
+                "slotB14_2": {
+                    "color": [
+                        {
+                            "color": "ffffff33", 
+                            "time": 0.0
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 0.1
+                        }, 
+                        {
+                            "color": "ffffff55", 
+                            "time": 1.5
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 3.0
+                        }, 
+                        {
+                            "color": "ffffff55", 
+                            "time": 4.5
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 6.0
+                        }
+                    ]
+                }, 
+                "slotB15_1": {
+                    "color": [
+                        {
+                            "color": "ffffff33", 
+                            "time": 0.0
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 0.1
+                        }, 
+                        {
+                            "color": "ffffff55", 
+                            "time": 1.5
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 3.0
+                        }, 
+                        {
+                            "color": "ffffff55", 
+                            "time": 4.5
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 6.0
+                        }
+                    ]
+                }, 
+                "slotB15_2": {
+                    "color": [
+                        {
+                            "color": "ffffff33", 
+                            "time": 0.0
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 0.1
+                        }, 
+                        {
+                            "color": "ffffff55", 
+                            "time": 1.5
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 3.0
+                        }, 
+                        {
+                            "color": "ffffff55", 
+                            "time": 4.5
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 6.0
+                        }
+                    ]
+                }, 
+                "slotB16_1": {
+                    "color": [
+                        {
+                            "color": "ffffff33", 
+                            "time": 0.0
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 0.1
+                        }, 
+                        {
+                            "color": "ffffff55", 
+                            "time": 1.5
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 3.0
+                        }, 
+                        {
+                            "color": "ffffff55", 
+                            "time": 4.5
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 6.0
+                        }
+                    ]
+                }, 
+                "slotB16_2": {
+                    "color": [
+                        {
+                            "color": "ffffff33", 
+                            "time": 0.0
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 0.1
+                        }, 
+                        {
+                            "color": "ffffff55", 
+                            "time": 1.5
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 3.0
+                        }, 
+                        {
+                            "color": "ffffff55", 
+                            "time": 4.5
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 6.0
+                        }
+                    ]
+                }, 
+                "slotB17_1": {
+                    "color": [
+                        {
+                            "color": "ffffff33", 
+                            "time": 0.0
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 0.1
+                        }, 
+                        {
+                            "color": "ffffff55", 
+                            "time": 1.5
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 3.0
+                        }, 
+                        {
+                            "color": "ffffff55", 
+                            "time": 4.5
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 6.0
+                        }
+                    ]
+                }, 
+                "slotB17_2": {
+                    "color": [
+                        {
+                            "color": "ffffff33", 
+                            "time": 0.0
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 0.1
+                        }, 
+                        {
+                            "color": "ffffff55", 
+                            "time": 1.5
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 3.0
+                        }, 
+                        {
+                            "color": "ffffff55", 
+                            "time": 4.5
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 6.0
+                        }
+                    ]
+                }, 
+                "slotB18_1": {
+                    "color": [
+                        {
+                            "color": "ffffff33", 
+                            "time": 0.0
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 0.1
+                        }, 
+                        {
+                            "color": "ffffff55", 
+                            "time": 1.5
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 3.0
+                        }, 
+                        {
+                            "color": "ffffff55", 
+                            "time": 4.5
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 6.0
+                        }
+                    ]
+                }, 
+                "slotB1_1": {
+                    "color": [
+                        {
+                            "color": "ffffff33", 
+                            "time": 0.0
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 0.1
+                        }, 
+                        {
+                            "color": "ffffff55", 
+                            "time": 1.5
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 3.0
+                        }, 
+                        {
+                            "color": "ffffff55", 
+                            "time": 4.5
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 6.0
+                        }
+                    ]
+                }, 
+                "slotB1_2": {
+                    "color": [
+                        {
+                            "color": "ffffff33", 
+                            "time": 0.0
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 0.1
+                        }, 
+                        {
+                            "color": "ffffff55", 
+                            "time": 1.5
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 3.0
+                        }, 
+                        {
+                            "color": "ffffff55", 
+                            "time": 4.5
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 6.0
+                        }
+                    ]
+                }, 
+                "slotB1_3": {
+                    "color": [
+                        {
+                            "color": "ffffff33", 
+                            "time": 0.0
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 0.1
+                        }, 
+                        {
+                            "color": "ffffff55", 
+                            "time": 1.5
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 3.0
+                        }, 
+                        {
+                            "color": "ffffff55", 
+                            "time": 4.5
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 6.0
+                        }
+                    ]
+                }, 
+                "slotB1_4": {
+                    "color": [
+                        {
+                            "color": "ffffff33", 
+                            "time": 0.0
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 0.1
+                        }, 
+                        {
+                            "color": "ffffff55", 
+                            "time": 1.5
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 3.0
+                        }, 
+                        {
+                            "color": "ffffff55", 
+                            "time": 4.5
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 6.0
+                        }
+                    ]
+                }, 
+                "slotB2_1": {
+                    "color": [
+                        {
+                            "color": "ffffff33", 
+                            "time": 0.0
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 0.1
+                        }, 
+                        {
+                            "color": "ffffff55", 
+                            "time": 1.5
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 3.0
+                        }, 
+                        {
+                            "color": "ffffff55", 
+                            "time": 4.5
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 6.0
+                        }
+                    ]
+                }, 
+                "slotB2_2": {
+                    "color": [
+                        {
+                            "color": "ffffff33", 
+                            "time": 0.0
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 0.1
+                        }, 
+                        {
+                            "color": "ffffff55", 
+                            "time": 1.5
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 3.0
+                        }, 
+                        {
+                            "color": "ffffff55", 
+                            "time": 4.5
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 6.0
+                        }
+                    ]
+                }, 
+                "slotB3_1": {
+                    "color": [
+                        {
+                            "color": "ffffff33", 
+                            "time": 0.0
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 0.1
+                        }, 
+                        {
+                            "color": "ffffff55", 
+                            "time": 1.5
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 3.0
+                        }, 
+                        {
+                            "color": "ffffff55", 
+                            "time": 4.5
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 6.0
+                        }
+                    ]
+                }, 
+                "slotB4_1": {
+                    "color": [
+                        {
+                            "color": "ffffff33", 
+                            "time": 0.0
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 0.1
+                        }, 
+                        {
+                            "color": "ffffff55", 
+                            "time": 1.5
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 3.0
+                        }, 
+                        {
+                            "color": "ffffff55", 
+                            "time": 4.5
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 6.0
+                        }
+                    ]
+                }, 
+                "slotB4_2": {
+                    "color": [
+                        {
+                            "color": "ffffff33", 
+                            "time": 0.0
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 0.1
+                        }, 
+                        {
+                            "color": "ffffff55", 
+                            "time": 1.5
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 3.0
+                        }, 
+                        {
+                            "color": "ffffff55", 
+                            "time": 4.5
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 6.0
+                        }
+                    ]
+                }, 
+                "slotB5_1": {
+                    "color": [
+                        {
+                            "color": "ffffff33", 
+                            "time": 0.0
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 0.1
+                        }, 
+                        {
+                            "color": "ffffff55", 
+                            "time": 1.5
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 3.0
+                        }, 
+                        {
+                            "color": "ffffff55", 
+                            "time": 4.5
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 6.0
+                        }
+                    ]
+                }, 
+                "slotB5_2": {
+                    "color": [
+                        {
+                            "color": "ffffff33", 
+                            "time": 0.0
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 0.1
+                        }, 
+                        {
+                            "color": "ffffff55", 
+                            "time": 1.5
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 3.0
+                        }, 
+                        {
+                            "color": "ffffff55", 
+                            "time": 4.5
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 6.0
+                        }
+                    ]
+                }, 
+                "slotB6_1": {
+                    "color": [
+                        {
+                            "color": "ffffff33", 
+                            "time": 0.0
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 0.1
+                        }, 
+                        {
+                            "color": "ffffff55", 
+                            "time": 1.5
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 3.0
+                        }, 
+                        {
+                            "color": "ffffff55", 
+                            "time": 4.5
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 6.0
+                        }
+                    ]
+                }, 
+                "slotB6_2": {
+                    "color": [
+                        {
+                            "color": "ffffff33", 
+                            "time": 0.0
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 0.1
+                        }, 
+                        {
+                            "color": "ffffff55", 
+                            "time": 1.5
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 3.0
+                        }, 
+                        {
+                            "color": "ffffff55", 
+                            "time": 4.5
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 6.0
+                        }
+                    ]
+                }, 
+                "slotB7_1": {
+                    "color": [
+                        {
+                            "color": "ffffff33", 
+                            "time": 0.0
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 0.1
+                        }, 
+                        {
+                            "color": "ffffff55", 
+                            "time": 1.5
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 3.0
+                        }, 
+                        {
+                            "color": "ffffff55", 
+                            "time": 4.5
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 6.0
+                        }
+                    ]
+                }, 
+                "slotB8_1": {
+                    "color": [
+                        {
+                            "color": "ffffff33", 
+                            "time": 0.0
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 0.1
+                        }, 
+                        {
+                            "color": "ffffff55", 
+                            "time": 1.5
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 3.0
+                        }, 
+                        {
+                            "color": "ffffff55", 
+                            "time": 4.5
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 6.0
+                        }
+                    ]
+                }, 
+                "slotB8_2": {
+                    "color": [
+                        {
+                            "color": "ffffff33", 
+                            "time": 0.0
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 0.1
+                        }, 
+                        {
+                            "color": "ffffff55", 
+                            "time": 1.5
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 3.0
+                        }, 
+                        {
+                            "color": "ffffff55", 
+                            "time": 4.5
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 6.0
+                        }
+                    ]
+                }, 
+                "slotB9_1": {
+                    "color": [
+                        {
+                            "color": "ffffff33", 
+                            "time": 0.0
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 0.1
+                        }, 
+                        {
+                            "color": "ffffff55", 
+                            "time": 1.5
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 3.0
+                        }, 
+                        {
+                            "color": "ffffff55", 
+                            "time": 4.5
+                        }, 
+                        {
+                            "color": "ffffff33", 
+                            "time": 6.0
+                        }
+                    ]
+                }
+            }
+        }
+    }, 
+    "bones": [
+        {
+            "name": "rootA", 
+            "parent": null, 
+            "rotation": 0.0, 
+            "scaleX": 0.5, 
+            "scaleY": 0.5, 
+            "x": 0.0, 
+            "y": 0.0
+        }, 
+        {
+            "name": "bgRingA", 
+            "parent": "rootA", 
+            "rotation": 359.0, 
+            "scaleX": 1.0, 
+            "scaleY": 1.0, 
+            "x": 0.0, 
+            "y": 0.0
+        }, 
+        {
+            "name": "boneA1", 
+            "parent": "bgRingA", 
+            "rotation": 360.0, 
+            "scaleX": 3.0, 
+            "scaleY": 4.754899714423554, 
+            "x": 0.0, 
+            "y": 0.0
+        }, 
+        {
+            "name": "boneA2", 
+            "parent": "bgRingA", 
+            "rotation": 380.0, 
+            "scaleX": 3.0, 
+            "scaleY": 4.754899714423554, 
+            "x": 0.0, 
+            "y": 0.0
+        }, 
+        {
+            "name": "boneA3", 
+            "parent": "bgRingA", 
+            "rotation": 400.0, 
+            "scaleX": 3.0, 
+            "scaleY": 4.754899714423554, 
+            "x": 0.0, 
+            "y": 0.0
+        }, 
+        {
+            "name": "boneA4", 
+            "parent": "bgRingA", 
+            "rotation": 420.00000000000006, 
+            "scaleX": 3.0, 
+            "scaleY": 4.754899714423554, 
+            "x": 0.0, 
+            "y": 0.0
+        }, 
+        {
+            "name": "boneA5", 
+            "parent": "bgRingA", 
+            "rotation": 440.0, 
+            "scaleX": 3.0, 
+            "scaleY": 4.754899714423554, 
+            "x": 0.0, 
+            "y": 0.0
+        }, 
+        {
+            "name": "boneA6", 
+            "parent": "bgRingA", 
+            "rotation": 460.0, 
+            "scaleX": 3.0, 
+            "scaleY": 4.754899714423554, 
+            "x": 0.0, 
+            "y": 0.0
+        }, 
+        {
+            "name": "boneA7", 
+            "parent": "bgRingA", 
+            "rotation": 479.99999999999994, 
+            "scaleX": 3.0, 
+            "scaleY": 4.754899714423554, 
+            "x": 0.0, 
+            "y": 0.0
+        }, 
+        {
+            "name": "boneA8", 
+            "parent": "bgRingA", 
+            "rotation": 500.00000000000006, 
+            "scaleX": 3.0, 
+            "scaleY": 4.754899714423554, 
+            "x": 0.0, 
+            "y": 0.0
+        }, 
+        {
+            "name": "boneA9", 
+            "parent": "bgRingA", 
+            "rotation": 520.0, 
+            "scaleX": 3.0, 
+            "scaleY": 4.754899714423554, 
+            "x": 0.0, 
+            "y": 0.0
+        }, 
+        {
+            "name": "boneA10", 
+            "parent": "bgRingA", 
+            "rotation": 540.0, 
+            "scaleX": 3.0, 
+            "scaleY": 4.754899714423554, 
+            "x": 0.0, 
+            "y": 0.0
+        }, 
+        {
+            "name": "boneA11", 
+            "parent": "bgRingA", 
+            "rotation": 560.0, 
+            "scaleX": 3.0, 
+            "scaleY": 4.754899714423554, 
+            "x": 0.0, 
+            "y": 0.0
+        }, 
+        {
+            "name": "boneA12", 
+            "parent": "bgRingA", 
+            "rotation": 580.0, 
+            "scaleX": 3.0, 
+            "scaleY": 4.754899714423554, 
+            "x": 0.0, 
+            "y": 0.0
+        }, 
+        {
+            "name": "boneA13", 
+            "parent": "bgRingA", 
+            "rotation": 239.99999999999997, 
+            "scaleX": 3.0, 
+            "scaleY": 4.754899714423554, 
+            "x": 0.0, 
+            "y": 0.0
+        }, 
+        {
+            "name": "boneA14", 
+            "parent": "bgRingA", 
+            "rotation": 260.0, 
+            "scaleX": 3.0, 
+            "scaleY": 4.754899714423554, 
+            "x": 0.0, 
+            "y": 0.0
+        }, 
+        {
+            "name": "boneA15", 
+            "parent": "bgRingA", 
+            "rotation": 280.0, 
+            "scaleX": 3.0, 
+            "scaleY": 4.754899714423554, 
+            "x": 0.0, 
+            "y": 0.0
+        }, 
+        {
+            "name": "boneA16", 
+            "parent": "bgRingA", 
+            "rotation": 300.0, 
+            "scaleX": 3.0, 
+            "scaleY": 4.754899714423554, 
+            "x": 0.0, 
+            "y": 0.0
+        }, 
+        {
+            "name": "boneA17", 
+            "parent": "bgRingA", 
+            "rotation": 320.0, 
+            "scaleX": 3.0, 
+            "scaleY": 4.754899714423554, 
+            "x": 0.0, 
+            "y": 0.0
+        }, 
+        {
+            "name": "boneA18", 
+            "parent": "bgRingA", 
+            "rotation": 340.0, 
+            "scaleX": 3.0, 
+            "scaleY": 4.754899714423554, 
+            "x": 0.0, 
+            "y": 0.0
+        }, 
+        {
+            "name": "bgRingB", 
+            "parent": "rootA", 
+            "rotation": 300.0, 
+            "scaleX": 1.0, 
+            "scaleY": 1.0, 
+            "x": 0.0, 
+            "y": 0.0
+        }, 
+        {
+            "name": "boneB1_1", 
+            "parent": "bgRingB", 
+            "rotation": 360.0, 
+            "scaleX": 6.808987298920898, 
+            "scaleY": 5.709525066136582, 
+            "x": 0.0, 
+            "y": 0.0
+        }, 
+        {
+            "name": "boneB1_2", 
+            "parent": "bgRingB", 
+            "rotation": 360.0, 
+            "scaleX": 1.0823879109750798, 
+            "scaleY": 4.988881543256289, 
+            "x": 0.0, 
+            "y": 0.0
+        }, 
+        {
+            "name": "boneB1_3", 
+            "parent": "bgRingB", 
+            "rotation": 354.8170648132007, 
+            "scaleX": 1.0823879109750798, 
+            "scaleY": 4.988881543256289, 
+            "x": 0.0, 
+            "y": 0.0
+        }, 
+        {
+            "name": "boneB1_4", 
+            "parent": "bgRingB", 
+            "rotation": 354.8170648132007, 
+            "scaleX": 1.0823879109750798, 
+            "scaleY": 4.988881543256289, 
+            "x": 0.0, 
+            "y": 0.0
+        }, 
+        {
+            "name": "boneB2_1", 
+            "parent": "bgRingB", 
+            "rotation": 380.0, 
+            "scaleX": 3.8881300401995467, 
+            "scaleY": 5.389162924938725, 
+            "x": 0.0, 
+            "y": 0.0
+        }, 
+        {
+            "name": "boneB2_2", 
+            "parent": "bgRingB", 
+            "rotation": 380.0, 
+            "scaleX": 1.8510060506966781, 
+            "scaleY": 6.0327921147432155, 
+            "x": 0.0, 
+            "y": 0.0
+        }, 
+        {
+            "name": "boneB3_1", 
+            "parent": "bgRingB", 
+            "rotation": 400.0, 
+            "scaleX": 4.42191705304907, 
+            "scaleY": 5.3255148387928966, 
+            "x": 0.0, 
+            "y": 0.0
+        }, 
+        {
+            "name": "boneB4_1", 
+            "parent": "bgRingB", 
+            "rotation": 420.00000000000006, 
+            "scaleX": 5.373921841923798, 
+            "scaleY": 5.702429755720949, 
+            "x": 0.0, 
+            "y": 0.0
+        }, 
+        {
+            "name": "boneB4_2", 
+            "parent": "bgRingB", 
+            "rotation": 417.3461545750331, 
+            "scaleX": 1.8181625678161912, 
+            "scaleY": 5.702429755720949, 
+            "x": 0.0, 
+            "y": 0.0
+        }, 
+        {
+            "name": "boneB5_1", 
+            "parent": "bgRingB", 
+            "rotation": 440.0, 
+            "scaleX": 3.8907400515652086, 
+            "scaleY": 5.126875086582199, 
+            "x": 0.0, 
+            "y": 0.0
+        }, 
+        {
+            "name": "boneB5_2", 
+            "parent": "bgRingB", 
+            "rotation": 437.41590236822327, 
+            "scaleX": 1.954902674619141, 
+            "scaleY": 5.856204204817417, 
+            "x": 0.0, 
+            "y": 0.0
+        }, 
+        {
+            "name": "boneB6_1", 
+            "parent": "bgRingB", 
+            "rotation": 455.252704990795, 
+            "scaleX": 3.54811491472185, 
+            "scaleY": 5.593409798553635, 
+            "x": 0.0, 
+            "y": 0.0
+        }, 
+        {
+            "name": "boneB6_2", 
+            "parent": "bgRingB", 
+            "rotation": 464.94020208675903, 
+            "scaleX": 2.0222437971212295, 
+            "scaleY": 5.593409798553635, 
+            "x": 0.0, 
+            "y": 0.0
+        }, 
+        {
+            "name": "boneB7_1", 
+            "parent": "bgRingB", 
+            "rotation": 479.99999999999994, 
+            "scaleX": 2.4330556918879225, 
+            "scaleY": 5.4495437680437595, 
+            "x": 0.0, 
+            "y": 0.0
+        }, 
+        {
+            "name": "boneB8_1", 
+            "parent": "bgRingB", 
+            "rotation": 504.4980011612834, 
+            "scaleX": 3.1717993348184845, 
+            "scaleY": 5.4495437680437595, 
+            "x": 0.0, 
+            "y": 0.0
+        }, 
+        {
+            "name": "boneB9_1", 
+            "parent": "bgRingB", 
+            "rotation": 524.4407814516813, 
+            "scaleX": 2.4330556918879225, 
+            "scaleY": 5.4495437680437595, 
+            "x": 0.0, 
+            "y": 0.0
+        }, 
+        {
+            "name": "boneB10_1", 
+            "parent": "bgRingB", 
+            "rotation": 540.121499768011, 
+            "scaleX": 2.947014897663029, 
+            "scaleY": 5.4495437680437595, 
+            "x": 0.0, 
+            "y": 0.0
+        }, 
+        {
+            "name": "boneB11_1", 
+            "parent": "bgRingB", 
+            "rotation": 565.8655659493753, 
+            "scaleX": 3.4160323377139723, 
+            "scaleY": 5.4495437680437595, 
+            "x": 0.0, 
+            "y": 0.0
+        }, 
+        {
+            "name": "boneB12_1", 
+            "parent": "bgRingB", 
+            "rotation": 580.0, 
+            "scaleX": 3.669785573580734, 
+            "scaleY": 5.4495437680437595, 
+            "x": 0.0, 
+            "y": 0.0
+        }, 
+        {
+            "name": "boneB13_1", 
+            "parent": "bgRingB", 
+            "rotation": 244.50306783325036, 
+            "scaleX": 2.4330556918879225, 
+            "scaleY": 5.4495437680437595, 
+            "x": 0.0, 
+            "y": 0.0
+        }, 
+        {
+            "name": "boneB14_1", 
+            "parent": "bgRingB", 
+            "rotation": 260.0, 
+            "scaleX": 1.5968031995318426, 
+            "scaleY": 5.4495437680437595, 
+            "x": 0.0, 
+            "y": 0.0
+        }, 
+        {
+            "name": "boneB15_1", 
+            "parent": "bgRingB", 
+            "rotation": 285.8854667853787, 
+            "scaleX": 1.9181409239483664, 
+            "scaleY": 5.4495437680437595, 
+            "x": 0.0, 
+            "y": 0.0
+        }, 
+        {
+            "name": "boneB16_1", 
+            "parent": "bgRingB", 
+            "rotation": 302.39757580455364, 
+            "scaleX": 4.20178869861035, 
+            "scaleY": 5.4495437680437595, 
+            "x": 0.0, 
+            "y": 0.0
+        }, 
+        {
+            "name": "boneB17_1", 
+            "parent": "bgRingB", 
+            "rotation": 320.0, 
+            "scaleX": 2.4330556918879225, 
+            "scaleY": 5.4495437680437595, 
+            "x": 0.0, 
+            "y": 0.0
+        }, 
+        {
+            "name": "boneB18_1", 
+            "parent": "bgRingB", 
+            "rotation": 340.0, 
+            "scaleX": 2.4330556918879225, 
+            "scaleY": 5.4495437680437595, 
+            "x": 0.0, 
+            "y": 0.0
+        }, 
+        {
+            "name": "boneB8_2", 
+            "parent": "bgRingB", 
+            "rotation": 496.07523153055394, 
+            "scaleX": 3.1717993348184845, 
+            "scaleY": 5.4495437680437595, 
+            "x": 0.0, 
+            "y": 0.0
+        }, 
+        {
+            "name": "boneB11_2", 
+            "parent": "bgRingB", 
+            "rotation": 559.0704220292819, 
+            "scaleX": 3.4160323377139723, 
+            "scaleY": 5.4495437680437595, 
+            "x": 0.0, 
+            "y": 0.0
+        }, 
+        {
+            "name": "boneB12_2", 
+            "parent": "bgRingB", 
+            "rotation": 586.7139530788191, 
+            "scaleX": 2.204702694983291, 
+            "scaleY": 5.4495437680437595, 
+            "x": 0.0, 
+            "y": 0.0
+        }, 
+        {
+            "name": "boneB13_2", 
+            "parent": "bgRingB", 
+            "rotation": 241.9003238273844, 
+            "scaleX": 1.9870212157844689, 
+            "scaleY": 5.4495437680437595, 
+            "x": 0.0, 
+            "y": 0.0
+        }, 
+        {
+            "name": "boneB14_2", 
+            "parent": "bgRingB", 
+            "rotation": 255.07182797425315, 
+            "scaleX": 2.2985380002650495, 
+            "scaleY": 5.4495437680437595, 
+            "x": 0.0, 
+            "y": 0.0
+        }, 
+        {
+            "name": "boneB15_2", 
+            "parent": "bgRingB", 
+            "rotation": 275.86218385089063, 
+            "scaleX": 2.4330556918879225, 
+            "scaleY": 5.4495437680437595, 
+            "x": 0.0, 
+            "y": 0.0
+        }, 
+        {
+            "name": "boneB16_2", 
+            "parent": "bgRingB", 
+            "rotation": 296.8356243334063, 
+            "scaleX": 1.7377662267872076, 
+            "scaleY": 5.4495437680437595, 
+            "x": 0.0, 
+            "y": 0.0
+        }, 
+        {
+            "name": "boneB17_2", 
+            "parent": "bgRingB", 
+            "rotation": 326.7359603636711, 
+            "scaleX": 2.4330556918879225, 
+            "scaleY": 5.4495437680437595, 
+            "x": 0.0, 
+            "y": 0.0
+        }
+    ], 
+    "skins": {
+        "default": {
+            "slotA1": {
+                "effect_a_items_001": {
+                    "height": 256, 
+                    "width": 71, 
+                    "x": 0, 
+                    "y": 100
+                }
+            }, 
+            "slotA10": {
+                "effect_a_items_001": {
+                    "height": 256, 
+                    "width": 71, 
+                    "x": 0, 
+                    "y": 100
+                }
+            }, 
+            "slotA11": {
+                "effect_a_items_001": {
+                    "height": 256, 
+                    "width": 71, 
+                    "x": 0, 
+                    "y": 100
+                }
+            }, 
+            "slotA12": {
+                "effect_a_items_001": {
+                    "height": 256, 
+                    "width": 71, 
+                    "x": 0, 
+                    "y": 100
+                }
+            }, 
+            "slotA13": {
+                "effect_a_items_001": {
+                    "height": 256, 
+                    "width": 71, 
+                    "x": 0, 
+                    "y": 100
+                }
+            }, 
+            "slotA14": {
+                "effect_a_items_001": {
+                    "height": 256, 
+                    "width": 71, 
+                    "x": 0, 
+                    "y": 100
+                }
+            }, 
+            "slotA15": {
+                "effect_a_items_001": {
+                    "height": 256, 
+                    "width": 71, 
+                    "x": 0, 
+                    "y": 100
+                }
+            }, 
+            "slotA16": {
+                "effect_a_items_001": {
+                    "height": 256, 
+                    "width": 71, 
+                    "x": 0, 
+                    "y": 100
+                }
+            }, 
+            "slotA17": {
+                "effect_a_items_001": {
+                    "height": 256, 
+                    "width": 71, 
+                    "x": 0, 
+                    "y": 100
+                }
+            }, 
+            "slotA18": {
+                "effect_a_items_001": {
+                    "height": 256, 
+                    "width": 71, 
+                    "x": 0, 
+                    "y": 100
+                }
+            }, 
+            "slotA2": {
+                "effect_a_items_001": {
+                    "height": 256, 
+                    "width": 71, 
+                    "x": 0, 
+                    "y": 100
+                }
+            }, 
+            "slotA3": {
+                "effect_a_items_001": {
+                    "height": 256, 
+                    "width": 71, 
+                    "x": 0, 
+                    "y": 100
+                }
+            }, 
+            "slotA4": {
+                "effect_a_items_001": {
+                    "height": 256, 
+                    "width": 71, 
+                    "x": 0, 
+                    "y": 100
+                }
+            }, 
+            "slotA5": {
+                "effect_a_items_001": {
+                    "height": 256, 
+                    "width": 71, 
+                    "x": 0, 
+                    "y": 100
+                }
+            }, 
+            "slotA6": {
+                "effect_a_items_001": {
+                    "height": 256, 
+                    "width": 71, 
+                    "x": 0, 
+                    "y": 100
+                }
+            }, 
+            "slotA7": {
+                "effect_a_items_001": {
+                    "height": 256, 
+                    "width": 71, 
+                    "x": 0, 
+                    "y": 100
+                }
+            }, 
+            "slotA8": {
+                "effect_a_items_001": {
+                    "height": 256, 
+                    "width": 71, 
+                    "x": 0, 
+                    "y": 100
+                }
+            }, 
+            "slotA9": {
+                "effect_a_items_001": {
+                    "height": 256, 
+                    "width": 71, 
+                    "x": 0, 
+                    "y": 100
+                }
+            }, 
+            "slotB10_1": {
+                "effect_a_items_001": {
+                    "height": 256, 
+                    "width": 71, 
+                    "x": 0, 
+                    "y": 100
+                }
+            }, 
+            "slotB11_1": {
+                "effect_a_items_001": {
+                    "height": 256, 
+                    "width": 71, 
+                    "x": 0, 
+                    "y": 100
+                }
+            }, 
+            "slotB11_2": {
+                "effect_a_items_001": {
+                    "height": 256, 
+                    "width": 71, 
+                    "x": 0, 
+                    "y": 100
+                }
+            }, 
+            "slotB12_1": {
+                "effect_a_items_001": {
+                    "height": 256, 
+                    "width": 71, 
+                    "x": 0, 
+                    "y": 100
+                }
+            }, 
+            "slotB12_2": {
+                "effect_a_items_001": {
+                    "height": 256, 
+                    "width": 71, 
+                    "x": 0, 
+                    "y": 100
+                }
+            }, 
+            "slotB132": {
+                "effect_a_items_001": {
+                    "height": 256, 
+                    "width": 71, 
+                    "x": 0, 
+                    "y": 100
+                }
+            }, 
+            "slotB13_1": {
+                "effect_a_items_001": {
+                    "height": 256, 
+                    "width": 71, 
+                    "x": 0, 
+                    "y": 100
+                }
+            }, 
+            "slotB14_1": {
+                "effect_a_items_001": {
+                    "height": 256, 
+                    "width": 71, 
+                    "x": 0, 
+                    "y": 100
+                }
+            }, 
+            "slotB14_2": {
+                "effect_a_items_001": {
+                    "height": 256, 
+                    "width": 71, 
+                    "x": 0, 
+                    "y": 100
+                }
+            }, 
+            "slotB15_1": {
+                "effect_a_items_001": {
+                    "height": 256, 
+                    "width": 71, 
+                    "x": 0, 
+                    "y": 100
+                }
+            }, 
+            "slotB15_2": {
+                "effect_a_items_001": {
+                    "height": 256, 
+                    "width": 71, 
+                    "x": 0, 
+                    "y": 100
+                }
+            }, 
+            "slotB16_1": {
+                "effect_a_items_001": {
+                    "height": 256, 
+                    "width": 71, 
+                    "x": 0, 
+                    "y": 100
+                }
+            }, 
+            "slotB16_2": {
+                "effect_a_items_001": {
+                    "height": 256, 
+                    "width": 71, 
+                    "x": 0, 
+                    "y": 100
+                }
+            }, 
+            "slotB17_1": {
+                "effect_a_items_001": {
+                    "height": 256, 
+                    "width": 71, 
+                    "x": 0, 
+                    "y": 100
+                }
+            }, 
+            "slotB17_2": {
+                "effect_a_items_001": {
+                    "height": 256, 
+                    "width": 71, 
+                    "x": 0, 
+                    "y": 100
+                }
+            }, 
+            "slotB18_1": {
+                "effect_a_items_001": {
+                    "height": 256, 
+                    "width": 71, 
+                    "x": 0, 
+                    "y": 100
+                }
+            }, 
+            "slotB1_1": {
+                "effect_a_items_001": {
+                    "height": 256, 
+                    "width": 71, 
+                    "x": 0, 
+                    "y": 100
+                }
+            }, 
+            "slotB1_2": {
+                "effect_a_items_001": {
+                    "height": 256, 
+                    "width": 71, 
+                    "x": 0, 
+                    "y": 100
+                }
+            }, 
+            "slotB1_3": {
+                "effect_a_items_001": {
+                    "height": 256, 
+                    "width": 71, 
+                    "x": 0, 
+                    "y": 100
+                }
+            }, 
+            "slotB1_4": {
+                "effect_a_items_001": {
+                    "height": 256, 
+                    "width": 71, 
+                    "x": 0, 
+                    "y": 100
+                }
+            }, 
+            "slotB2_1": {
+                "effect_a_items_001": {
+                    "height": 256, 
+                    "width": 71, 
+                    "x": 0, 
+                    "y": 100
+                }
+            }, 
+            "slotB2_2": {
+                "effect_a_items_001": {
+                    "height": 256, 
+                    "width": 71, 
+                    "x": 0, 
+                    "y": 100
+                }
+            }, 
+            "slotB3_1": {
+                "effect_a_items_001": {
+                    "height": 256, 
+                    "width": 71, 
+                    "x": 0, 
+                    "y": 100
+                }
+            }, 
+            "slotB4_1": {
+                "effect_a_items_001": {
+                    "height": 256, 
+                    "width": 71, 
+                    "x": 0, 
+                    "y": 100
+                }
+            }, 
+            "slotB4_2": {
+                "effect_a_items_001": {
+                    "height": 256, 
+                    "width": 71, 
+                    "x": 0, 
+                    "y": 100
+                }
+            }, 
+            "slotB5_1": {
+                "effect_a_items_001": {
+                    "height": 256, 
+                    "width": 71, 
+                    "x": 0, 
+                    "y": 100
+                }
+            }, 
+            "slotB5_2": {
+                "effect_a_items_001": {
+                    "height": 256, 
+                    "width": 71, 
+                    "x": 0, 
+                    "y": 100
+                }
+            }, 
+            "slotB6_1": {
+                "effect_a_items_001": {
+                    "height": 256, 
+                    "width": 71, 
+                    "x": 0, 
+                    "y": 100
+                }
+            }, 
+            "slotB6_2": {
+                "effect_a_items_001": {
+                    "height": 256, 
+                    "width": 71, 
+                    "x": 0, 
+                    "y": 100
+                }
+            }, 
+            "slotB7_1": {
+                "effect_a_items_001": {
+                    "height": 256, 
+                    "width": 71, 
+                    "x": 0, 
+                    "y": 100
+                }
+            }, 
+            "slotB8_1": {
+                "effect_a_items_001": {
+                    "height": 256, 
+                    "width": 71, 
+                    "x": 0, 
+                    "y": 100
+                }
+            }, 
+            "slotB8_2": {
+                "effect_a_items_001": {
+                    "height": 256, 
+                    "width": 71, 
+                    "x": 0, 
+                    "y": 100
+                }
+            }, 
+            "slotB9_1": {
+                "effect_a_items_001": {
+                    "height": 256, 
+                    "width": 71, 
+                    "x": 0, 
+                    "y": 100
+                }
+            }
+        }
+    }, 
+    "slots": [
+        {
+            "attachment": "effect_a_items_001", 
+            "blend": "additive", 
+            "bone": "boneA1", 
+            "color": "ffffffff", 
+            "name": "slotA1"
+        }, 
+        {
+            "attachment": "effect_a_items_001", 
+            "blend": "additive", 
+            "bone": "boneA2", 
+            "color": "ffffffff", 
+            "name": "slotA2"
+        }, 
+        {
+            "attachment": "effect_a_items_001", 
+            "blend": "additive", 
+            "bone": "boneA3", 
+            "color": "ffffffff", 
+            "name": "slotA3"
+        }, 
+        {
+            "attachment": "effect_a_items_001", 
+            "blend": "additive", 
+            "bone": "boneA4", 
+            "color": "ffffffff", 
+            "name": "slotA4"
+        }, 
+        {
+            "attachment": "effect_a_items_001", 
+            "blend": "additive", 
+            "bone": "boneA5", 
+            "color": "ffffffff", 
+            "name": "slotA5"
+        }, 
+        {
+            "attachment": "effect_a_items_001", 
+            "blend": "additive", 
+            "bone": "boneA6", 
+            "color": "ffffffff", 
+            "name": "slotA6"
+        }, 
+        {
+            "attachment": "effect_a_items_001", 
+            "blend": "additive", 
+            "bone": "boneA7", 
+            "color": "ffffffff", 
+            "name": "slotA7"
+        }, 
+        {
+            "attachment": "effect_a_items_001", 
+            "blend": "additive", 
+            "bone": "boneA8", 
+            "color": "ffffffff", 
+            "name": "slotA8"
+        }, 
+        {
+            "attachment": "effect_a_items_001", 
+            "blend": "additive", 
+            "bone": "boneA9", 
+            "color": "ffffffff", 
+            "name": "slotA9"
+        }, 
+        {
+            "attachment": "effect_a_items_001", 
+            "blend": "additive", 
+            "bone": "boneA10", 
+            "color": "ffffffff", 
+            "name": "slotA10"
+        }, 
+        {
+            "attachment": "effect_a_items_001", 
+            "blend": "additive", 
+            "bone": "boneA11", 
+            "color": "ffffffff", 
+            "name": "slotA11"
+        }, 
+        {
+            "attachment": "effect_a_items_001", 
+            "blend": "additive", 
+            "bone": "boneA12", 
+            "color": "ffffffff", 
+            "name": "slotA12"
+        }, 
+        {
+            "attachment": "effect_a_items_001", 
+            "blend": "additive", 
+            "bone": "boneA13", 
+            "color": "ffffffff", 
+            "name": "slotA13"
+        }, 
+        {
+            "attachment": "effect_a_items_001", 
+            "blend": "additive", 
+            "bone": "boneA14", 
+            "color": "ffffffff", 
+            "name": "slotA14"
+        }, 
+        {
+            "attachment": "effect_a_items_001", 
+            "blend": "additive", 
+            "bone": "boneA15", 
+            "color": "ffffffff", 
+            "name": "slotA15"
+        }, 
+        {
+            "attachment": "effect_a_items_001", 
+            "blend": "additive", 
+            "bone": "boneA16", 
+            "color": "ffffffff", 
+            "name": "slotA16"
+        }, 
+        {
+            "attachment": "effect_a_items_001", 
+            "blend": "additive", 
+            "bone": "boneA17", 
+            "color": "ffffffff", 
+            "name": "slotA17"
+        }, 
+        {
+            "attachment": "effect_a_items_001", 
+            "blend": "additive", 
+            "bone": "boneA18", 
+            "color": "ffffffff", 
+            "name": "slotA18"
+        }, 
+        {
+            "attachment": "effect_a_items_001", 
+            "blend": "additive", 
+            "bone": "boneB1_1", 
+            "color": "ffffffff", 
+            "name": "slotB1_1"
+        }, 
+        {
+            "attachment": "effect_a_items_001", 
+            "blend": "additive", 
+            "bone": "boneB1_2", 
+            "color": "ffffffff", 
+            "name": "slotB1_2"
+        }, 
+        {
+            "attachment": "effect_a_items_001", 
+            "blend": "additive", 
+            "bone": "boneB1_3", 
+            "color": "ffffffff", 
+            "name": "slotB1_3"
+        }, 
+        {
+            "attachment": "effect_a_items_001", 
+            "blend": "additive", 
+            "bone": "boneB1_4", 
+            "color": "ffffffff", 
+            "name": "slotB1_4"
+        }, 
+        {
+            "attachment": "effect_a_items_001", 
+            "blend": "additive", 
+            "bone": "boneB2_1", 
+            "color": "ffffffff", 
+            "name": "slotB2_1"
+        }, 
+        {
+            "attachment": "effect_a_items_001", 
+            "blend": "additive", 
+            "bone": "boneB2_2", 
+            "color": "ffffffff", 
+            "name": "slotB2_2"
+        }, 
+        {
+            "attachment": "effect_a_items_001", 
+            "blend": "additive", 
+            "bone": "boneB3_1", 
+            "color": "ffffffff", 
+            "name": "slotB3_1"
+        }, 
+        {
+            "attachment": "effect_a_items_001", 
+            "blend": "additive", 
+            "bone": "boneB4_1", 
+            "color": "ffffffff", 
+            "name": "slotB4_1"
+        }, 
+        {
+            "attachment": "effect_a_items_001", 
+            "blend": "additive", 
+            "bone": "boneB4_2", 
+            "color": "ffffffff", 
+            "name": "slotB4_2"
+        }, 
+        {
+            "attachment": "effect_a_items_001", 
+            "blend": "additive", 
+            "bone": "boneB5_1", 
+            "color": "ffffffff", 
+            "name": "slotB5_1"
+        }, 
+        {
+            "attachment": "effect_a_items_001", 
+            "blend": "additive", 
+            "bone": "boneB5_2", 
+            "color": "ffffffff", 
+            "name": "slotB5_2"
+        }, 
+        {
+            "attachment": "effect_a_items_001", 
+            "blend": "additive", 
+            "bone": "boneB6_1", 
+            "color": "ffffffff", 
+            "name": "slotB6_1"
+        }, 
+        {
+            "attachment": "effect_a_items_001", 
+            "blend": "additive", 
+            "bone": "boneB6_2", 
+            "color": "ffffffff", 
+            "name": "slotB6_2"
+        }, 
+        {
+            "attachment": "effect_a_items_001", 
+            "blend": "additive", 
+            "bone": "boneB7_1", 
+            "color": "ffffffff", 
+            "name": "slotB7_1"
+        }, 
+        {
+            "attachment": "effect_a_items_001", 
+            "blend": "additive", 
+            "bone": "boneB8_1", 
+            "color": "ffffffff", 
+            "name": "slotB8_1"
+        }, 
+        {
+            "attachment": "effect_a_items_001", 
+            "blend": "additive", 
+            "bone": "boneB9_1", 
+            "color": "ffffffff", 
+            "name": "slotB9_1"
+        }, 
+        {
+            "attachment": "effect_a_items_001", 
+            "blend": "additive", 
+            "bone": "boneB10_1", 
+            "color": "ffffffff", 
+            "name": "slotB10_1"
+        }, 
+        {
+            "attachment": "effect_a_items_001", 
+            "blend": "additive", 
+            "bone": "boneB11_1", 
+            "color": "ffffffff", 
+            "name": "slotB11_1"
+        }, 
+        {
+            "attachment": "effect_a_items_001", 
+            "blend": "additive", 
+            "bone": "boneB12_1", 
+            "color": "ffffffff", 
+            "name": "slotB12_1"
+        }, 
+        {
+            "attachment": "effect_a_items_001", 
+            "blend": "additive", 
+            "bone": "boneB13_1", 
+            "color": "ffffffff", 
+            "name": "slotB13_1"
+        }, 
+        {
+            "attachment": "effect_a_items_001", 
+            "blend": "additive", 
+            "bone": "boneB14_1", 
+            "color": "ffffffff", 
+            "name": "slotB14_1"
+        }, 
+        {
+            "attachment": "effect_a_items_001", 
+            "blend": "additive", 
+            "bone": "boneB15_1", 
+            "color": "ffffffff", 
+            "name": "slotB15_1"
+        }, 
+        {
+            "attachment": "effect_a_items_001", 
+            "blend": "additive", 
+            "bone": "boneB16_1", 
+            "color": "ffffffff", 
+            "name": "slotB16_1"
+        }, 
+        {
+            "attachment": "effect_a_items_001", 
+            "blend": "additive", 
+            "bone": "boneB17_1", 
+            "color": "ffffffff", 
+            "name": "slotB17_1"
+        }, 
+        {
+            "attachment": "effect_a_items_001", 
+            "blend": "additive", 
+            "bone": "boneB18_1", 
+            "color": "ffffffff", 
+            "name": "slotB18_1"
+        }, 
+        {
+            "attachment": "effect_a_items_001", 
+            "blend": "additive", 
+            "bone": "boneB8_2", 
+            "color": "ffffffff", 
+            "name": "slotB8_2"
+        }, 
+        {
+            "attachment": "effect_a_items_001", 
+            "blend": "additive", 
+            "bone": "boneB11_2", 
+            "color": "ffffffff", 
+            "name": "slotB11_2"
+        }, 
+        {
+            "attachment": "effect_a_items_001", 
+            "blend": "additive", 
+            "bone": "boneB12_2", 
+            "color": "ffffffff", 
+            "name": "slotB12_2"
+        }, 
+        {
+            "attachment": "effect_a_items_001", 
+            "blend": "additive", 
+            "bone": "boneB13_2", 
+            "color": "ffffffff", 
+            "name": "slotB132"
+        }, 
+        {
+            "attachment": "effect_a_items_001", 
+            "blend": "additive", 
+            "bone": "boneB14_2", 
+            "color": "ffffffff", 
+            "name": "slotB14_2"
+        }, 
+        {
+            "attachment": "effect_a_items_001", 
+            "blend": "additive", 
+            "bone": "boneB15_2", 
+            "color": "ffffffff", 
+            "name": "slotB15_2"
+        }, 
+        {
+            "attachment": "effect_a_items_001", 
+            "blend": "additive", 
+            "bone": "boneB16_2", 
+            "color": "ffffffff", 
+            "name": "slotB16_2"
+        }, 
+        {
+            "attachment": "effect_a_items_001", 
+            "blend": "additive", 
+            "bone": "boneB17_2", 
+            "color": "ffffffff", 
+            "name": "slotB17_2"
+        }
+    ]
+}

@@ -1,7 +1,15 @@
+import maya.cmds as cmds
+import json
 
-    
-def getAllbones():
+def getAllbones(rootJoint):
     boneList = []
+
+    for i in cmds.ls(rootJoint,dag =2):
+        if cmds.nodeType(i) =="joint":
+            boneList.append(i)
+    
+    print boneList
+
     allBoneList = cmds.ls(type="joint" ,l =True)
     for i in allBoneList:
         boneShotName =  i.split("|")[-1]
@@ -48,4 +56,13 @@ def run():
     boneList = getAllbones()
     print getAllSlots(boneList),len(boneList)
     
+def runB():
+    rootName = "rootA"
+    getAllbones(rootName)
+    
+    
 #run()
+
+runB()
+
+
