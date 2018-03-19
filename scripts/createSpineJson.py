@@ -1,7 +1,7 @@
 import maya.cmds as cmds
 import json
 
-exportFileName = "C:/Users/alpha/Documents/GitHub/JS_learning/spineTest/powerup.json"
+exportFileName = "C:/alphaOnly/github/JS_learning/spineTest/powerup.json"
 
 exportJson = {"bones":[],"slots":[],"skins": {"default":{}},"animations":{}}
 bones = [{ "name": "root" }]
@@ -80,9 +80,9 @@ for bone in boneList:
             scaleX = width/ originalWidth
             scaleY = height /originalHeight
 
-            translateKeyValueList.append({"time":i/60,"x":translateX,"y":translateY,"curve": [ 0.5, 0, 0.75, 1 ]})
-            scaleKeyValueList.append({"time":i/60,"x":scaleX,"y":scaleY,"curve": [ 0.5, 0, 0.75, 1 ]})
-            rotateKeyValueList.append({"time":i/60,"angle":rotate,"curve": [ 0.5, 0, 0.75, 1 ]})
+            translateKeyValueList.append({"time":i/60,"x":translateX,"y":translateY})  #,"curve": [ 0.5, 0, 0.75, 1 ]
+            scaleKeyValueList.append({"time":i/60,"x":scaleX,"y":scaleY})
+            rotateKeyValueList.append({"time":i/60,"angle":rotate})
             
         boneAnimationDict = {str(bone):{"translate":translateKeyValueList,"scale":scaleKeyValueList,"rotate":rotateKeyValueList}}
         actionAnimation[actionName]["bones"].update(boneAnimationDict)
