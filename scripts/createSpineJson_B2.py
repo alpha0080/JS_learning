@@ -202,7 +202,8 @@ def getAnimationList(slotList,boneList,fps):
 
     
 def getExportJson(boneList,slotList,skinList,animationList):
-    exportFileName = "C:/Users/alpha/Documents/GitHub/JS_learning/spineTest/spineJsonTest_01.json"
+    exportFileName = "//mcd-server/webServer/spineTest/effectB/effectB_01.json"
+   # exportFileName = "C:/Users/alpha/Documents/GitHub/JS_learning/spineTest/spineJsonTest_02.json"
 
     exportDict = {}
     exportDict.update({"bones":boneList})
@@ -226,11 +227,11 @@ def run():
     
     cmds.select("slotB1")
 def runB():
-    rootName = "rootA"
+    rootName = "root_effectB"
     boneList = getAllbones(rootName)
     slotList = getAllSlots(boneList)
     skinList = getSkinsList(slotList)
-    animationList = getAnimationList(slotList,boneList,10)
+    animationList = getAnimationList(slotList,boneList,30)
     getExportJson(boneList,slotList,skinList,animationList)
 
     
@@ -238,5 +239,13 @@ def runB():
 #run()
 
 runB()
-
+'''
+for i in cmds.ls(sl=True):
+    print i, cmds.listRelatives(i,c=True)
+    objectName = "%s|%s"%(i,cmds.listRelatives(i,c=True)[0])
+    newName = i[:-3] +"_slot_"+ str( i[-3:])
+  #  print newName
+    cmds.rename(objectName,newName)
+    
+ '''   
 

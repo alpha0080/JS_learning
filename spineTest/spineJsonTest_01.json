@@ -5,62 +5,17 @@
                 "bgRingA": {
                     "rotate": [
                         {
-                            "angle": 0.0, 
+                            "angle": 1.0, 
                             "time": 0.0
                         }, 
                         {
-                            "angle": 1.0, 
-                            "time": 0.1
-                        }, 
-                        {
-                            "angle": 32.51, 
-                            "time": 0.7
-                        }, 
-                        {
-                            "angle": 70.0, 
-                            "time": 1.2
-                        }, 
-                        {
-                            "angle": 223.23, 
-                            "time": 3.0
-                        }, 
-                        {
-                            "angle": 318.87, 
-                            "time": 4.6
-                        }, 
-                        {
-                            "angle": 359.0, 
+                            "angle": 360.0, 
                             "time": 6.0
                         }
                     ], 
                     "scale": [
                         {
                             "time": 0.0, 
-                            "x": 1.0, 
-                            "y": 1.0
-                        }, 
-                        {
-                            "time": 0.1, 
-                            "x": 1.0, 
-                            "y": 1.0
-                        }, 
-                        {
-                            "time": 0.7, 
-                            "x": 1.0, 
-                            "y": 1.0
-                        }, 
-                        {
-                            "time": 1.2, 
-                            "x": 1.0, 
-                            "y": 1.0
-                        }, 
-                        {
-                            "time": 3.0, 
-                            "x": 1.0, 
-                            "y": 1.0
-                        }, 
-                        {
-                            "time": 4.6, 
                             "x": 1.0, 
                             "y": 1.0
                         }, 
@@ -73,31 +28,6 @@
                     "translate": [
                         {
                             "time": 0.0, 
-                            "x": 0.0, 
-                            "y": 0.0
-                        }, 
-                        {
-                            "time": 0.1, 
-                            "x": 0.0, 
-                            "y": 0.0
-                        }, 
-                        {
-                            "time": 0.7, 
-                            "x": 0.0, 
-                            "y": 0.0
-                        }, 
-                        {
-                            "time": 1.2, 
-                            "x": 0.0, 
-                            "y": 0.0
-                        }, 
-                        {
-                            "time": 3.0, 
-                            "x": 0.0, 
-                            "y": 0.0
-                        }, 
-                        {
-                            "time": 4.6, 
                             "x": 0.0, 
                             "y": 0.0
                         }, 
@@ -115,34 +45,25 @@
                             "time": 0.0
                         }, 
                         {
-                            "angle": 0.0, 
-                            "time": 0.1
-                        }, 
-                        {
-                            "angle": 51.54, 
+                            "angle": 74.3, 
                             "time": 1.5
                         }, 
                         {
-                            "angle": 146.19, 
+                            "angle": 180.65, 
                             "time": 3.0
                         }, 
                         {
-                            "angle": 243.8, 
+                            "angle": 287.9, 
                             "time": 4.5
                         }, 
                         {
-                            "angle": 300.0, 
+                            "angle": 360.0, 
                             "time": 6.0
                         }
                     ], 
                     "scale": [
                         {
                             "time": 0.0, 
-                            "x": 1.0, 
-                            "y": 1.0
-                        }, 
-                        {
-                            "time": 0.1, 
                             "x": 1.0, 
                             "y": 1.0
                         }, 
@@ -170,11 +91,6 @@
                     "translate": [
                         {
                             "time": 0.0, 
-                            "x": 0.0, 
-                            "y": 0.0
-                        }, 
-                        {
-                            "time": 0.1, 
                             "x": 0.0, 
                             "y": 0.0
                         }, 
@@ -205,15 +121,15 @@
                 "slotA1": {
                     "color": [
                         {
-                            "color": "00caff4c", 
+                            "color": "ff81004c", 
                             "time": 0.0
                         }, 
                         {
-                            "color": "00caff4c", 
+                            "color": "ff81004c", 
                             "time": 0.1
                         }, 
                         {
-                            "color": "00caff4c", 
+                            "color": "ff81004c", 
                             "time": 6.0
                         }
                     ]
@@ -221,15 +137,15 @@
                 "slotA10": {
                     "color": [
                         {
-                            "color": "00caff4c", 
+                            "color": "ff81004c", 
                             "time": 0.0
                         }, 
                         {
-                            "color": "00caff4c", 
+                            "color": "ff81004c", 
                             "time": 0.1
                         }, 
                         {
-                            "color": "00caff4c", 
+                            "color": "ff81004c", 
                             "time": 6.0
                         }
                     ]
@@ -237,15 +153,15 @@
                 "slotA11": {
                     "color": [
                         {
-                            "color": "00caff4c", 
+                            "color": "ff81004c", 
                             "time": 0.0
                         }, 
                         {
-                            "color": "00caff4c", 
+                            "color": "ff81004c", 
                             "time": 0.1
                         }, 
                         {
-                            "color": "00caff4c", 
+                            "color": "ff81004c", 
                             "time": 6.0
                         }
                     ]
@@ -253,15 +169,15 @@
                 "slotA12": {
                     "color": [
                         {
-                            "color": "00caff4c", 
+                            "color": "ff81004c", 
                             "time": 0.0
                         }, 
                         {
-                            "color": "00caff4c", 
+                            "color": "ff81004c", 
                             "time": 0.1
                         }, 
                         {
-                            "color": "00caff4c", 
+                            "color": "ff81004c", 
                             "time": 6.0
                         }
                     ]
@@ -269,15 +185,15 @@
                 "slotA13": {
                     "color": [
                         {
-                            "color": "00caff4c", 
+                            "color": "ff81004c", 
                             "time": 0.0
                         }, 
                         {
-                            "color": "00caff4c", 
+                            "color": "ff81004c", 
                             "time": 0.1
                         }, 
                         {
-                            "color": "00caff4c", 
+                            "color": "ff81004c", 
                             "time": 6.0
                         }
                     ]
@@ -285,15 +201,15 @@
                 "slotA14": {
                     "color": [
                         {
-                            "color": "00caff4c", 
+                            "color": "ff81004c", 
                             "time": 0.0
                         }, 
                         {
-                            "color": "00caff4c", 
+                            "color": "ff81004c", 
                             "time": 0.1
                         }, 
                         {
-                            "color": "00caff4c", 
+                            "color": "ff81004c", 
                             "time": 6.0
                         }
                     ]
@@ -301,15 +217,15 @@
                 "slotA15": {
                     "color": [
                         {
-                            "color": "00caff4c", 
+                            "color": "ff81004c", 
                             "time": 0.0
                         }, 
                         {
-                            "color": "00caff4c", 
+                            "color": "ff81004c", 
                             "time": 0.1
                         }, 
                         {
-                            "color": "00caff4c", 
+                            "color": "ff81004c", 
                             "time": 6.0
                         }
                     ]
@@ -317,15 +233,15 @@
                 "slotA16": {
                     "color": [
                         {
-                            "color": "00caff4c", 
+                            "color": "ff81004c", 
                             "time": 0.0
                         }, 
                         {
-                            "color": "00caff4c", 
+                            "color": "ff81004c", 
                             "time": 0.1
                         }, 
                         {
-                            "color": "00caff4c", 
+                            "color": "ff81004c", 
                             "time": 6.0
                         }
                     ]
@@ -333,15 +249,15 @@
                 "slotA17": {
                     "color": [
                         {
-                            "color": "00caff4c", 
+                            "color": "ff81004c", 
                             "time": 0.0
                         }, 
                         {
-                            "color": "00caff4c", 
+                            "color": "ff81004c", 
                             "time": 0.1
                         }, 
                         {
-                            "color": "00caff4c", 
+                            "color": "ff81004c", 
                             "time": 6.0
                         }
                     ]
@@ -349,15 +265,15 @@
                 "slotA18": {
                     "color": [
                         {
-                            "color": "00caff4c", 
+                            "color": "ff81004c", 
                             "time": 0.0
                         }, 
                         {
-                            "color": "00caff4c", 
+                            "color": "ff81004c", 
                             "time": 0.1
                         }, 
                         {
-                            "color": "00caff4c", 
+                            "color": "ff81004c", 
                             "time": 6.0
                         }
                     ]
@@ -365,15 +281,15 @@
                 "slotA2": {
                     "color": [
                         {
-                            "color": "00caff4c", 
+                            "color": "ff81004c", 
                             "time": 0.0
                         }, 
                         {
-                            "color": "00caff4c", 
+                            "color": "ff81004c", 
                             "time": 0.1
                         }, 
                         {
-                            "color": "00caff4c", 
+                            "color": "ff81004c", 
                             "time": 6.0
                         }
                     ]
@@ -381,15 +297,15 @@
                 "slotA3": {
                     "color": [
                         {
-                            "color": "00caff4c", 
+                            "color": "ff81004c", 
                             "time": 0.0
                         }, 
                         {
-                            "color": "00caff4c", 
+                            "color": "ff81004c", 
                             "time": 0.1
                         }, 
                         {
-                            "color": "00caff4c", 
+                            "color": "ff81004c", 
                             "time": 6.0
                         }
                     ]
@@ -397,15 +313,15 @@
                 "slotA4": {
                     "color": [
                         {
-                            "color": "00caff4c", 
+                            "color": "ff81004c", 
                             "time": 0.0
                         }, 
                         {
-                            "color": "00caff4c", 
+                            "color": "ff81004c", 
                             "time": 0.1
                         }, 
                         {
-                            "color": "00caff4c", 
+                            "color": "ff81004c", 
                             "time": 6.0
                         }
                     ]
@@ -413,15 +329,15 @@
                 "slotA5": {
                     "color": [
                         {
-                            "color": "00caff4c", 
+                            "color": "ff81004c", 
                             "time": 0.0
                         }, 
                         {
-                            "color": "00caff4c", 
+                            "color": "ff81004c", 
                             "time": 0.1
                         }, 
                         {
-                            "color": "00caff4c", 
+                            "color": "ff81004c", 
                             "time": 6.0
                         }
                     ]
@@ -429,15 +345,15 @@
                 "slotA6": {
                     "color": [
                         {
-                            "color": "00caff4c", 
+                            "color": "ff81004c", 
                             "time": 0.0
                         }, 
                         {
-                            "color": "00caff4c", 
+                            "color": "ff81004c", 
                             "time": 0.1
                         }, 
                         {
-                            "color": "00caff4c", 
+                            "color": "ff81004c", 
                             "time": 6.0
                         }
                     ]
@@ -445,15 +361,15 @@
                 "slotA7": {
                     "color": [
                         {
-                            "color": "00caff4c", 
+                            "color": "ff81004c", 
                             "time": 0.0
                         }, 
                         {
-                            "color": "00caff4c", 
+                            "color": "ff81004c", 
                             "time": 0.1
                         }, 
                         {
-                            "color": "00caff4c", 
+                            "color": "ff81004c", 
                             "time": 6.0
                         }
                     ]
@@ -461,15 +377,15 @@
                 "slotA8": {
                     "color": [
                         {
-                            "color": "00caff4c", 
+                            "color": "ff81004c", 
                             "time": 0.0
                         }, 
                         {
-                            "color": "00caff4c", 
+                            "color": "ff81004c", 
                             "time": 0.1
                         }, 
                         {
-                            "color": "00caff4c", 
+                            "color": "ff81004c", 
                             "time": 6.0
                         }
                     ]
@@ -477,15 +393,15 @@
                 "slotA9": {
                     "color": [
                         {
-                            "color": "00caff4c", 
+                            "color": "ff81004c", 
                             "time": 0.0
                         }, 
                         {
-                            "color": "00caff4c", 
+                            "color": "ff81004c", 
                             "time": 0.1
                         }, 
                         {
-                            "color": "00caff4c", 
+                            "color": "ff81004c", 
                             "time": 6.0
                         }
                     ]
@@ -521,27 +437,71 @@
                 "slotB11_1": {
                     "color": [
                         {
-                            "color": "ffffff33", 
+                            "color": "ff810066", 
                             "time": 0.0
                         }, 
                         {
-                            "color": "ffffff33", 
-                            "time": 0.1
+                            "color": "ff81009b", 
+                            "time": 0.3
                         }, 
                         {
-                            "color": "ffffff55", 
+                            "color": "ff810066", 
+                            "time": 0.7
+                        }, 
+                        {
+                            "color": "ff81009b", 
+                            "time": 1.1
+                        }, 
+                        {
+                            "color": "ff810066", 
                             "time": 1.5
                         }, 
                         {
-                            "color": "ffffff33", 
+                            "color": "ff81009b", 
+                            "time": 1.9
+                        }, 
+                        {
+                            "color": "ff810066", 
+                            "time": 2.3
+                        }, 
+                        {
+                            "color": "ff81009b", 
+                            "time": 2.6
+                        }, 
+                        {
+                            "color": "ff810066", 
                             "time": 3.0
                         }, 
                         {
-                            "color": "ffffff55", 
+                            "color": "ff81009b", 
+                            "time": 3.4
+                        }, 
+                        {
+                            "color": "ff810066", 
+                            "time": 3.8
+                        }, 
+                        {
+                            "color": "ff81009b", 
+                            "time": 4.1
+                        }, 
+                        {
+                            "color": "ff810066", 
                             "time": 4.5
                         }, 
                         {
-                            "color": "ffffff33", 
+                            "color": "ff81009b", 
+                            "time": 4.9
+                        }, 
+                        {
+                            "color": "ff810066", 
+                            "time": 5.3
+                        }, 
+                        {
+                            "color": "ff81009b", 
+                            "time": 5.6
+                        }, 
+                        {
+                            "color": "ff810066", 
                             "time": 6.0
                         }
                     ]
@@ -633,27 +593,71 @@
                 "slotB132": {
                     "color": [
                         {
-                            "color": "ffffff33", 
+                            "color": "ff810066", 
                             "time": 0.0
                         }, 
                         {
-                            "color": "ffffff33", 
-                            "time": 0.1
+                            "color": "ff81009b", 
+                            "time": 0.3
                         }, 
                         {
-                            "color": "ffffff55", 
+                            "color": "ff810066", 
+                            "time": 0.7
+                        }, 
+                        {
+                            "color": "ff81009b", 
+                            "time": 1.1
+                        }, 
+                        {
+                            "color": "ff810066", 
                             "time": 1.5
                         }, 
                         {
-                            "color": "ffffff33", 
+                            "color": "ff81009b", 
+                            "time": 1.9
+                        }, 
+                        {
+                            "color": "ff810066", 
+                            "time": 2.3
+                        }, 
+                        {
+                            "color": "ff81009b", 
+                            "time": 2.6
+                        }, 
+                        {
+                            "color": "ff810066", 
                             "time": 3.0
                         }, 
                         {
-                            "color": "ffffff55", 
+                            "color": "ff81009b", 
+                            "time": 3.4
+                        }, 
+                        {
+                            "color": "ff810066", 
+                            "time": 3.8
+                        }, 
+                        {
+                            "color": "ff81009b", 
+                            "time": 4.1
+                        }, 
+                        {
+                            "color": "ff810066", 
                             "time": 4.5
                         }, 
                         {
-                            "color": "ffffff33", 
+                            "color": "ff81009b", 
+                            "time": 4.9
+                        }, 
+                        {
+                            "color": "ff810066", 
+                            "time": 5.3
+                        }, 
+                        {
+                            "color": "ff81009b", 
+                            "time": 5.6
+                        }, 
+                        {
+                            "color": "ff810066", 
                             "time": 6.0
                         }
                     ]
@@ -773,27 +777,71 @@
                 "slotB15_2": {
                     "color": [
                         {
-                            "color": "ffffff33", 
+                            "color": "ff810066", 
                             "time": 0.0
                         }, 
                         {
-                            "color": "ffffff33", 
-                            "time": 0.1
+                            "color": "ff81009b", 
+                            "time": 0.3
                         }, 
                         {
-                            "color": "ffffff55", 
+                            "color": "ff810066", 
+                            "time": 0.7
+                        }, 
+                        {
+                            "color": "ff81009b", 
+                            "time": 1.1
+                        }, 
+                        {
+                            "color": "ff810066", 
                             "time": 1.5
                         }, 
                         {
-                            "color": "ffffff33", 
+                            "color": "ff81009b", 
+                            "time": 1.9
+                        }, 
+                        {
+                            "color": "ff810066", 
+                            "time": 2.3
+                        }, 
+                        {
+                            "color": "ff81009b", 
+                            "time": 2.6
+                        }, 
+                        {
+                            "color": "ff810066", 
                             "time": 3.0
                         }, 
                         {
-                            "color": "ffffff55", 
+                            "color": "ff81009b", 
+                            "time": 3.4
+                        }, 
+                        {
+                            "color": "ff810066", 
+                            "time": 3.8
+                        }, 
+                        {
+                            "color": "ff81009b", 
+                            "time": 4.1
+                        }, 
+                        {
+                            "color": "ff810066", 
                             "time": 4.5
                         }, 
                         {
-                            "color": "ffffff33", 
+                            "color": "ff81009b", 
+                            "time": 4.9
+                        }, 
+                        {
+                            "color": "ff810066", 
+                            "time": 5.3
+                        }, 
+                        {
+                            "color": "ff81009b", 
+                            "time": 5.6
+                        }, 
+                        {
+                            "color": "ff810066", 
                             "time": 6.0
                         }
                     ]
@@ -857,27 +905,71 @@
                 "slotB17_1": {
                     "color": [
                         {
-                            "color": "ffffff33", 
+                            "color": "ff810066", 
                             "time": 0.0
                         }, 
                         {
-                            "color": "ffffff33", 
-                            "time": 0.1
+                            "color": "ff81009b", 
+                            "time": 0.3
                         }, 
                         {
-                            "color": "ffffff55", 
+                            "color": "ff810066", 
+                            "time": 0.7
+                        }, 
+                        {
+                            "color": "ff81009b", 
+                            "time": 1.1
+                        }, 
+                        {
+                            "color": "ff810066", 
                             "time": 1.5
                         }, 
                         {
-                            "color": "ffffff33", 
+                            "color": "ff81009b", 
+                            "time": 1.9
+                        }, 
+                        {
+                            "color": "ff810066", 
+                            "time": 2.3
+                        }, 
+                        {
+                            "color": "ff81009b", 
+                            "time": 2.6
+                        }, 
+                        {
+                            "color": "ff810066", 
                             "time": 3.0
                         }, 
                         {
-                            "color": "ffffff55", 
+                            "color": "ff81009b", 
+                            "time": 3.4
+                        }, 
+                        {
+                            "color": "ff810066", 
+                            "time": 3.8
+                        }, 
+                        {
+                            "color": "ff81009b", 
+                            "time": 4.1
+                        }, 
+                        {
+                            "color": "ff810066", 
                             "time": 4.5
                         }, 
                         {
-                            "color": "ffffff33", 
+                            "color": "ff81009b", 
+                            "time": 4.9
+                        }, 
+                        {
+                            "color": "ff810066", 
+                            "time": 5.3
+                        }, 
+                        {
+                            "color": "ff81009b", 
+                            "time": 5.6
+                        }, 
+                        {
+                            "color": "ff810066", 
                             "time": 6.0
                         }
                     ]
@@ -969,27 +1061,71 @@
                 "slotB1_2": {
                     "color": [
                         {
-                            "color": "ffffff33", 
+                            "color": "ff810066", 
                             "time": 0.0
                         }, 
                         {
-                            "color": "ffffff33", 
-                            "time": 0.1
+                            "color": "ff81009b", 
+                            "time": 0.3
                         }, 
                         {
-                            "color": "ffffff55", 
+                            "color": "ff810066", 
+                            "time": 0.7
+                        }, 
+                        {
+                            "color": "ff81009b", 
+                            "time": 1.1
+                        }, 
+                        {
+                            "color": "ff810066", 
                             "time": 1.5
                         }, 
                         {
-                            "color": "ffffff33", 
+                            "color": "ff81009b", 
+                            "time": 1.9
+                        }, 
+                        {
+                            "color": "ff810066", 
+                            "time": 2.3
+                        }, 
+                        {
+                            "color": "ff81009b", 
+                            "time": 2.6
+                        }, 
+                        {
+                            "color": "ff810066", 
                             "time": 3.0
                         }, 
                         {
-                            "color": "ffffff55", 
+                            "color": "ff81009b", 
+                            "time": 3.4
+                        }, 
+                        {
+                            "color": "ff810066", 
+                            "time": 3.8
+                        }, 
+                        {
+                            "color": "ff81009b", 
+                            "time": 4.1
+                        }, 
+                        {
+                            "color": "ff810066", 
                             "time": 4.5
                         }, 
                         {
-                            "color": "ffffff33", 
+                            "color": "ff81009b", 
+                            "time": 4.9
+                        }, 
+                        {
+                            "color": "ff810066", 
+                            "time": 5.3
+                        }, 
+                        {
+                            "color": "ff81009b", 
+                            "time": 5.6
+                        }, 
+                        {
+                            "color": "ff810066", 
                             "time": 6.0
                         }
                     ]
@@ -1053,27 +1189,71 @@
                 "slotB2_1": {
                     "color": [
                         {
-                            "color": "ffffff33", 
+                            "color": "ff810066", 
                             "time": 0.0
                         }, 
                         {
-                            "color": "ffffff33", 
-                            "time": 0.1
+                            "color": "ff81009b", 
+                            "time": 0.3
                         }, 
                         {
-                            "color": "ffffff55", 
+                            "color": "ff810066", 
+                            "time": 0.7
+                        }, 
+                        {
+                            "color": "ff81009b", 
+                            "time": 1.1
+                        }, 
+                        {
+                            "color": "ff810066", 
                             "time": 1.5
                         }, 
                         {
-                            "color": "ffffff33", 
+                            "color": "ff81009b", 
+                            "time": 1.9
+                        }, 
+                        {
+                            "color": "ff810066", 
+                            "time": 2.3
+                        }, 
+                        {
+                            "color": "ff81009b", 
+                            "time": 2.6
+                        }, 
+                        {
+                            "color": "ff810066", 
                             "time": 3.0
                         }, 
                         {
-                            "color": "ffffff55", 
+                            "color": "ff81009b", 
+                            "time": 3.4
+                        }, 
+                        {
+                            "color": "ff810066", 
+                            "time": 3.8
+                        }, 
+                        {
+                            "color": "ff81009b", 
+                            "time": 4.1
+                        }, 
+                        {
+                            "color": "ff810066", 
                             "time": 4.5
                         }, 
                         {
-                            "color": "ffffff33", 
+                            "color": "ff81009b", 
+                            "time": 4.9
+                        }, 
+                        {
+                            "color": "ff810066", 
+                            "time": 5.3
+                        }, 
+                        {
+                            "color": "ff81009b", 
+                            "time": 5.6
+                        }, 
+                        {
+                            "color": "ff810066", 
                             "time": 6.0
                         }
                     ]
@@ -1165,27 +1345,71 @@
                 "slotB4_2": {
                     "color": [
                         {
-                            "color": "ffffff33", 
+                            "color": "ff810066", 
                             "time": 0.0
                         }, 
                         {
-                            "color": "ffffff33", 
-                            "time": 0.1
+                            "color": "ff81009b", 
+                            "time": 0.3
                         }, 
                         {
-                            "color": "ffffff55", 
+                            "color": "ff810066", 
+                            "time": 0.7
+                        }, 
+                        {
+                            "color": "ff81009b", 
+                            "time": 1.1
+                        }, 
+                        {
+                            "color": "ff810066", 
                             "time": 1.5
                         }, 
                         {
-                            "color": "ffffff33", 
+                            "color": "ff81009b", 
+                            "time": 1.9
+                        }, 
+                        {
+                            "color": "ff810066", 
+                            "time": 2.3
+                        }, 
+                        {
+                            "color": "ff81009b", 
+                            "time": 2.6
+                        }, 
+                        {
+                            "color": "ff810066", 
                             "time": 3.0
                         }, 
                         {
-                            "color": "ffffff55", 
+                            "color": "ff81009b", 
+                            "time": 3.4
+                        }, 
+                        {
+                            "color": "ff810066", 
+                            "time": 3.8
+                        }, 
+                        {
+                            "color": "ff81009b", 
+                            "time": 4.1
+                        }, 
+                        {
+                            "color": "ff810066", 
                             "time": 4.5
                         }, 
                         {
-                            "color": "ffffff33", 
+                            "color": "ff81009b", 
+                            "time": 4.9
+                        }, 
+                        {
+                            "color": "ff810066", 
+                            "time": 5.3
+                        }, 
+                        {
+                            "color": "ff81009b", 
+                            "time": 5.6
+                        }, 
+                        {
+                            "color": "ff810066", 
                             "time": 6.0
                         }
                     ]
@@ -1249,27 +1473,71 @@
                 "slotB6_1": {
                     "color": [
                         {
-                            "color": "ffffff33", 
+                            "color": "ff810066", 
                             "time": 0.0
                         }, 
                         {
-                            "color": "ffffff33", 
-                            "time": 0.1
+                            "color": "ff81009b", 
+                            "time": 0.3
                         }, 
                         {
-                            "color": "ffffff55", 
+                            "color": "ff810066", 
+                            "time": 0.7
+                        }, 
+                        {
+                            "color": "ff81009b", 
+                            "time": 1.1
+                        }, 
+                        {
+                            "color": "ff810066", 
                             "time": 1.5
                         }, 
                         {
-                            "color": "ffffff33", 
+                            "color": "ff81009b", 
+                            "time": 1.9
+                        }, 
+                        {
+                            "color": "ff810066", 
+                            "time": 2.3
+                        }, 
+                        {
+                            "color": "ff81009b", 
+                            "time": 2.6
+                        }, 
+                        {
+                            "color": "ff810066", 
                             "time": 3.0
                         }, 
                         {
-                            "color": "ffffff55", 
+                            "color": "ff81009b", 
+                            "time": 3.4
+                        }, 
+                        {
+                            "color": "ff810066", 
+                            "time": 3.8
+                        }, 
+                        {
+                            "color": "ff81009b", 
+                            "time": 4.1
+                        }, 
+                        {
+                            "color": "ff810066", 
                             "time": 4.5
                         }, 
                         {
-                            "color": "ffffff33", 
+                            "color": "ff81009b", 
+                            "time": 4.9
+                        }, 
+                        {
+                            "color": "ff810066", 
+                            "time": 5.3
+                        }, 
+                        {
+                            "color": "ff81009b", 
+                            "time": 5.6
+                        }, 
+                        {
+                            "color": "ff810066", 
                             "time": 6.0
                         }
                     ]
@@ -1333,27 +1601,71 @@
                 "slotB8_1": {
                     "color": [
                         {
-                            "color": "ffffff33", 
+                            "color": "ff810066", 
                             "time": 0.0
                         }, 
                         {
-                            "color": "ffffff33", 
-                            "time": 0.1
+                            "color": "ff81009b", 
+                            "time": 0.3
                         }, 
                         {
-                            "color": "ffffff55", 
+                            "color": "ff810066", 
+                            "time": 0.7
+                        }, 
+                        {
+                            "color": "ff81009b", 
+                            "time": 1.1
+                        }, 
+                        {
+                            "color": "ff810066", 
                             "time": 1.5
                         }, 
                         {
-                            "color": "ffffff33", 
+                            "color": "ff81009b", 
+                            "time": 1.9
+                        }, 
+                        {
+                            "color": "ff810066", 
+                            "time": 2.3
+                        }, 
+                        {
+                            "color": "ff81009b", 
+                            "time": 2.6
+                        }, 
+                        {
+                            "color": "ff810066", 
                             "time": 3.0
                         }, 
                         {
-                            "color": "ffffff55", 
+                            "color": "ff81009b", 
+                            "time": 3.4
+                        }, 
+                        {
+                            "color": "ff810066", 
+                            "time": 3.8
+                        }, 
+                        {
+                            "color": "ff81009b", 
+                            "time": 4.1
+                        }, 
+                        {
+                            "color": "ff810066", 
                             "time": 4.5
                         }, 
                         {
-                            "color": "ffffff33", 
+                            "color": "ff81009b", 
+                            "time": 4.9
+                        }, 
+                        {
+                            "color": "ff810066", 
+                            "time": 5.3
+                        }, 
+                        {
+                            "color": "ff81009b", 
+                            "time": 5.6
+                        }, 
+                        {
+                            "color": "ff810066", 
                             "time": 6.0
                         }
                     ]
@@ -1430,7 +1742,7 @@
         {
             "name": "bgRingA", 
             "parent": "rootA", 
-            "rotation": 359.0, 
+            "rotation": 270.0, 
             "scaleX": 1.0, 
             "scaleY": 1.0, 
             "x": 0.0, 
@@ -1601,7 +1913,7 @@
         {
             "name": "bgRingB", 
             "parent": "rootA", 
-            "rotation": 300.0, 
+            "rotation": 287.8965254226855, 
             "scaleX": 1.0, 
             "scaleY": 1.0, 
             "x": 0.0, 
