@@ -121,6 +121,7 @@ def getAnimationList(slotList,boneList,fps,start,end):
         shaders = cmds.ls(cmds.listConnections(shadingGrps),materials=1)
         fileNode = cmds.listConnections('%s.color' % (shaders[0]), type='file')[0]
         attachment = slot["attachment"]
+        print fileNode , cmds.getAttr("%s.useFrameExtension"%fileNode)
        # print fileNode , attachment
         
         keyFrameList = []
@@ -181,7 +182,7 @@ def getAnimationList(slotList,boneList,fps,start,end):
         else:
             for i in keyFrameList:
                 if int(i) in range(start,end+1):
-                    print i
+                 #   print i
                     translateX = float("%.2f"%(cmds.keyframe( boneName,at='tx',t=(i,i),q=True,eval=True)[0]))          
                     translateY = float("%.2f"%(cmds.keyframe( boneName,at='ty',t=(i,i),q=True,eval=True)[0]))
                     rotate = float( "%.2f"%(cmds.keyframe( boneName,at='rz',t=(i,i),q=True,eval=True)[0]))
@@ -191,7 +192,7 @@ def getAnimationList(slotList,boneList,fps,start,end):
                     originalHeight = float("%.2f"%(cmds.keyframe( boneName,at='sy',t=(0,0),q=True,eval=True)[0]))
                     scaleX = width/ originalWidth
                     scaleY = height /originalHeight
-                    print i ,boneName,rotate
+                   # print i ,boneName,rotate
 
                     if i == 0:
                        # print "0000" getAnimationList
@@ -238,14 +239,35 @@ def run():
     
     cmds.select("slotB1")
 def runB():
-    rootName = "root_effectC"
-    fileName = "//mcd-server/webServer/spineTest/effectC/effect_01.json"
+    cmds.currentTime(0,e=True)
+    rootName = "root_coin"
+    fileName = "//mcd-server/webServer/spineTest/effectC/effectC_coin.json"
     boneList = getAllbones(rootName)
     slotList = getAllSlots(boneList)
     skinList = getSkinsList(slotList)
-    animationList = getAnimationList(slotList,boneList,30,0,60)
+    animationList = getAnimationList(slotList,boneList,15,1,60)
     getExportJson(fileName,boneList,slotList,skinList,animationList)
 
+
+def copyKeyTOJoint():
+    for i in cmds.ls(sl=True):
+        #print i
+        keyFrameList = cmds.keyframe(i, attribute='translateX', query=True, cp =True)
+        
+      #  print keyFrameList
+        bone = cmds.createNode("joint",n= "joint##")
+
+        createPolyPlane = cmds.polyPlane(n="slot_##",sx= 1,sy=1)[0]
+     #   print createPolyPlane
+        cmds.setAttr("%s.scaleX"%createPolyPlane,50)
+        cmds.setAttr("%s.scaleZ"%createPolyPlane,50)
+        cmds.setAttr("%s.rotateX"%createPolyPlane,90)
+        cmds.parent(createPolyPlane,bone)
+        #print "i",i
+        
+        cmds.copyKey(i)
+        cmds.pasteKey(bone)
+        
     
     
 #run()
@@ -261,3 +283,4 @@ for i in cmds.ls(sl=True):
     
  '''   
 
+#copyKeyTOJoint()
