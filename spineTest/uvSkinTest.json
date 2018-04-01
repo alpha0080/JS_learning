@@ -1,0 +1,49 @@
+{
+    "animations": {}, 
+    "bones": [
+        {
+            "color": "ffffffff", 
+            "length": 238.6678031914496, 
+            "name": "joint9", 
+            "rotation": -124.543, 
+            "x": -202.439, 
+            "y": 306.582
+        }, 
+        {
+            "color": "ffffffff", 
+            "length": 267.5563607068641, 
+            "name": "joint10", 
+            "parent": "joint9", 
+            "rotation": 53.996, 
+            "x": 238.668, 
+            "y": -0.0
+        }, 
+        {
+            "color": "ffffffff", 
+            "length": 76.7856329958622, 
+            "name": "joint11", 
+            "parent": "joint10", 
+            "rotation": -127.625, 
+            "x": 267.556, 
+            "y": 0.0
+        }, 
+        {
+            "color": "ffffffff", 
+            "length": 51.21801591858441, 
+            "name": "joint12", 
+            "parent": "joint11", 
+            "rotation": 61.41, 
+            "x": 76.786, 
+            "y": 0.0
+        }, 
+        {
+            "color": "ffffffff", 
+            "length": 0, 
+            "name": "joint13", 
+            "parent": "joint12", 
+            "rotation": 136.762, 
+            "x": 51.218, 
+            "y": 0.0
+        }
+    ]
+}
