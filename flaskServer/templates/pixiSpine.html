@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>pixiTest</title>
+    <script src="{{url_for('static', filename='pixi.js')}}"></script>
+    <script src="{{url_for('static', filename='pixi-spine.js')}}"></script>
+</head>
+
+<body>
+{{effectName}}
+{{spineJson}}
+    <script>
+        var app = new PIXI.Application(1920, 1080);
+        document.body.appendChild(app.view);
+        
+        //var spineEffectName = String({{effectName}})
+       // var spineJsonFile = 'uploads/'+String({{effectName}})
+        console.log('aaaaa',{{effectName}},{{spineJson}})
+        /*
+        PIXI.loader
+            .add("spineData", spineJsonFile)
+            .load(onAssetsLoaded);
+
+        app.stage.interactive = true;
+
+        function onAssetsLoaded(loader, res) {
+            var spineAnime = new PIXI.spine.Spine(res.spineData.spineData);
+            spineAnime.x = app.screen.width / 2
+            spineAnime.y = app.screen.height / 2 /// 2
+
+            spineAnime.scale.set(0.8);
+
+            spineAnime.state.setAnimation(0, spineEffectName, true);
+
+            app.stage.addChild(spineAnime);
+*/
+            /*
+            for(var i = 0;i<200;i++){
+                var effectCoinA = new PIXI.spine.Spine(res.effect_coinA.spineData);
+
+                // set the position
+                effectCoinA.x = (i%20)*100+100//app.screen.width / 2;
+                effectCoinA.y = (Math.floor(i/20))*100+100//app.screen.height/2;
+
+                effectCoinA.scale.set(0.1);
+
+                effectCoinA.state.setAnimation(0, 'effect_Coin_A', true);
+
+                app.stage.addChild(effectCoinA);
+
+               
+             
+            };
+		*/
+
+        //}
+
+    </script>
+</body>
+
+</html>
