@@ -240,20 +240,22 @@ def getSkinsList(slotList):
             #print 'getSlotSkinData',getSlotSkinData
            # print 'slotSkinData',slotSkinData
             skinList["default"].update(slotSkinData)
-        '''
-        "slotName": {
-			"attachementName": {
-				"type": "mesh",
-                "uvs": [],
-                "triangles": [],
-                "vertices": [],
-                "hull":"",
-                "edges": [],
-                "width":"",
-                "height":""
-                }
-        '''
     return skinList
+    
+    
+def getAnimationList(slotList,boneList):
+    
+    print "getAnimation"
+    '''
+    "animations": {
+        actionName: {
+            "slots": {}
+            "bones":{}
+            "deform":{}
+        
+    '''
+    
+    
 def getSkinsListB(slotList):
     skinList= {"default":{}}
     
