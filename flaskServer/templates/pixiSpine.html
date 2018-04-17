@@ -14,11 +14,11 @@
     <script>
         var app = new PIXI.Application(1920, 1080);
         document.body.appendChild(app.view);
+       // console.log(String({{effectName}}))
+        var spineEffectName = '{{effectName}}';
+        var spineJsonFile = 'uploads/'+'{{spineJson}}';
+        console.log('aaaaa',spineEffectName,spineJsonFile)
         
-        //var spineEffectName = String({{effectName}})
-       // var spineJsonFile = 'uploads/'+String({{effectName}})
-        console.log('aaaaa',{{effectName}},{{spineJson}})
-        /*
         PIXI.loader
             .add("spineData", spineJsonFile)
             .load(onAssetsLoaded);
@@ -35,7 +35,7 @@
             spineAnime.state.setAnimation(0, spineEffectName, true);
 
             app.stage.addChild(spineAnime);
-*/
+
             /*
             for(var i = 0;i<200;i++){
                 var effectCoinA = new PIXI.spine.Spine(res.effect_coinA.spineData);
@@ -55,7 +55,7 @@
             };
 		*/
 
-        //}
+        }
 
     </script>
 </body>

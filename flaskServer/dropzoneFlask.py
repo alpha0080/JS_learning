@@ -73,4 +73,4 @@ def getEffectName(jsonFile):
     return data["animations"].keys()[0]
 
 if __name__ == '__main__':
-    app.run(host='192.168.161.46')
+    app.run(debug=True)

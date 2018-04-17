@@ -76,6 +76,7 @@ def getUVData(meshName,borderEdges):
 
     return dataForSpine
 
+
         
 def getBorderEdgeList(): 
     borderEdgeList = []      
