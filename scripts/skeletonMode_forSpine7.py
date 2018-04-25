@@ -163,7 +163,7 @@ def getMeshData(meshName):
     return borderEdge
 
 
-def getUVData(meshName,joinName,borderEdges):
+def getUVData(meshName,jointName,borderEdges):
     
     getObj =  cmds.ls(meshName,dag=1)[1]
     print "meshName",meshName
@@ -220,8 +220,8 @@ def getUVData(meshName,joinName,borderEdges):
     cmds.select(allvertexs)
     vertexList = cmds.ls(sl=True,fl=True)
     cmds.select(cl=True)
-    ox = cmds.getAttr("%s.translateX"%joinName)
-    oy = cmds.getAttr("%s.translateY"%joinName)
+    ox = cmds.getAttr("%s.translateX"%jointName)
+    oy = cmds.getAttr("%s.translateY"%jointName)
     print ox,oy
 
   #  print vertexList
@@ -307,13 +307,13 @@ def getSkinsList(slotList):
     skinList= {"default":{}}
     for i in slotList:
         slotName = i["name"]
-        joinName = i["bone"]
+        jointName = i["bone"]
         attachment = i["attachment"]
         #print "slotName",slotName
         type = cmds.getAttr("%s.meshType"%slotName)
         if type == "mesh" :
             boneList = getMeshData(slotName)
-            getSlotSkinData = getUVData(slotName,joinName,boneList)
+            getSlotSkinData = getUVData(slotName,jointName,boneList)
            # getSlotSkinData.update({})
             slotSkinData = { slotName:{attachment:getSlotSkinData}}
             #print 'getSlotSkinData',getSlotSkinData
@@ -527,26 +527,50 @@ def exportSpineDefineJson(exportFileName,boneList):
     #writeData = json.dumps(exportJson) 
     with open(exportFileName, 'w') as the_file:
         the_file.write(writeData)     
+
+
+getDeformList("pPlane8","joint37",1,60)
                
-def getDeformList(meshName):
+def getDeformList(meshName,jointName,start,end):
     print "getDeformList" 
+    vertexDataDeltaTime = getVertexDeltaTime(meshName,jointName)
+    keyFrameList = getAllkeyFrameList(jointName,start,end)
+ 
+    print vertexDataDeltaTime
+    print keyFrameList
     
     '''
-    "animations": {
-   "name": {
-      "bones": { ... },
-      "slots": { ... },
-      "ik": { ... },
-      "deform": { ... },
-      "events": { ... },
-      "draworder": { ... },
-   },
+   
+   "skins": {
+   "skinName": {  --->default
+      "slotName": { ----> polyPlane  (polyMeshName
+         "attachmentName": {   ----?texturefile
+   
+    
+    
+   "animation": 
+   "deform": {
+   "skinName": {   --->default  
+      "slotName": {     ----->polyMeshName
+         "meshName": [   ---->texture file
+            {
+               "time": 0,
+               "curve": [ 0.25, 0, 0.75, 1 ]
+            },
+            {
+               "time": 1.5,
+               "offset": 12,
+               "vertices": [ -0.75588, -3.68987, -1.01898, -2.97404, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+               -1.01898, -2.97404, -0.75588, -3.68987, 0, 0, -0.75588, -3.68987, -0.75588, -3.68987,
+               -1.01898, -2.97404, -1.01898, -2.97404, -1.01898, -2.97404, -0.75588, -3.68987 ],
+               "curve": [ 0.25, 0, 0.75, 1 ]
+            },
     
     '''
     
 
 
-def getVertexDeltaTime(meshName,joinName):
+def getVertexDeltaTime(meshName,jointName):
     
  
     allvertexs = cmds.polyListComponentConversion(meshName,tv=True)
@@ -554,8 +578,8 @@ def getVertexDeltaTime(meshName,joinName):
     cmds.select(allvertexs)
     vertexList = cmds.ls(sl=True,fl=True)
     cmds.select(cl=True)
-    ox = cmds.getAttr("%s.translateX"%joinName)
-    oy = cmds.getAttr("%s.translateY"%joinName)
+    ox = cmds.getAttr("%s.translateX"%jointName)
+    oy = cmds.getAttr("%s.translateY"%jointName)
     print ox,oy
 
   #  print vertexList
