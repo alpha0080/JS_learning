@@ -6,7 +6,7 @@ for i in cmds.ls(sl=True):
    # print i, cmds.listRelatives(i,c=True)
     objectName = "%s|%s"%(i,cmds.listRelatives(i,c=True)[0])
    # print i ,newName
-    newName = i[:-3] +"_slot"+ i.split("_")[-1]
+    newName = i[:-3] +"_sl"+ i.split("_")[-1]
     print i ," -- ",newName
     cmds.rename(objectName,newName)
     

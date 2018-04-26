@@ -325,12 +325,12 @@ def run():
     cmds.select("slotB1")
 def runB():
     cmds.currentTime(0,e=True)
-    rootName = "root_effectD"
-    fileName = "//mcd-server/webServer/spineTest/effectD/effectD_1.json"
+    rootName = "root_fiveStone"
+    fileName = "C:/alphaOnly/github/JS_learning/spineTest/effect_fiveStone/fiveStone.json"
     boneList = getAllbones(rootName)
     slotList = getAllSlots(boneList)
     skinList = getSkinsList(slotList)
-    animationList = getAnimationList(slotList,boneList,30,1,70,8)
+    animationList = getAnimationList(slotList,boneList,30,1,25,0)
     getExportJson(fileName,boneList,slotList,skinList,animationList)
 
 
